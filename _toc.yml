@@ -1,0 +1,9 @@
+file: CONTRIBUTING
+sections:
+- file: README
+- file: CONDUCT
+- file: my_ml_recipes/content
+  sections:
+  - file: my_ml_recipes/markdown
+  - file: my_ml_recipes/notebooks
+  - file: my_ml_recipes/intro
