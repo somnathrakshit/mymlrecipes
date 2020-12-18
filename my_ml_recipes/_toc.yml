@@ -1,7 +1,15 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
 - file: intro
-- file: content
-  sections:
-    - file: markdown
-    - file: notebooks
+  numbered: true 
+
+- part: The Basics
+  chapters:
+  - file: text/mle/intro
+    # sections:
+    #   - file: text/mle/details
+  # - file: text/linear_regression/intro
+  #   sections:
+  #     - file: text/linear_regression/details
+  #     - file: text/notebooks
+  #     - file: text/markdown
