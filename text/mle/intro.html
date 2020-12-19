@@ -230,6 +230,11 @@
    1.1. Estimating Parameters
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   1.2. References
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -243,17 +248,24 @@
                 
   <div class="section" id="maximum-likelihood-estimate">
 <h1><span class="section-number">1. </span>Maximum Likelihood Estimate<a class="headerlink" href="#maximum-likelihood-estimate" title="Permalink to this headline">¶</a></h1>
-<p>Suppose we are given a problem where we can assume the <em>parametric class</em> of distribution (e.g. Normal Distribution) that generates a set of data. Since this class of distribution has a finite number of parameters that need to be figured out (<span class="math notranslate nohighlight">\(\mu \in (-\infty, \infty)\)</span> and <span class="math notranslate nohighlight">\(\sigma \in (0, \infty)\)</span> in case of normal distribution) in order to identify the particular member of the class, we will use the given data to do so.</p>
+<p>Suppose we are given a problem where we can assume the <em>parametric class</em> of distribution (e.g. Normal Distribution) that generates a set of data. Since this class of distribution has a finite number of parameters that need to be figured out (mean <span class="math notranslate nohighlight">\(\mu\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> in case of normal distribution) in order to identify the particular member of the class, we will use the given data to do so.</p>
 <p>The obtained parameter estimates will be called <strong>Maximum Likelihood Estimates</strong>.</p>
+<p>Let us consider a Ransom Variable <span class="math notranslate nohighlight">\(X\)</span> to be normally distributed with some mena <span class="math notranslate nohighlight">\(\mu\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>. We need to estimate <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> using our samples which accurately represent the actual <span class="math notranslate nohighlight">\(X\)</span> and not just the samples that we have drawn out.</p>
 <div class="section" id="estimating-parameters">
 <h2><span class="section-number">1.1. </span>Estimating Parameters<a class="headerlink" href="#estimating-parameters" title="Permalink to this headline">¶</a></h2>
 <p>Let’s have a look at the Probability Density Function (PDF) for the Normal Distribution and see what they mean.</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-eq-normal-dist">
+<span class="eqno">(1.1)<a class="headerlink" href="#equation-eq-normal-dist" title="Permalink to this equation">¶</a></span>\[
 \begin{equation}
-a = b
+p(x; \mu, \sigma) = \frac{e^{-(x - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}}
 \end{equation}
 \]</div>
+<p>This equation is used to obtain the probability of our sample <span class="math notranslate nohighlight">\(x\)</span> being from our random variable <span class="math notranslate nohighlight">\(X\)</span>, when the true parameters of the distribution are <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<p>Let us consider that our sample = 5. Then what is the probability that it comes from a normal distribution with <span class="math notranslate nohighlight">\(\mu = 4\)</span> and <span class="math notranslate nohighlight">\(\sigma = 1\)</span>? To get this probability, we only need to plug in the values of <span class="math notranslate nohighlight">\(x, \mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> in Equation <a class="reference internal" href="#equation-eq-normal-dist">(1.1)</a>. Scipy as a handy function <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html"><code class="docutils literal notranslate"><span class="pre">norm.pdf()</span></code></a> that we can use to obtain this as well.</p>
+</div>
+<div class="section" id="references">
+<h2><span class="section-number">1.2. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>https://medium.com/&#64;rrfd/what-is-maximum-likelihood-estimation-examples-in-python-791153818030</p>
 </div>
 </div>
 
