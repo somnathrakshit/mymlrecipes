@@ -236,8 +236,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#determining-parameters">
+   1.3. Determining parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
-   1.3. References
+   1.4. References
   </a>
  </li>
 </ul>
@@ -346,8 +351,7 @@ f(x; \mu, \sigma) = \frac{e^{-(x - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}}
 </div>
 <div class="section" id="likelihood-of-many-samples">
 <h2><span class="section-number">1.2. </span>Likelihood of many samples<a class="headerlink" href="#likelihood-of-many-samples" title="Permalink to this headline">¶</a></h2>
-<p>Let us now consider 5 samples with values 0, -5,  6, -9 and 8. We want to know the normal distribution from which all of these samples were most likely to be drawn. In other words, we would like to find the value of <span class="math notranslate nohighlight">\(f(0, -5,  6, -9, 8)\)</span> as given in Equation <a class="reference internal" href="#equation-eq-normal-dist">(1.1)</a>. Since we do not know the values of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> for the required distribution, we need to estimate them.</p>
-<p>This is done using maximum likelihood estimation (MLE). Here, we specify a distribution of unknown parameters and then use our data to obtain the actual parameter values. In essence, MLE’s aim is to find the set of parameters for the probability distribution that maximizes the likelihood of the data points. This can be formally expressed as:</p>
+<p>In maximum likelihood estimation (MLE), we specify a distribution of unknown parameters and then use our data to obtain the actual parameter values. In essence, MLE’s aim is to find the set of parameters for the probability distribution that maximizes the likelihood of the data points. This can be formally expressed as:</p>
 <div class="math notranslate nohighlight" id="equation-eq-likelihood">
 <span class="eqno">(1.2)<a class="headerlink" href="#equation-eq-likelihood" title="Permalink to this equation">¶</a></span>\[
 \begin{equation}
@@ -361,16 +365,88 @@ f(x; \mu, \sigma) = \frac{e^{-(x - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}}
 \hat{\mu}, \hat{\sigma} = \operatorname*{argmax}_{\mu, \sigma}\Sigma_{i=1}^n \ln f(x_i)
 \end{equation}
 \]</div>
-<p>There are two main advantages of using log-likelihood:</p>
+<p>This is because logarithmic function is a monotonically increasing function. Thus, taking the log of another function does not change the point where the original function peaks. There are two main advantages of using log-likelihood:</p>
 <ol class="simple">
 <li><p>The exponential terms in the probability density function are more manageable and easily optimizable.</p></li>
 <li><p>The product of all likelihoods become a sum of individual likelihoods which allows these individual components to be maximized rather than working with the product of <span class="math notranslate nohighlight">\(n\)</span> probability density functions.</p></li>
 </ol>
+<p>Now, let us find the maximum likelihood estimates using the log likelihood function.</p>
+<div class="math notranslate nohighlight" id="equation-eq-mle-all-terms">
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-eq-mle-all-terms" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\begin{align*}
+&amp; \ln\left[ L(\mu, \sigma|x_1, ..., x_n)\right] \\ 
+ &amp;= \ln \left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \times  \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \times ... \times  \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}}  \right) \\ 
+ &amp;= \ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + \ln\left( \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + ... + \ln\left( \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right)
+\end{align*} 
+\end{split}\]</div>
+<p>Here,</p>
+<div class="math notranslate nohighlight" id="equation-eq-mle-single-term">
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-eq-mle-single-term" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\begin{align*}
+&amp;\ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) \\ 
+&amp;= \ln\left( \frac{1} {\sigma\sqrt{2\pi}} \right) + \ln\left( e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) } \right) \\ 
+&amp;= \ln\left[ (2\pi\sigma^2)^{\frac{-1}{2}} \right] - \frac{(x_1 - \mu)^2}{2\sigma^2}\ln(e) \\
+&amp;= -\frac{1}{2}\ln ( 2\pi\sigma^2) - \frac{(x_1-\mu)^2}{2\sigma^2} \\
+&amp;= -\frac{1}{2}\ln(2\pi) - \frac{1}{2}\ln(\sigma^2) - \frac{(x_1 - \mu)^2}{2\sigma^2} \\
+&amp;= -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_1 - \mu)^2}{2\sigma^2} \\
+\end{align*}
+\end{split}\]</div>
+<p>Thus, Equation <a class="reference internal" href="#equation-eq-mle-all-terms">(1.4)</a> can be written as:</p>
+<div class="math notranslate nohighlight" id="equation-eq-mle-simplified">
+<span class="eqno">(1.6)<a class="headerlink" href="#equation-eq-mle-simplified" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\begin{align*}
+\ln\left[ L(\mu, \sigma|x_1, ..., x_n)\right] &amp;= \ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + \ln\left( \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + ... + \ln\left( \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) \\
+&amp;= \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_1 - \mu)^2}{2\sigma^2} \right] + \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_2- \mu)^2}{2\sigma^2} \right] + ... + \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_n - \mu)^2}{2\sigma^2} \right] \\
+&amp;= -\frac{n}{2}\ln(2\pi) - n\ln(\sigma) - \frac{(x_1-\mu)^2}{2\sigma^2} - \frac{(x_2-\mu)^2}{2\sigma^2} - ... - \frac{(x_n-\mu)^2}{2\sigma^2}
+\end{align*}
+\end{split}\]</div>
+</div>
+<div class="section" id="determining-parameters">
+<h2><span class="section-number">1.3. </span>Determining parameters<a class="headerlink" href="#determining-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Now, we will use Equation <a class="reference internal" href="#equation-eq-mle-simplified">(1.6)</a> to find the values of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>. For this purpose, we take the partial derivative of Equation <a class="reference internal" href="#equation-eq-mle-simplified">(1.6)</a> with respect to <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-eq-mu">
+<span class="eqno">(1.7)<a class="headerlink" href="#equation-eq-mu" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\begin{align*}
+\frac{\partial}{\partial \mu}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] &amp;= 0 - 0 + \frac{x_1 - \mu}{\sigma^2} + \frac{x_2 - \mu}{\sigma^2} + ... + \frac{x_n - \mu}{\sigma^2} \\
+&amp;= \frac{1}{\sigma^2}\left[ (x_1 + x_2 + ... + x_n) - n\mu \right]
+\end{align*} 
+\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-sigma">
+<span class="eqno">(1.8)<a class="headerlink" href="#equation-eq-sigma" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\begin{align*}
+\frac{\partial}{\partial \sigma}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] &amp;= 0 - \frac{n}{\sigma} + \frac{(x_1 - \mu)^2}{\sigma^3} + \frac{(x_2 - \mu)^2}{\sigma^3} + ... + \frac{(x_n - \mu)^2}{\sigma^3} \\ 
+&amp;= -\frac{n}{\sigma} + \frac{1}{\sigma^3}\left[ (x_1 - \mu)^2 + (x_2 - \mu)^2 + ...+ (x_n - \mu)^2 \right]
+\end{align*}
+\end{split}\]</div>
+<p>Now, to find the maximum likelihood estimate for <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>, we need to solve for the derivative with respect to <span class="math notranslate nohighlight">\(\mu = 0\)</span> and <span class="math notranslate nohighlight">\(\sigma = 0\)</span>, because the slope is 0 at the peak of the curve.</p>
+<p>Thus, using Equation <a class="reference internal" href="#equation-eq-mu">(1.7)</a> and setting <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \mu}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] = 0\)</span>, we get,</p>
+<div class="math notranslate nohighlight" id="equation-eq-mu-final">
+<span class="eqno">(1.9)<a class="headerlink" href="#equation-eq-mu-final" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\begin{align*}
+0 &amp;= \frac{1}{\sigma^2}\left[ (x_1 + x_2 + ... + x_n) - n\mu \right] \\
+0 &amp;= (x_1+x_2 + ... + x_n) - n\mu \\
+\mu &amp;= \frac{(x_1+x_2+...+x_n)}{n}
+\end{align*} 
+\end{split}\]</div>
+<p>Thus, the maximum likelihood estimate for <span class="math notranslate nohighlight">\(\mu\)</span> is the mean of the samples.</p>
+<p>Simialrly, using Equation <a class="reference internal" href="#equation-eq-sigma">(1.8)</a> and setting <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \sigma}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] = 0\)</span>, we get,</p>
+<div class="math notranslate nohighlight" id="equation-eq-sigma-final">
+<span class="eqno">(1.10)<a class="headerlink" href="#equation-eq-sigma-final" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\begin{align*}
+0 &amp;= -\frac{n}{\sigma} + \frac{1}{\sigma^3}\left[ (x_1 - \mu)^2 + (x_2 - \mu)^2 + ...+ (x_n - \mu)^2 \right] \\
+0 &amp;= -n + \frac{1}{\sigma^2}\left[ (x_1-\mu)^2 + (x_2-\mu)^2 + ...+ (x_n-\mu)^2 \right] \\
+n\sigma^2 &amp;= (x_1-\mu)^2 + (x_2-\mu)^2 + ...+ (x_n-\mu)^2 \\ 
+\sigma &amp;= \sqrt{\frac{(x_1-\mu)^2 + (x_2-\mu)^2 + ...+ (x_n-\mu)^2}{n}} \\
+\end{align*} 
+\end{split}\]</div>
+<p>Thus, the maximum likelihood estimate for <span class="math notranslate nohighlight">\(\sigma\)</span> is the standard deviation of the samples.</p>
+<p>Let us now consider 5 samples with values 0, -5,  6, -9 and 8. We want to know the normal distribution from which all of these samples were most likely to be drawn. In other words, we would like to find the value of <span class="math notranslate nohighlight">\(f(0, -5,  6, -9, 8)\)</span> as given in Equation <a class="reference internal" href="#equation-eq-normal-dist">(1.1)</a>. Since we do not know the values of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> for the required distribution, we need to estimate them using  Equations <a class="reference internal" href="#equation-eq-mu-final">(1.9)</a> and <a class="reference internal" href="#equation-eq-sigma-final">(1.10)</a> respectively.</p>
 </div>
 <div class="section" id="references">
-<h2><span class="section-number">1.3. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.4. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>https://medium.com/&#64;rrfd/what-is-maximum-likelihood-estimation-examples-in-python-791153818030</p>
 <p>https://towardsdatascience.com/maximum-likelihood-estimation-how-it-works-and-implementing-in-python-b0eb2efb360f</p>
+<p>https://youtu.be/Dn6b9fCIUpM</p>
 </div>
 </div>
 
