@@ -1,6 +1,6 @@
 # my-ml-recipes
 
-My Machine Le Code Examples
+My ML Recipes
 
 ## Usage
 
