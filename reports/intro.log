@@ -1,0 +1,58 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/site-packages/nbclient/client.py", line 1087, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/site-packages/nbclient/client.py", line 540, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/site-packages/nbclient/client.py", line 832, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/site-packages/nbclient/client.py", line 740, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+np.random.seed(10)
+
+plt.style.use('seaborn')
+plt.rcParams['figure.figsize'] = (12, 8)
+
+def plot_normal(x_range, mu=0, sigma=1, **kwargs):
+    '''
+    https://emredjan.github.io/blog/2017/07/19/plotting-distributions/
+    '''
+    x = x_range
+    y = norm.pdf(x, mu, sigma)
+    plt.plot(x, y, **kwargs)
+    
+mus = np.linspace(-6, 6, 6)
+sigmas = np.linspace(1, 3, 6)
+
+assert len(mus) == len(sigmas)
+x_range = np.linspace(-10, 10, 200)
+
+for mu, sigma in zip(mus, sigmas):
+    plot_normal(x_range, mu, sigma, label=f'$\mu$ = {mu:.2f}, $\sigma$ = {sigma:.2f}')
+plt.legend();
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;32m<ipython-input-1-4970bc334055>[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0;32mimport[0m [0mmatplotlib[0m[0;34m.[0m[0mpyplot[0m [0;32mas[0m [0mplt[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 3[0;31m [0;32mfrom[0m [0mscipy[0m[0;34m.[0m[0mstats[0m [0;32mimport[0m [0mnorm[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      4[0m [0mnp[0m[0;34m.[0m[0mrandom[0m[0;34m.[0m[0mseed[0m[0;34m([0m[0;36m10[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;34m[0m[0m
+
+[0;31mModuleNotFoundError[0m: No module named 'scipy'
+ModuleNotFoundError: No module named 'scipy'
+
