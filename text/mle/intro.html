@@ -260,7 +260,7 @@
 <h1><span class="section-number">1. </span>Maximum Likelihood Estimate<a class="headerlink" href="#maximum-likelihood-estimate" title="Permalink to this headline">¶</a></h1>
 <p>Suppose we are given a problem where we can assume the <em>parametric class</em> of distribution (e.g. Normal Distribution) that generates a set of data. Since this class of distribution has a finite number of parameters that need to be figured out (mean <span class="math notranslate nohighlight">\(\mu\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> in case of normal distribution) in order to identify the particular member of the class, we will use the given data to do so.</p>
 <p>The obtained parameter estimates will be called <strong>Maximum Likelihood Estimates</strong>.</p>
-<p>Let us consider a Ransom Variable <span class="math notranslate nohighlight">\(X\)</span> to be normally distributed with some mena <span class="math notranslate nohighlight">\(\mu\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>. We need to estimate <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> using our samples which accurately represent the actual <span class="math notranslate nohighlight">\(X\)</span> and not just the samples that we have drawn out.</p>
+<p>Let us consider a Random Variable <span class="math notranslate nohighlight">\(X\)</span> to be normally distributed with some mena <span class="math notranslate nohighlight">\(\mu\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>. We need to estimate <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> using our samples which accurately represent the actual <span class="math notranslate nohighlight">\(X\)</span> and not just the samples that we have drawn out.</p>
 <div class="section" id="estimating-parameters">
 <h2><span class="section-number">1.1. </span>Estimating Parameters<a class="headerlink" href="#estimating-parameters" title="Permalink to this headline">¶</a></h2>
 <p>Let’s have a look at the Probability Density Function (PDF) for the Normal Distribution and see what they mean.</p>
@@ -374,73 +374,144 @@ f(x; \mu, \sigma) = \frac{e^{-(x - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}}
 <div class="math notranslate nohighlight" id="equation-eq-mle-all-terms">
 <span class="eqno">(1.4)<a class="headerlink" href="#equation-eq-mle-all-terms" title="Permalink to this equation">¶</a></span>\[\begin{split}
 \begin{align*}
+\begin{split}
 &amp; \ln\left[ L(\mu, \sigma|x_1, ..., x_n)\right] \\ 
  &amp;= \ln \left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \times  \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \times ... \times  \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}}  \right) \\ 
- &amp;= \ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + \ln\left( \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + ... + \ln\left( \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right)
+ &amp;= \ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + \ln\left( \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + ... \\ 
+ &amp;\quad + \ln\left( \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right)
+\end{split}
 \end{align*} 
 \end{split}\]</div>
 <p>Here,</p>
-<div class="math notranslate nohighlight" id="equation-eq-mle-single-term">
-<span class="eqno">(1.5)<a class="headerlink" href="#equation-eq-mle-single-term" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align*}
 &amp;\ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) \\ 
 &amp;= \ln\left( \frac{1} {\sigma\sqrt{2\pi}} \right) + \ln\left( e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) } \right) \\ 
 &amp;= \ln\left[ (2\pi\sigma^2)^{\frac{-1}{2}} \right] - \frac{(x_1 - \mu)^2}{2\sigma^2}\ln(e) \\
 &amp;= -\frac{1}{2}\ln ( 2\pi\sigma^2) - \frac{(x_1-\mu)^2}{2\sigma^2} \\
 &amp;= -\frac{1}{2}\ln(2\pi) - \frac{1}{2}\ln(\sigma^2) - \frac{(x_1 - \mu)^2}{2\sigma^2} \\
+\end{align*} 
+\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-mle-single-term">
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-eq-mle-single-term" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\begin{align*}
 &amp;= -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_1 - \mu)^2}{2\sigma^2} \\
 \end{align*}
 \end{split}\]</div>
 <p>Thus, Equation <a class="reference internal" href="#equation-eq-mle-all-terms">(1.4)</a> can be written as:</p>
-<div class="math notranslate nohighlight" id="equation-eq-mle-simplified">
-<span class="eqno">(1.6)<a class="headerlink" href="#equation-eq-mle-simplified" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align*}
-\ln\left[ L(\mu, \sigma|x_1, ..., x_n)\right] &amp;= \ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + \ln\left( \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + ... + \ln\left( \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) \\
-&amp;= \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_1 - \mu)^2}{2\sigma^2} \right] + \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_2- \mu)^2}{2\sigma^2} \right] + ... + \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_n - \mu)^2}{2\sigma^2} \right] \\
+\ln\left[ L(\mu, \sigma|x_1, ..., x_n)\right] &amp;= \ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + \ln\left( \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + ... \\
+ &amp;\quad + \ln\left( \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) \\
+&amp;= \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_1 - \mu)^2}{2\sigma^2} \right] \\ 
+&amp;\quad + \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_2- \mu)^2}{2\sigma^2} \right] \\ 
+&amp;\quad + ... + \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_n - \mu)^2}{2\sigma^2} \right] \\
+\end{align*} 
+\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-mle-simplified">
+<span class="eqno">(1.6)<a class="headerlink" href="#equation-eq-mle-simplified" title="Permalink to this equation">¶</a></span>\[
+\begin{align*}
 &amp;= -\frac{n}{2}\ln(2\pi) - n\ln(\sigma) - \frac{(x_1-\mu)^2}{2\sigma^2} - \frac{(x_2-\mu)^2}{2\sigma^2} - ... - \frac{(x_n-\mu)^2}{2\sigma^2}
 \end{align*}
-\end{split}\]</div>
+\]</div>
 </div>
 <div class="section" id="determining-parameters">
 <h2><span class="section-number">1.3. </span>Determining parameters<a class="headerlink" href="#determining-parameters" title="Permalink to this headline">¶</a></h2>
 <p>Now, we will use Equation <a class="reference internal" href="#equation-eq-mle-simplified">(1.6)</a> to find the values of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>. For this purpose, we take the partial derivative of Equation <a class="reference internal" href="#equation-eq-mle-simplified">(1.6)</a> with respect to <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
-<div class="math notranslate nohighlight" id="equation-eq-mu">
-<span class="eqno">(1.7)<a class="headerlink" href="#equation-eq-mu" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align*}
 \frac{\partial}{\partial \mu}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] &amp;= 0 - 0 + \frac{x_1 - \mu}{\sigma^2} + \frac{x_2 - \mu}{\sigma^2} + ... + \frac{x_n - \mu}{\sigma^2} \\
-&amp;= \frac{1}{\sigma^2}\left[ (x_1 + x_2 + ... + x_n) - n\mu \right]
+\end{align*} 
+\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-mu">
+<span class="eqno">(1.7)<a class="headerlink" href="#equation-eq-mu" title="Permalink to this equation">¶</a></span>\[
+\begin{align*}
+\frac{\partial}{\partial \mu}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] &amp;= \frac{1}{\sigma^2}\left[ (x_1 + x_2 + ... + x_n) - n\mu \right]
+\end{align*} 
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\frac{\partial}{\partial \sigma}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] &amp;= 0 - \frac{n}{\sigma} + \frac{(x_1 - \mu)^2}{\sigma^3} + \frac{(x_2 - \mu)^2}{\sigma^3} + ... + \frac{(x_n - \mu)^2}{\sigma^3} \\ 
 \end{align*} 
 \end{split}\]</div>
 <div class="math notranslate nohighlight" id="equation-eq-sigma">
-<span class="eqno">(1.8)<a class="headerlink" href="#equation-eq-sigma" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<span class="eqno">(1.8)<a class="headerlink" href="#equation-eq-sigma" title="Permalink to this equation">¶</a></span>\[
 \begin{align*}
-\frac{\partial}{\partial \sigma}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] &amp;= 0 - \frac{n}{\sigma} + \frac{(x_1 - \mu)^2}{\sigma^3} + \frac{(x_2 - \mu)^2}{\sigma^3} + ... + \frac{(x_n - \mu)^2}{\sigma^3} \\ 
-&amp;= -\frac{n}{\sigma} + \frac{1}{\sigma^3}\left[ (x_1 - \mu)^2 + (x_2 - \mu)^2 + ...+ (x_n - \mu)^2 \right]
+\frac{\partial}{\partial \sigma}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] &amp;= -\frac{n}{\sigma} + \frac{1}{\sigma^3}\left[ (x_1 - \mu)^2 + (x_2 - \mu)^2 + ...+ (x_n - \mu)^2 \right]
 \end{align*}
-\end{split}\]</div>
+\]</div>
 <p>Now, to find the maximum likelihood estimate for <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>, we need to solve for the derivative with respect to <span class="math notranslate nohighlight">\(\mu = 0\)</span> and <span class="math notranslate nohighlight">\(\sigma = 0\)</span>, because the slope is 0 at the peak of the curve.</p>
 <p>Thus, using Equation <a class="reference internal" href="#equation-eq-mu">(1.7)</a> and setting <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \mu}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] = 0\)</span>, we get,</p>
-<div class="math notranslate nohighlight" id="equation-eq-mu-final">
-<span class="eqno">(1.9)<a class="headerlink" href="#equation-eq-mu-final" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align*}
 0 &amp;= \frac{1}{\sigma^2}\left[ (x_1 + x_2 + ... + x_n) - n\mu \right] \\
 0 &amp;= (x_1+x_2 + ... + x_n) - n\mu \\
-\mu &amp;= \frac{(x_1+x_2+...+x_n)}{n}
 \end{align*} 
 \end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-mu-final">
+<span class="eqno">(1.9)<a class="headerlink" href="#equation-eq-mu-final" title="Permalink to this equation">¶</a></span>\[
+\begin{align*}
+\mu &amp;= \frac{(x_1+x_2+...+x_n)}{n}
+\end{align*} 
+\]</div>
 <p>Thus, the maximum likelihood estimate for <span class="math notranslate nohighlight">\(\mu\)</span> is the mean of the samples.</p>
 <p>Simialrly, using Equation <a class="reference internal" href="#equation-eq-sigma">(1.8)</a> and setting <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \sigma}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] = 0\)</span>, we get,</p>
-<div class="math notranslate nohighlight" id="equation-eq-sigma-final">
-<span class="eqno">(1.10)<a class="headerlink" href="#equation-eq-sigma-final" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align*}
 0 &amp;= -\frac{n}{\sigma} + \frac{1}{\sigma^3}\left[ (x_1 - \mu)^2 + (x_2 - \mu)^2 + ...+ (x_n - \mu)^2 \right] \\
 0 &amp;= -n + \frac{1}{\sigma^2}\left[ (x_1-\mu)^2 + (x_2-\mu)^2 + ...+ (x_n-\mu)^2 \right] \\
 n\sigma^2 &amp;= (x_1-\mu)^2 + (x_2-\mu)^2 + ...+ (x_n-\mu)^2 \\ 
+\end{align*} 
+\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-sigma-final">
+<span class="eqno">(1.10)<a class="headerlink" href="#equation-eq-sigma-final" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\begin{align*}
 \sigma &amp;= \sqrt{\frac{(x_1-\mu)^2 + (x_2-\mu)^2 + ...+ (x_n-\mu)^2}{n}} \\
 \end{align*} 
 \end{split}\]</div>
 <p>Thus, the maximum likelihood estimate for <span class="math notranslate nohighlight">\(\sigma\)</span> is the standard deviation of the samples.</p>
-<p>Let us now consider 5 samples with values 0, -5,  6, -9 and 8. We want to know the normal distribution from which all of these samples were most likely to be drawn. In other words, we would like to find the value of <span class="math notranslate nohighlight">\(f(0, -5,  6, -9, 8)\)</span> as given in Equation <a class="reference internal" href="#equation-eq-normal-dist">(1.1)</a>. Since we do not know the values of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> for the required distribution, we need to estimate them using  Equations <a class="reference internal" href="#equation-eq-mu-final">(1.9)</a> and <a class="reference internal" href="#equation-eq-sigma-final">(1.10)</a> respectively.</p>
+<p>Let us now consider 5 samples with values 0, -5,  6, -9 and 8. We want to know the normal distribution from which all of these samples were most likely to be drawn. In other words, we would like to maximize the value of <span class="math notranslate nohighlight">\(f(0, -5,  6, -9, 8)\)</span> as given in Equation <a class="reference internal" href="#equation-eq-normal-dist">(1.1)</a>. Since we do not know the values of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> for the required distribution, we need to estimate them using  Equations <a class="reference internal" href="#equation-eq-mu-final">(1.9)</a> and <a class="reference internal" href="#equation-eq-sigma-final">(1.10)</a> respectively.</p>
+<p>Using the formulae of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>, we get,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;mu = </span><span class="si">{</span><span class="n">mu</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> and sigma = </span><span class="si">{</span><span class="n">sigma</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu = 0.00 and sigma = 6.42
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us plot the normal distribution with these values and also mark the given points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="n">plot_normal</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">clip_on</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/intro_18_0.png" src="../../_images/intro_18_0.png" />
+</div>
+</div>
+<p>Thus, this is the most likely normal distribution from which the five sample points were drawn out.</p>
 </div>
 <div class="section" id="references">
 <h2><span class="section-number">1.4. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
