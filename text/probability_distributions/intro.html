@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Probability &#8212; My ML Recipes</title>
+    <title>1. Probability &#8212; My ML Recipes</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -58,7 +58,8 @@
     <link rel="canonical" href="https://somnathrakshit.github.io/mymlrecipes/text/probability_distributions/intro.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="1. Maximum Likelihood Estimate" href="../mle/intro.html" />
+    <link rel="next" title="2. Maximum Likelihood Estimate" href="../mle/intro.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="../../intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -110,14 +111,14 @@
  </span>
 </p>
 <ul class="current nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../mle/intro.html">
-   1. Maximum Likelihood Estimate
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   2. Probability
+   1. Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mle/intro.html">
+   2. Maximum Likelihood Estimate
   </a>
  </li>
 </ul>
@@ -232,27 +233,47 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#random-variable">
-   2.1. Random Variable
+   1.1. Random Variable
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dsicrete-random-variables">
-   2.2. Dsicrete Random Variables
+  <a class="reference internal nav-link" href="#discrete-random-variables">
+   1.2. Discrete Random Variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#continuous-random-variables">
-   2.3. Continuous Random Variables
+   1.3. Continuous Random Variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#notation">
-   2.4. Notation
+   1.4. Notation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#joint-distributions">
+   1.5. Joint Distributions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#joint-probability-mass-function-joint-pmf">
+   1.6. Joint Probability Mass Function (Joint PMF)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#joint-cumulative-distributive-function-joint-cdf">
+   1.7. Joint Cumulative Distributive Function (Joint CDF)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#marginal-probability-mass-function-marginal-pmf">
+   1.8. Marginal Probability Mass Function (Marginal PMF)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
-   2.5. References
+   1.9. References
   </a>
  </li>
 </ul>
@@ -267,10 +288,10 @@
               <div>
                 
   <div class="section" id="probability">
-<h1><span class="section-number">2. </span>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1. </span>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a></h1>
 <p>A probability distribution is a list of all of the possible outcomes of a random variable along with their corresponding probability values.</p>
 <div class="section" id="random-variable">
-<h2><span class="section-number">2.1. </span>Random Variable<a class="headerlink" href="#random-variable" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.1. </span>Random Variable<a class="headerlink" href="#random-variable" title="Permalink to this headline">¶</a></h2>
 <p>A random variable is any variable whose outcome is a random event. It can be discrete (e.g., outcome of a coin toss or the roll of a die) as well as continuous (e.g., the heights of students in the class or the time needed by athletes to complete a 100 m race).</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
@@ -302,8 +323,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="dsicrete-random-variables">
-<h2><span class="section-number">2.2. </span>Dsicrete Random Variables<a class="headerlink" href="#dsicrete-random-variables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="discrete-random-variables">
+<h2><span class="section-number">1.2. </span>Discrete Random Variables<a class="headerlink" href="#discrete-random-variables" title="Permalink to this headline">¶</a></h2>
 <p>When a probability function is used to describe a discrete random variable (denoted by <span class="math notranslate nohighlight">\(X\)</span>), we call this function as probability mass function (PMF). Formally, a PMF is written as:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -320,7 +341,7 @@ f(x) = p(X=x)
 <p>In the example of an unbiased dice roll, the probability of landing the number 2 (denoted by <span class="math notranslate nohighlight">\(x\)</span>) is represented as <span class="math notranslate nohighlight">\(p(X=x) = \frac{1}{6}\)</span>. The PMF just returns the probability of the outcome at a given point <span class="math notranslate nohighlight">\(x\)</span>.</p>
 </div>
 <div class="section" id="continuous-random-variables">
-<h2><span class="section-number">2.3. </span>Continuous Random Variables<a class="headerlink" href="#continuous-random-variables" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.3. </span>Continuous Random Variables<a class="headerlink" href="#continuous-random-variables" title="Permalink to this headline">¶</a></h2>
 <p>When a probability function is used to describe a continuous random variable (denoted by <span class="math notranslate nohighlight">\(X\)</span>), we call this function as probability distribution function (PDF). It is meaningless to represent a probability with any discrete value. To get the probability from a probability density function we need to find the area under the curve. We can then find the probability that the ourcome lies within an interval by calculating the area under the curve. Formally, an interval is used to represent the probability within that interval <span class="math notranslate nohighlight">\(X \in (x, x + \delta x)\)</span>. <span class="math notranslate nohighlight">\(p(x)\delta x\)</span> is the probability that <span class="math notranslate nohighlight">\(X \in (x, x+\delta x)\)</span> as <span class="math notranslate nohighlight">\(\delta x \rightarrow 0\)</span>. The probability density function satisfies the following criteria:</p>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(p(x) \ge 0\)</span></p></li>
@@ -356,7 +377,7 @@ f(x) = p(X=x)
 </div>
 </div>
 <div class="section" id="notation">
-<h2><span class="section-number">2.4. </span>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.4. </span>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(p(.)\)</span> can mean different things depending on the context.</p>
 <ol class="simple">
@@ -373,8 +394,65 @@ x \sim p(X)
 \end{equation}
 \]</div>
 </div>
+<div class="section" id="joint-distributions">
+<h2><span class="section-number">1.5. </span>Joint Distributions<a class="headerlink" href="#joint-distributions" title="Permalink to this headline">¶</a></h2>
+<p>Often in real life, we are interested in multiple random variables that are related to each other. For example, let us choose a random set of students in a classroom. We would like to study the number of students in the classroom, their ages, salaries in their first job, etc. Each of these is a random variable and they are dependent on one another. The ideas are similar to what we have seen so far. The only difference is that instead of one random variable, we will study two or more random variables.</p>
+</div>
+<div class="section" id="joint-probability-mass-function-joint-pmf">
+<h2><span class="section-number">1.6. </span>Joint Probability Mass Function (Joint PMF)<a class="headerlink" href="#joint-probability-mass-function-joint-pmf" title="Permalink to this headline">¶</a></h2>
+<p>For a discrete random variable <span class="math notranslate nohighlight">\(X\)</span>, we define the PMF as <span class="math notranslate nohighlight">\(p_X(x) = p(X=x)\)</span>. Now, if there are two random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, their joint probability mass function is defined as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+p_{XY}(x,y)=p(X=x, Y=y).
+\end{equation}
+\]</div>
+<p>Since the comman means “and”, so we can write</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+p_{XY}(x,y)&amp;=p(X=x, Y=y) \\
+&amp;= p\big((X=x)\textrm{ and }(Y=y)\big).
+\end{align}
+\end{split}\]</div>
+<p>For discrete random variables, the joint PMF <span class="math notranslate nohighlight">\(p(X, Y)\)</span> is like a table that sums to 1.</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\sum_x \sum_y p(X=x, Y=y) = 1
+\end{equation}
+\]</div>
+</div>
+<div class="section" id="joint-cumulative-distributive-function-joint-cdf">
+<h2><span class="section-number">1.7. </span>Joint Cumulative Distributive Function (Joint CDF)<a class="headerlink" href="#joint-cumulative-distributive-function-joint-cdf" title="Permalink to this headline">¶</a></h2>
+<p>For a random variable <span class="math notranslate nohighlight">\(X\)</span>, we define the CDF as <span class="math notranslate nohighlight">\(p_X(x)=p(X \leq x)\)</span>. Now, if we have two random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> and we would like to study them jointly, we can define the joint cumulative function as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}%\label{}
+\nonumber p_{XY}(x,y)=p(X \leq x, Y \leq y).
+\end{align}
+\]</div>
+<p>As usual, comma means “and,” so we can write</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\nonumber p_{XY}(x,y)&amp;=p(X \leq x, Y \leq y) \\
+\nonumber &amp;= p\big((X \leq x)\textrm{ and }(Y\leq y)\big)=p\big((X \leq x)\cap(Y\leq y)\big).
+\end{align}
+\end{split}\]</div>
+<p>For continuous random variables, the joint PDF <span class="math notranslate nohighlight">\(p(X, Y)\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\int_x \int_y p(X=x, Y=y)dxdy = 1
+\end{equation}
+\]</div>
+</div>
+<div class="section" id="marginal-probability-mass-function-marginal-pmf">
+<h2><span class="section-number">1.8. </span>Marginal Probability Mass Function (Marginal PMF)<a class="headerlink" href="#marginal-probability-mass-function-marginal-pmf" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="references">
-<h2><span class="section-number">2.5. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.9. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>https://www.cse.iitk.ac.in/users/piyush/courses/pml_fall17/material/probabilty_tutorial.pdf</p>
 <p>https://towardsdatascience.com/probability-concepts-explained-probability-distributions-introduction-part-3-4a5db81858dc</p>
 <p>http://www.mit.edu/~6.s085/notes/lecture3.pdf</p>
@@ -412,7 +490,8 @@ x \sim p(X)
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../mle/intro.html" title="previous page"><span class="section-number">1. </span>Maximum Likelihood Estimate</a>
+    <a class='left-prev' id="prev-link" href="../../intro.html" title="previous page">Welcome to your Jupyter Book</a>
+    <a class='right-next' id="next-link" href="../mle/intro.html" title="next page"><span class="section-number">2. </span>Maximum Likelihood Estimate</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
