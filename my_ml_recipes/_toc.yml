@@ -4,13 +4,9 @@
   numbered: true 
 
 - part: The Basics
-  chapters:
-  - file: text/mle/intro
+  chapters:  
   - file: text/probability_distributions/intro
-    # sections:
-    #   - file: text/mle/details
-  # - file: text/linear_regression/intro
-  #   sections:
-  #     - file: text/linear_regression/details
-  #     - file: text/notebooks
-  #     - file: text/markdown
+#     sections:
+#       - file: text/probability_distributions/intro
+#       - file: text/probability_distributions/joint_distributions
+  - file: text/mle/intro
