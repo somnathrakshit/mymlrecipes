@@ -6,6 +6,7 @@
 - part: The Basics
   chapters:
   - file: text/mle/intro
+  - file: text/probability_distributions/intro
     # sections:
     #   - file: text/mle/details
   # - file: text/linear_regression/intro
