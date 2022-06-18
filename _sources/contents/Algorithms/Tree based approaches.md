@@ -7,7 +7,7 @@ html_meta:
 
 ## Tree based approaches
 
-```{figure} ../Algorithms/images/image13.PNG
+```{figure} images/image13.PNG
 ---
 name: image13
 scale: 70%
@@ -26,7 +26,7 @@ The decision of making strategic splits heavily affects a tree’s accuracy. The
 
 Decision trees use multiple algorithms to decide to split a node into two or more sub-nodes. The creation of sub-nodes increases the homogeneity of resultant sub-nodes. In other words, we can say that the purity of the node increases with respect to the target variable. The decision tree splits the nodes on all available variables and then selects the split which results in most homogeneous sub-nodes.
 
-```{figure} ../Algorithms/images/image11.PNG
+```{figure} images/image11.PNG
 ---
 name: image11
 scale: 80%
@@ -135,7 +135,7 @@ An ensemble is a collection of models which ideally should predict better than i
 	- the weight that the weak learner itself will have on the final output, in each of the $t$ iterations we will have a learner $h_1$, $h_2$, $h_3$ .. $h_t$ each of which will be combined to make the final model, the weight of each of these individual learners in the final output is given by $\alpha_t$. The models with low error rate will have higher values of $\alpha_t$ and hence higher weight in the final output.
 - Before you apply the AdaBoost algorithm, you should specifically remove the Outliers. Since AdaBoost tends to boost up the probabilities of misclassified points and there is a high chance that outliers will be misclassified, it will keep increasing the probability associated with the outliers and make the progress difficult.
 
-```{figure} ../Algorithms/images/image10.PNG
+```{figure} images/image10.PNG
 ---
 name: image10
 scale: 80%
@@ -245,7 +245,7 @@ So there can be 2 cases:
 - When all the data points belong to a single class: $G = 1 - (1^2 + 0^2) = 0$
 - When $50%$ of the data points belong to a class: $G = 1 - (0.5^2 + 0.5^2) = 0.5$
 
-![image 12](../Algorithms/images/image12.PNG)
+![image 12](images/image12.PNG)
 
 Gini impurity tends to isolate the most frequent class in its own branch of the Tree, while entropy tends to produce slightly more balanced Trees.
 ```

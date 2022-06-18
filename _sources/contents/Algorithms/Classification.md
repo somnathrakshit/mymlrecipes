@@ -12,7 +12,7 @@ html_meta:
 *It is easy to say that the linear regression predicts a “value” of the targeted variable through a linear combination of the given features, while on the other hand, a Logistic regression predicts “probability value” through a linear combination of the given features plugged inside a logistic function.
 Linear regression is unbounded, and this brings logistic regression into picture. Their value strictly ranges from 0 to 1.*
 
-```{figure} ../Algorithms/images/image3.PNG
+```{figure} images/image3.PNG
 ---
 name: image3
 scale: 60%
@@ -24,7 +24,7 @@ Logistic regression uses Sigmoid function to transform linear regression into th
 
 One more thing to note here is that logistic regression uses maximum likelihood estimation (MLE) instead of least squares method of minimizing the error which is used in linear models. In Linear regression we minimized SSE. In Logistic Regression we maximize log likelihood instead. Linear regression uses mean squared error as its cost function. If this is used for logistic regression, then it will be a non-convex function of parameters (theta). Gradient descent will converge into global minimum only if the function is convex.
 
-```{figure} ../Algorithms/images/image4.PNG
+```{figure} images/image4.PNG
 ---
 name: image4
 scale: 40%
@@ -35,7 +35,7 @@ Cost function([📖Source](https://pvgisours.tistory.com/59))
 
 ### Metrics
 
-```{figure} ../Algorithms/images/image5.PNG
+```{figure} images/image5.PNG
 ---
 name: image5
 scale: 80%
@@ -43,7 +43,7 @@ scale: 80%
 Confusion Matrix and key Metrics 
 ```
 
-```{figure} ../Algorithms/images/image6.PNG
+```{figure} images/image6.PNG
 ---
 name: image6
 scale: 80%
@@ -68,7 +68,7 @@ How would you interpret coefficients of logistic regression for categorical and 
 
 Let's explain this using an example. The table below shows the main outputs from the logistic regression. It is very obvious which are the categorial variables out here:
 
-![Estimate of Coefficients](../Algorithms/images/image1.PNG)
+![Estimate of Coefficients](images/image1.PNG)
 
 The first category (usually not shown) has a coefficient of $0$. So, if we can say, for example, that:
 

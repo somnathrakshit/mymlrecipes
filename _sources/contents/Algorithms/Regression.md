@@ -10,7 +10,7 @@ html_meta:
 
 ### Linear Regression
 
-```{figure} ../Algorithms/images/image8.PNG
+```{figure} images/image8.PNG
 ---
 name: image2
 scale: 60%
@@ -22,7 +22,7 @@ $Y = b_0 + b_1 * x_1 + b_2 * x_2 + \epsilon$
 
 The idea is to find the line or plane which best fits the data. Collectively, $b_0, b_1, b_2$ are called regression coefficients. $\epsilon$ is the error term, the part of $Y$ the regression model is unable to explain.
 
-```{figure} ../Algorithms/images/image2.PNG
+```{figure} images/image2.PNG
 ---
 name: image2
 ---
@@ -54,7 +54,7 @@ Now once you have the model fit next comes the metrics to measure how good the f
 	- **Ridge Regression (L2)**: $\text{RSS} + \lambda (\sum_{j=1}^p b_j^2)$, the value of hyperparameter $\lambda$ can be found using cross-validation
 	- **LASSO Regression (L1)**: $\text{RSS} + \lambda (\sum_{j=1}^p \lVert b_j\rVert)$, the value of hyperparameter $\lambda$ can be found using cross-validation. It's full form is Least Absolute Shrinkage and Selection Operator
 
-```{figure} ../Algorithms/images/image9.PNG
+```{figure} images/image9.PNG
 ---
 name: image9
 scale: 70%
