@@ -35,3 +35,6 @@ sphinx:
     html_show_copyright     : false
   extra_extensions:
     - sphinx_sitemap
+parse:
+  myst_enable_extensions:
+    - html_image

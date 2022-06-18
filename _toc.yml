@@ -7,7 +7,9 @@ parts:
   - caption: Statistics
     chapters:
     - file: contents/Statistics/Probability Basics
-    - file: contents/Statistics/Probability Distribution
+    - file: contents/Statistics/Probability Distribution 1
+    - file: contents/Statistics/Probability Distribution 2
+    - file: contents/Statistics/Maximum Likelihood Estimate
     - file: contents/Statistics/Central Limit Theorem
     - file: contents/Statistics/Bayesian vs Frequentist Reasoning
     - file: contents/Statistics/Hypothesis Testing

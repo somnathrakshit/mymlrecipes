@@ -6,9 +6,9 @@ html_meta:
 ---
 
 
-## Probability Distribution
+# Probability Distribution 2
 
-### Random Variable
+## Random Variable
 
 **Random Variable maps the outcome of sample space into real numbers.**
 
@@ -46,7 +46,7 @@ Now the probability distribution can be of $2$ types, **discrete and continous**
 
 Now depending on the problem type one can choose the corresponding distribution and find the probability for some value of the random variable.
 
-### Types of Distribution
+## Types of Distribution
 Some common types of probability distribution are as follows:
 
 ```{figure} images/image3.png
@@ -56,7 +56,7 @@ name: image3
 Types of Probability Distribution
 ```
 
-### Normal(Gaussian) Distribution
+## Normal(Gaussian) Distribution
 
 The normal distribution is the most important probability distribution in statistics because it fits many natural phenomena. For example, heights, blood pressure, measurement error, and IQ scores follow the normal distribution.
 
@@ -73,14 +73,14 @@ Despite the different shapes, all forms of the normal distribution have the foll
 |     3                               |     99.7%                           |
 
 ---
-### Measures to understand a distribution:
+## Measures to understand a distribution:
 
 There are 3 variety of measures, required to understand a distribution:
 - Measure of Central tendency
 - Measure of dispersion
 - Measure to describe shape of curve
 
-#### Measure of Central Tendency
+### Measure of Central Tendency
 
 Measures of central tendencies are measures, which help you describe a population, through a single metric. For example, if you were to compare Saving habits of people across various nations, you will compare average Savings rate in each of these nations.
 Following are the measures of central tendency:
@@ -95,7 +95,7 @@ name: image4
 Measure of Central Tendency. Mean is typically affected the most by Outliers, followed by the median and mode.
 ```
 
-#### Measure of Dispersion
+### Measure of Dispersion
 
 Measures of dispersion reveal how is the population distributed around the measures of central tendency.
 - **Range:** Difference in the maximum and minimum value in the population
@@ -111,7 +111,7 @@ name: image5
 2 distributions with different standard deviations
 ```
 
-#### Measure to describe shape of distribution
+### Measure to describe shape of distribution
 
 - **Skewness:** Skewness is a measure of the asymmetry. Negatively skewed curve has a long left tail and vice versa.
 - **Kurtosis:** Kurtosis is a measure of the “peaked ness”. Distributions with higher peaks have positive kurtosis and vice-versa
@@ -123,7 +123,7 @@ scale: 60%
 ---
 ```
 
-#### Box Plots
+### Box Plots
 
 Box plots are one of the easiest and most intuitive way to understand distributions. They show mean, median, quartiles and Outliers on single plot.
 ```{figure} images/image7.png
@@ -134,12 +134,12 @@ scale: 60%
 ```
 
 ---
-### Unbiased Estimator
+## Unbiased Estimator
 
 An unbiased estimator is an accurate statistic that’s used to approximate a population parameter. “Accurate” in this sense means that it’s neither an overestimate nor an underestimate. If an overestimate or underestimate does happen, the mean of the difference is called a “bias.” That’s just saying if the estimator (i.e. the sample mean) equals the parameter (i.e. the population mean), then it’s an unbiased estimator.
 
 
-### Maximum Likelihood Estimation (MLE)
+## Maximum Likelihood Estimation (MLE)
 
 
 :::{note}
@@ -153,7 +153,7 @@ So, say you've got a data set of $y={−1,3,7}$. The most consistent Gaussian fr
 Maximum Likelihood Estimation can be applied to both regression and classification problems.
 
 ---
-### Questions
+## Questions
 
 ```{admonition} Problem: [LIME] Example of unbiased estimator
 :class: tip, dropdown
