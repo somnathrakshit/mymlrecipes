@@ -11,7 +11,7 @@ html_meta:
 This page is a work in progress
 ```
 
-```{figure} ../images/Excel/image1.PNG
+```{figure} images/image1.png
 ---
 name: image1
 scale: 50%
@@ -27,7 +27,7 @@ scale: 50%
 
 From the source below can you find the Revenue the specified account?
 
-![Table](images/image2.PNG)
+![Table](images/image2.png)
 
 ```
 
@@ -46,7 +46,7 @@ This can be solved with a simple VLOOKUP, the formula to find the answer is give
 
 From the source below can you find the Customer Number corresponding to the Account Name?
 
-![Table](images/image3.PNG)
+![Table](images/image3.png)
 
 ```
 
@@ -65,7 +65,7 @@ VLOOKUP won't work as Customer Num is to the LEFT of the Account Name. We need I
 
 From the source below can you find the total revenue per sales rep?
 
-![Table](images/image4.PNG)
+![Table](images/image4.png)
 
 ```
 

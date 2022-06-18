@@ -613,14 +613,14 @@ title="Print to PDF"
 </div>
 <p>According to <a class="reference external" href="https://en.wikipedia.org/wiki/John_L._Hennessy">John Henssey</a>, father of modern computer, we are almost at an end of Moores’s law. End of exponential growth in CPU and he suggested domain specific software as the solution.</p>
 <figure class="align-default" id="image1">
-<a class="reference internal image-reference" href="../../../_images/image21.PNG"><img alt="../../../_images/image21.PNG" src="../../../_images/image21.PNG" style="height: 250px;" /></a>
+<a class="reference internal image-reference" href="contents/images/ML Hardware/image2.png"><img alt="contents/images/ML Hardware/image2.png" src="contents/images/ML Hardware/image2.png" style="height: 250px;" /></a>
 </figure>
 <section id="how-does-a-cpu-work">
 <h2>How does a CPU work?<a class="headerlink" href="#how-does-a-cpu-work" title="Permalink to this headline">#</a></h2>
 <p>The CPU is a general purpose processor based on the von Neumann architecture. The greatest benefit of CPU is its flexibility. With its Von Neumann architecture, you can load any kind of software for millions of different applications. You could use a CPU for word processing in a PC, controlling rocket engines, executing bank transactions, or classifying images with a neural network.</p>
 <p>But, because the CPU is so flexible, the hardware doesn’t always know what would be next calculation until it reads the next instruction from the software. A CPU has to store the calculation results on memory inside CPU (so called registers or L1 cache) for every single calculation. This memory access becomes the downside of CPU architecture called the von Neumann bottleneck. Even though the huge scale of neural network calculations means that these future steps are entirely predictable, each CPU’s Arithmetic Logic Units (ALU, the component that holds and controls multipliers and adders) executes them one by one, accessing the memory every time, limiting the total throughput and consuming significant energy.</p>
 <figure class="align-default" id="image2">
-<a class="reference internal image-reference" href="../../../_images/image11.PNG"><img alt="../../../_images/image11.PNG" src="../../../_images/image11.PNG" style="height: 250px;" /></a>
+<a class="reference internal image-reference" href="contents/images/ML Hardware/image1.png"><img alt="contents/images/ML Hardware/image1.png" src="contents/images/ML Hardware/image1.png" style="height: 250px;" /></a>
 <figcaption>
 <p><span class="caption-text">von Neumann Architecture</span><a class="headerlink" href="#image2" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -642,7 +642,7 @@ title="Print to PDF"
 <p>Then, the TPU loads data from memory. As each multiplication is executed, the result will be passed to next multipliers while taking summation at the same time. So the output will be the summation of all multiplication result between data and parameters. During the whole process of massive calculations and data passing, no memory access is required at all.</p>
 <p>This is why the TPU can achieve a high computational throughput on neural network calculations with much less power consumption and smaller footprint.</p>
 <figure class="align-default" id="image3">
-<a class="reference internal image-reference" href="../../../_images/image31.PNG"><img alt="../../../_images/image31.PNG" src="../../../_images/image31.PNG" style="height: 300px;" /></a>
+<a class="reference internal image-reference" href="contents/images/ML Hardware/image3.png"><img alt="contents/images/ML Hardware/image3.png" src="contents/images/ML Hardware/image3.png" style="height: 300px;" /></a>
 <figcaption>
 <p><span class="caption-text">CPU vs GPU vs TPU</span><a class="headerlink" href="#image3" title="Permalink to this image">#</a></p>
 </figcaption>

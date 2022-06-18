@@ -8,7 +8,7 @@
 
 According to [John Henssey](https://en.wikipedia.org/wiki/John_L._Hennessy), father of modern computer, we are almost at an end of Moores's law. End of exponential growth in CPU and he suggested domain specific software as the solution.
 
-```{figure} ./image2.PNG
+```{figure} ./image2.png
 ---
 height: 250px
 name: image1
@@ -21,7 +21,7 @@ The CPU is a general purpose processor based on the von Neumann architecture. Th
 
 But, because the CPU is so flexible, the hardware doesn't always know what would be next calculation until it reads the next instruction from the software. A CPU has to store the calculation results on memory inside CPU (so called registers or L1 cache) for every single calculation. This memory access becomes the downside of CPU architecture called the von Neumann bottleneck. Even though the huge scale of neural network calculations means that these future steps are entirely predictable, each CPU's Arithmetic Logic Units (ALU, the component that holds and controls multipliers and adders) executes them one by one, accessing the memory every time, limiting the total throughput and consuming significant energy.
 
-```{figure} ./image1.PNG
+```{figure} ./image1.png
 ---
 height: 250px
 name: image2
@@ -54,7 +54,7 @@ Then, the TPU loads data from memory. As each multiplication is executed, the re
 
 This is why the TPU can achieve a high computational throughput on neural network calculations with much less power consumption and smaller footprint.
 
-```{figure} ./image3.PNG
+```{figure} ./image3.png
 ---
 height: 300px
 name: image3

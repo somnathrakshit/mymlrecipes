@@ -298,7 +298,7 @@ Select Employee from cte where Emp_Sal > Man_Salary
 
 Write an SQL query to find employees who have the highest salary in each of the departments.
 
-![image 3](images/image3.PNG)
+![image 3](images/image3.png)
 
 ```
 

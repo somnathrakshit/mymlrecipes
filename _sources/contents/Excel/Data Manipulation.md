@@ -24,7 +24,7 @@ Can you write a formula to generate the SUM of all digits in a cell?
 ```{admonition} Solution:
 :class: dropdown
 
-![Solution](images/image5.PNG)
+![Solution](images/image5.png)
 
 To use when you are sure that there are only digits in the column: 
 
@@ -64,7 +64,7 @@ This is a 3 part question:
 ```{admonition} Solution:
 :class: dropdown
 
-![Solution](images/image6.PNG)
+![Solution](images/image6.png)
 
 You can check for duplicates using:
 
@@ -77,7 +77,7 @@ Inorder to create a table with Unique values there are 2 ways:
 
 - Select the table and click on remove duplicates
 
-![Solution](images/image7.PNG)
+![Solution](images/image7.png)
 
 - If you want to keep the source table and create the unique value table elsewhere use:
 

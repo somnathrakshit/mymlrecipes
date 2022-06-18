@@ -11,7 +11,7 @@ html_meta:
 This page is a work in progress
 ```
 
-```{figure} ../images/StoryTelling/image1.jpg
+```{figure} images/image1.jpg
 ---
 name: image1
 scale: 13%
