@@ -53,6 +53,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://ml.pages.dev/contents/SQL/Windows Functions.html" />
     <link rel="shortcut icon" href="../../_static/logo.gif"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -634,9 +636,9 @@ They allow you to add your favourite aggregate function to a non-aggregate query
 </ul>
 </li>
 <li><p><strong>Statistical functions</strong>
-– <strong>PERCENT_RANK:</strong> returns the percentage of rows that rank lower than the current row, its formula is $\frac{\text{Rank} -1}{\text{Row count} -1}$</p>
+– <strong>PERCENT_RANK:</strong> returns the percentage of rows that rank lower than the current row, its formula is <span class="math notranslate nohighlight">\(\frac{\text{Rank} -1}{\text{Row count} -1}\)</span></p>
 <ul>
-<li><p><strong>CUME_DIST:</strong> cumulative distribution, returns the exact rank, its formula is $\frac{\text{Rank}}{\text{Row count}}$</p></li>
+<li><p><strong>CUME_DIST:</strong> cumulative distribution, returns the exact rank, its formula is <span class="math notranslate nohighlight">\(\frac{\text{Rank}}{\text{Row count}}\)</span></p></li>
 <li><p><strong>PERCENTILE_DISC &amp; PERCENTILE_CONT:</strong> these two work in the opposite way. Given a percent rank, find the value at that rank. They differ in that PERCENTILE_DISC will return a value that exists in the set while PERCENTILE_CONT will calculate an exact value if none of the values in the set falls precisely at that rank. You can use PERCENTILE_CONT to calculate a median by supplying 0.5 as the percent rank. For example, which temperature ranks at 50% in St. Louis?</p></li>
 </ul>
 </li>

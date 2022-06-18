@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://ml.pages.dev/contents/Statistics/Probability Distribution 1.html" />
     <link rel="shortcut icon" href="../../_static/logo.gif"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -750,27 +752,28 @@ title="Print to PDF"
 </section>
 <section id="discrete-random-variables">
 <h2>Discrete Random Variables<a class="headerlink" href="#discrete-random-variables" title="Permalink to this headline">#</a></h2>
-<p>When a probability function is used to describe a discrete random variable (denoted by $X$), we call this function as probability mass function (PMF). Formally, a PMF is written as:</p>
-<p>$$
+<p>When a probability function is used to describe a discrete random variable (denoted by <span class="math notranslate nohighlight">\(X\)</span>), we call this function as probability mass function (PMF). Formally, a PMF is written as:</p>
+<div class="math notranslate nohighlight">
+\[
 \begin{equation}
 f(x) = p(X=x)
 \end{equation}
-$$</p>
-<p>$p(x)$ is called as a probability mass function if it satisfies the following conditions:</p>
+\]</div>
+<p><span class="math notranslate nohighlight">\(p(x)\)</span> is called as a probability mass function if it satisfies the following conditions:</p>
 <ol class="simple">
-<li><p>$p(x) &gt; 0$</p></li>
-<li><p>$p(x) &lt;= 1$</p></li>
-<li><p>$\sum_{x} p(x) = 1$</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(x) &gt; 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p(x) &lt;= 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sum_{x} p(x) = 1\)</span></p></li>
 </ol>
-<p>In the example of an unbiased dice roll, the probability of landing the number 2 (denoted by $x$) is represented as $p(X=x) = \frac{1}{6}$. The PMF just returns the probability of the outcome at a given point $x$.</p>
+<p>In the example of an unbiased dice roll, the probability of landing the number 2 (denoted by <span class="math notranslate nohighlight">\(x\)</span>) is represented as <span class="math notranslate nohighlight">\(p(X=x) = \frac{1}{6}\)</span>. The PMF just returns the probability of the outcome at a given point <span class="math notranslate nohighlight">\(x\)</span>.</p>
 </section>
 <section id="continuous-random-variables">
 <h2>Continuous Random Variables<a class="headerlink" href="#continuous-random-variables" title="Permalink to this headline">#</a></h2>
-<p>When a probability function is used to describe a continuous random variable (denoted by $X$), we call this function as probability distribution function (PDF). It is meaningless to represent a probability with any discrete value. To get the probability from a probability density function we need to find the area under the curve. We can then find the probability that the ourcome lies within an interval by calculating the area under the curve. Formally, an interval is used to represent the probability within that interval $X \in (x, x + \delta x)$. $p(x)\delta x$ is the probability that $X \in (x, x+\delta x)$ as $\delta x \rightarrow 0$. The probability density function satisfies the following criteria:</p>
+<p>When a probability function is used to describe a continuous random variable (denoted by <span class="math notranslate nohighlight">\(X\)</span>), we call this function as probability distribution function (PDF). It is meaningless to represent a probability with any discrete value. To get the probability from a probability density function we need to find the area under the curve. We can then find the probability that the ourcome lies within an interval by calculating the area under the curve. Formally, an interval is used to represent the probability within that interval <span class="math notranslate nohighlight">\(X \in (x, x + \delta x)\)</span>. <span class="math notranslate nohighlight">\(p(x)\delta x\)</span> is the probability that <span class="math notranslate nohighlight">\(X \in (x, x+\delta x)\)</span> as <span class="math notranslate nohighlight">\(\delta x \rightarrow 0\)</span>. The probability density function satisfies the following criteria:</p>
 <ol class="simple">
-<li><p>$p(x) \ge 0$</p></li>
-<li><p>$\int_{-\infty}^{+\infty}p(x)dx = 1$</p></li>
-<li><p>$\int_a^b p(x)dx = P(a \lt X \lt b)$</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(x) \ge 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\int_{-\infty}^{+\infty}p(x)dx = 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\int_a^b p(x)dx = P(a \lt X \lt b)\)</span></p></li>
 </ol>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
@@ -803,19 +806,20 @@ $$</p>
 <section id="notation">
 <h2>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
-<li><p>$p(.)$ can mean different things depending on the context.</p>
+<li><p><span class="math notranslate nohighlight">\(p(.)\)</span> can mean different things depending on the context.</p>
 <ol class="simple">
-<li><p>$p(X)$ denotes the distribution (PMF/PDF) of a random variable $X$.</p></li>
-<li><p>$p(X=x)$ or $p(x)$ denotes the proability or probability density at point $x$. The actual meaning needs to be understood from context.</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(X)\)</span> denotes the distribution (PMF/PDF) of a random variable <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(X=x)\)</span> or <span class="math notranslate nohighlight">\(p(x)\)</span> denotes the proability or probability density at point <span class="math notranslate nohighlight">\(x\)</span>. The actual meaning needs to be understood from context.</p></li>
 </ol>
 </li>
-<li><p>The following means <strong>drawing from a random sample</strong> from the distribution $p(X)$:</p></li>
+<li><p>The following means <strong>drawing from a random sample</strong> from the distribution <span class="math notranslate nohighlight">\(p(X)\)</span>:</p></li>
 </ol>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 \begin{equation}
 x \sim p(X)
 \end{equation}
-$$</p>
+\]</div>
 </section>
 <section id="joint-distributions">
 <h2>Joint Distributions<a class="headerlink" href="#joint-distributions" title="Permalink to this headline">#</a></h2>
@@ -823,47 +827,53 @@ $$</p>
 </section>
 <section id="joint-probability-mass-function-joint-pmf">
 <h2>Joint Probability Mass Function (Joint PMF)<a class="headerlink" href="#joint-probability-mass-function-joint-pmf" title="Permalink to this headline">#</a></h2>
-<p>For a discrete random variable $X$, we define the PMF as $p_X(x) = p(X=x)$. Now, if there are two random variables $X$ and $Y$, their joint probability mass function is defined as follows:</p>
-<p>$$
+<p>For a discrete random variable <span class="math notranslate nohighlight">\(X\)</span>, we define the PMF as <span class="math notranslate nohighlight">\(p_X(x) = p(X=x)\)</span>. Now, if there are two random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, their joint probability mass function is defined as follows:</p>
+<div class="math notranslate nohighlight">
+\[
 \begin{equation}
 p_{XY}(x,y)=p(X=x, Y=y).
 \end{equation}
-$$</p>
+\]</div>
 <p>Since the comman means “and”, so we can write</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align}
-p_{XY}(x,y)&amp;=p(X=x, Y=y) \
+p_{XY}(x,y)&amp;=p(X=x, Y=y) \\
 &amp;= p\big((X=x)\textrm{ and }(Y=y)\big).
 \end{align}
-$$</p>
-<p>For discrete random variables, the joint PMF $p(X, Y)$ is like a table that sums to 1.</p>
-<p>$$
+\end{split}\]</div>
+<p>For discrete random variables, the joint PMF <span class="math notranslate nohighlight">\(p(X, Y)\)</span> is like a table that sums to 1.</p>
+<div class="math notranslate nohighlight">
+\[
 \begin{equation}
 \sum_x \sum_y p(X=x, Y=y) = 1
 \end{equation}
-$$</p>
+\]</div>
 </section>
 <section id="joint-cumulative-distributive-function-joint-cdf">
 <h2>Joint Cumulative Distributive Function (Joint CDF)<a class="headerlink" href="#joint-cumulative-distributive-function-joint-cdf" title="Permalink to this headline">#</a></h2>
-<p>For a random variable $X$, we define the CDF as $p_X(x)=p(X \leq x)$. Now, if we have two random variables $X$ and $Y$ and we would like to study them jointly, we can define the joint cumulative function as follows:</p>
-<p>$$
+<p>For a random variable <span class="math notranslate nohighlight">\(X\)</span>, we define the CDF as <span class="math notranslate nohighlight">\(p_X(x)=p(X \leq x)\)</span>. Now, if we have two random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> and we would like to study them jointly, we can define the joint cumulative function as follows:</p>
+<div class="math notranslate nohighlight">
+\[
 \begin{align}%\label{}
 \nonumber p_{XY}(x,y)=p(X \leq x, Y \leq y).
 \end{align}
-$$</p>
+\]</div>
 <p>As usual, comma means “and,” so we can write</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align}
-\nonumber p_{XY}(x,y)&amp;=p(X \leq x, Y \leq y) \
+\nonumber p_{XY}(x,y)&amp;=p(X \leq x, Y \leq y) \\
 \nonumber &amp;= p\big((X \leq x)\textrm{ and }(Y\leq y)\big)=p\big((X \leq x)\cap(Y\leq y)\big).
 \end{align}
-$$</p>
-<p>For continuous random variables, the joint PDF $p(X, Y)$ is given by</p>
-<p>$$
+\end{split}\]</div>
+<p>For continuous random variables, the joint PDF <span class="math notranslate nohighlight">\(p(X, Y)\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
 \begin{equation}
 \int_x \int_y p(X=x, Y=y)dxdy = 1
 \end{equation}
-$$</p>
+\]</div>
 </section>
 <section id="marginal-probability-mass-function-marginal-pmf">
 <h2>Marginal Probability Mass Function (Marginal PMF)<a class="headerlink" href="#marginal-probability-mass-function-marginal-pmf" title="Permalink to this headline">#</a></h2>
@@ -871,12 +881,12 @@ $$</p>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
-<li><p>https://www.cse.iitk.ac.in/users/piyush/courses/pml_fall17/material/probabilty_tutorial.pdf</p></li>
-<li><p>https://towardsdatascience.com/probability-concepts-explained-probability-distributions-introduction-part-3-4a5db81858dc</p></li>
-<li><p>http://www.mit.edu/~6.s085/notes/lecture3.pdf</p></li>
-<li><p>http://www.ams.sunysb.edu/~zhu/ams315/ch11.pdf</p></li>
-<li><p>https://bookdown.org/sbikienga/Intro_to_stat_book/foundations-for-inference.html#confidence-intervals</p></li>
-<li><p>https://www.cse.iitk.ac.in/users/piyush/courses/pml_fall17/material/probabilty_tutorial.pdf</p></li>
+<li><p><a class="reference external" href="https://www.cse.iitk.ac.in/users/piyush/courses/pml_fall17/material/probabilty_tutorial.pdf">https://www.cse.iitk.ac.in/users/piyush/courses/pml_fall17/material/probabilty_tutorial.pdf</a></p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/probability-concepts-explained-probability-distributions-introduction-part-3-4a5db81858dc">https://towardsdatascience.com/probability-concepts-explained-probability-distributions-introduction-part-3-4a5db81858dc</a></p></li>
+<li><p><a class="reference external" href="http://www.mit.edu/~6.s085/notes/lecture3.pdf">http://www.mit.edu/~6.s085/notes/lecture3.pdf</a></p></li>
+<li><p><a class="reference external" href="http://www.ams.sunysb.edu/~zhu/ams315/ch11.pdf">http://www.ams.sunysb.edu/~zhu/ams315/ch11.pdf</a></p></li>
+<li><p><a class="reference external" href="https://bookdown.org/sbikienga/Intro_to_stat_book/foundations-for-inference.html#confidence-intervals">https://bookdown.org/sbikienga/Intro_to_stat_book/foundations-for-inference.html#confidence-intervals</a></p></li>
+<li><p><a class="reference external" href="https://www.cse.iitk.ac.in/users/piyush/courses/pml_fall17/material/probabilty_tutorial.pdf">https://www.cse.iitk.ac.in/users/piyush/courses/pml_fall17/material/probabilty_tutorial.pdf</a></p></li>
 </ol>
 </section>
 </section>

@@ -53,6 +53,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://ml.pages.dev/contents/Algorithms/Time Series Analysis.html" />
     <link rel="shortcut icon" href="../../_static/logo.gif"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -645,34 +647,44 @@ title="Print to PDF"
 </figure>
 <p>A time series is simply a series of data points ordered in time. In a time series, time is often the independent variable and the goal is usually to make a forecast for the future.</p>
 <ul>
-<li><p><strong>Moving Average:</strong> Here the assumption is that future value of our variable depends on the average of its $k$ previous values. Moving average has another use case - smoothing the original time series to identify trends. The wider the window, the smoother the trend. In the case of very noisy data, which is often encountered in finance, this procedure can help detect common patterns. This can also be used to determine anamolies based on the confidence level.</p></li>
+<li><p><strong>Moving Average:</strong> Here the assumption is that future value of our variable depends on the average of its <span class="math notranslate nohighlight">\(k\)</span> previous values. Moving average has another use case - smoothing the original time series to identify trends. The wider the window, the smoother the trend. In the case of very noisy data, which is often encountered in finance, this procedure can help detect common patterns. This can also be used to determine anamolies based on the confidence level.</p></li>
 <li><p><strong>Weighted average:</strong> It is a simple modification to the moving average. The weights sum up to <code class="docutils literal notranslate"><span class="pre">1</span></code> with larger weights assigned to more recent observations.
-$\hat{y}<em>{t} = \displaystyle\sum^{k}</em>{n=1} \omega_n y_{t+1-n}$</p></li>
-<li><p><strong>Exponential smoothing:</strong> Here instead of weighting the last $k$ values of the time series, we start weighting all available observations while exponentially decreasing the weights as we move further back in time.
-$\hat{y}<em>{t} = \alpha \cdot y_t + (1-\alpha) \cdot \hat y</em>{t-1} $</p>
-<p>The $\alpha$ weight is called a smoothing factor. It defines how quickly we will “forget” the last available true observation. The smaller $\alpha$ is, the more influence the previous observations have and the smoother the series is.</p>
+<span class="math notranslate nohighlight">\(\hat{y}_{t} = \displaystyle\sum^{k}_{n=1} \omega_n y_{t+1-n}\)</span></p></li>
+<li><p><strong>Exponential smoothing:</strong> Here instead of weighting the last <span class="math notranslate nohighlight">\(k\)</span> values of the time series, we start weighting all available observations while exponentially decreasing the weights as we move further back in time.
+<span class="math notranslate nohighlight">\(\hat{y}_{t} = \alpha \cdot y_t + (1-\alpha) \cdot \hat y_{t-1} \)</span></p>
+<p>The <span class="math notranslate nohighlight">\(\alpha\)</span> weight is called a smoothing factor. It defines how quickly we will “forget” the last available true observation. The smaller <span class="math notranslate nohighlight">\(\alpha\)</span> is, the more influence the previous observations have and the smoother the series is.</p>
 </li>
 <li><p><strong>Double Exponential smoothing:</strong> Up to now, the methods that we’ve discussed have been for a single future point prediction (with some nice smoothing). That is cool, but it is also not enough. Let’s extend exponential smoothing so that we can predict two future points (of course, we will also include more smoothing).</p>
-<p>Series decomposition will help us – we obtain two components: intercept (i.e. level) $\ell$ and slope (i.e. trend) $b$. We have learnt to predict intercept (or expected series value) with our previous methods; now, we will apply the same exponential smoothing to the trend by assuming that the future direction of the time series changes depends on the previous weighted changes. As a result, we get the following set of functions:</p>
-<p>$$\ell_x = \alpha y_x + (1-\alpha)(\ell_{x-1} + b_{x-1})$$</p>
-<p>$$b_x = \beta(\ell_x - \ell_{x-1}) + (1-\beta)b_{x-1}$$</p>
-<p>$$\hat{y}_{x+1} = \ell_x + b_x$$</p>
-<p>The first one describes the intercept, which, as before, depends on the current value of the series. The second term is now split into previous values of the level and of the trend. The second function describes the trend, which depends on the level changes at the current step and on the previous value of the trend. In this case, the $\beta$ coefficient is a weight for exponential smoothing. The final prediction is the sum of the model values of the intercept and trend.</p>
+<p>Series decomposition will help us – we obtain two components: intercept (i.e. level) <span class="math notranslate nohighlight">\(\ell\)</span> and slope (i.e. trend) <span class="math notranslate nohighlight">\(b\)</span>. We have learnt to predict intercept (or expected series value) with our previous methods; now, we will apply the same exponential smoothing to the trend by assuming that the future direction of the time series changes depends on the previous weighted changes. As a result, we get the following set of functions:</p>
+<div class="math notranslate nohighlight">
+\[\ell_x = \alpha y_x + (1-\alpha)(\ell_{x-1} + b_{x-1})\]</div>
+<div class="math notranslate nohighlight">
+\[b_x = \beta(\ell_x - \ell_{x-1}) + (1-\beta)b_{x-1}\]</div>
+<div class="math notranslate nohighlight">
+\[\hat{y}_{x+1} = \ell_x + b_x\]</div>
+<p>The first one describes the intercept, which, as before, depends on the current value of the series. The second term is now split into previous values of the level and of the trend. The second function describes the trend, which depends on the level changes at the current step and on the previous value of the trend. In this case, the <span class="math notranslate nohighlight">\(\beta\)</span> coefficient is a weight for exponential smoothing. The final prediction is the sum of the model values of the intercept and trend.</p>
 </li>
 <li><p><strong>Triple exponential smoothing a.k.a. Holt-Winters:</strong></p>
 <p>The idea is to add a third component - seasonality. This means that we should not use this method if our time series is not expected to have seasonality. Seasonal components in the model will explain repeated variations around intercept and trend, and it will be specified by the length of the season, in other words by the period after which the variations repeat. For each observation in the season, there is a separate component; for example, if the length of the season is 7 days (a weekly seasonality), we will have 7 seasonal components, one for each day of the week.</p>
 <p>The new system of equations:</p>
-<p>$$\ell_x = \alpha(y_x - s_{x-L}) + (1-\alpha)(\ell_{x-1} + b_{x-1})$$</p>
-<p>$$b_x = \beta(\ell_x - \ell_{x-1}) + (1-\beta)b_{x-1}$$</p>
-<p>$$s_x = \gamma(y_x - \ell_x) + (1-\gamma)s_{x-L}$$</p>
-<p>$$\hat{y}<em>{x+m} = \ell_x + mb_x + s</em>{x-L+1+(m-1)modL}$$</p>
-<p>The intercept now depends on the current value of the series minus any corresponding seasonal component. Trend remains unchanged, and the seasonal component depends on the current value of the series minus the intercept and on the previous value of the component. Take into account that the component is smoothed through all the available seasons; for example, if we have a Monday component, then it will only be averaged with other Mondays. You can read more on how averaging works and how the initial approximation of the trend and seasonal components is done <a class="reference external" href="http://www.itl.nist.gov/div898/handbook/pmc/section4/pmc435.htm">here</a>. Now that we have the seasonal component, we can predict not just one or two steps ahead but an arbitrary $m$ future steps ahead, which is very encouraging.</p>
+<div class="math notranslate nohighlight">
+\[\ell_x = \alpha(y_x - s_{x-L}) + (1-\alpha)(\ell_{x-1} + b_{x-1})\]</div>
+<div class="math notranslate nohighlight">
+\[b_x = \beta(\ell_x - \ell_{x-1}) + (1-\beta)b_{x-1}\]</div>
+<div class="math notranslate nohighlight">
+\[s_x = \gamma(y_x - \ell_x) + (1-\gamma)s_{x-L}\]</div>
+<div class="math notranslate nohighlight">
+\[\hat{y}_{x+m} = \ell_x + mb_x + s_{x-L+1+(m-1)modL}\]</div>
+<p>The intercept now depends on the current value of the series minus any corresponding seasonal component. Trend remains unchanged, and the seasonal component depends on the current value of the series minus the intercept and on the previous value of the component. Take into account that the component is smoothed through all the available seasons; for example, if we have a Monday component, then it will only be averaged with other Mondays. You can read more on how averaging works and how the initial approximation of the trend and seasonal components is done <a class="reference external" href="http://www.itl.nist.gov/div898/handbook/pmc/section4/pmc435.htm">here</a>. Now that we have the seasonal component, we can predict not just one or two steps ahead but an arbitrary <span class="math notranslate nohighlight">\(m\)</span> future steps ahead, which is very encouraging.</p>
 <p>Below is the code for a triple exponential smoothing model, which is also known by the last names of its creators, Charles Holt and his student Peter Winters. Additionally, the Brutlag method was included in the model to produce confidence intervals:</p>
-<p>$$\hat y_{max_x}=\ell_{x−1}+b_{x−1}+s_{x−T}+m⋅d_{t−T}$$</p>
-<p>$$\hat y_{min_x}=\ell_{x−1}+b_{x−1}+s_{x−T}-m⋅d_{t−T}$$</p>
-<p>$$d_t=\gamma∣y_t−\hat y_t∣+(1−\gamma)d_{t−T},$$</p>
-<p>where $T$ is the length of the season, $d$ is the predicted deviation. Other parameters were taken from triple exponential smoothing. You can read more about the method and its applicability to anomaly detection in time series <a class="reference external" href="http://fedcsis.org/proceedings/2012/pliks/118.pdf">here</a>.</p>
-<p>Exponentiality is hidden in the recursiveness of the function – we multiply by $(1-\alpha)$ each time, which already contains a multiplication by $(1-\alpha)$ of previous model values.</p>
+<div class="math notranslate nohighlight">
+\[\hat y_{max_x}=\ell_{x−1}+b_{x−1}+s_{x−T}+m⋅d_{t−T}\]</div>
+<div class="math notranslate nohighlight">
+\[\hat y_{min_x}=\ell_{x−1}+b_{x−1}+s_{x−T}-m⋅d_{t−T}\]</div>
+<div class="math notranslate nohighlight">
+\[d_t=\gamma∣y_t−\hat y_t∣+(1−\gamma)d_{t−T},\]</div>
+<p>where <span class="math notranslate nohighlight">\(T\)</span> is the length of the season, <span class="math notranslate nohighlight">\(d\)</span> is the predicted deviation. Other parameters were taken from triple exponential smoothing. You can read more about the method and its applicability to anomaly detection in time series <a class="reference external" href="http://fedcsis.org/proceedings/2012/pliks/118.pdf">here</a>.</p>
+<p>Exponentiality is hidden in the recursiveness of the function – we multiply by <span class="math notranslate nohighlight">\((1-\alpha)\)</span> each time, which already contains a multiplication by <span class="math notranslate nohighlight">\((1-\alpha)\)</span> of previous model values.</p>
 </li>
 </ul>
 <section id="stationarity">
@@ -693,26 +705,26 @@ $\hat{y}<em>{t} = \alpha \cdot y_t + (1-\alpha) \cdot \hat y</em>{t-1} $</p>
 </section>
 <section id="arima-family">
 <h2>ARIMA family<a class="headerlink" href="#arima-family" title="Permalink to this headline">#</a></h2>
-<p>We will explain this model by building up letter by letter. $SARIMA(p, d, q)(P, D, Q, s)$, Seasonal Autoregression Moving Average model:</p>
+<p>We will explain this model by building up letter by letter. <span class="math notranslate nohighlight">\(SARIMA(p, d, q)(P, D, Q, s)\)</span>, Seasonal Autoregression Moving Average model:</p>
 <ul class="simple">
-<li><p>$AR(p)$ - autoregression model i.e. regression of the time series onto itself. The basic assumption is that the current series values depend on its previous values with some lag (or several lags). The maximum lag in the model is referred to as $p$. To determine the initial $p$, you need to look at the PACF plot and find the biggest significant lag after which <strong>most</strong> other lags become insignificant.</p></li>
-<li><p>$MA(q)$ - moving average model. Without going into too much detail, this models the error of the time series, again with the assumption that the current error depends on the previous with some lag, which is referred to as $q$. The initial value can be found on the ACF plot with the same logic as before.</p></li>
+<li><p><span class="math notranslate nohighlight">\(AR(p)\)</span> - autoregression model i.e. regression of the time series onto itself. The basic assumption is that the current series values depend on its previous values with some lag (or several lags). The maximum lag in the model is referred to as <span class="math notranslate nohighlight">\(p\)</span>. To determine the initial <span class="math notranslate nohighlight">\(p\)</span>, you need to look at the PACF plot and find the biggest significant lag after which <strong>most</strong> other lags become insignificant.</p></li>
+<li><p><span class="math notranslate nohighlight">\(MA(q)\)</span> - moving average model. Without going into too much detail, this models the error of the time series, again with the assumption that the current error depends on the previous with some lag, which is referred to as <span class="math notranslate nohighlight">\(q\)</span>. The initial value can be found on the ACF plot with the same logic as before.</p></li>
 </ul>
 <p>Let’s combine our first 4 letters:</p>
-<p>$AR(p) + MA(q) = ARMA(p, q)$</p>
+<p><span class="math notranslate nohighlight">\(AR(p) + MA(q) = ARMA(p, q)\)</span></p>
 <p>What we have here is the Autoregressive–moving-average model! If the series is stationary, it can be approximated with these 4 letters. Let’s continue.</p>
 <ul class="simple">
-<li><p>$I(d)$ - order of integration. This is simply the number of nonseasonal differences needed to make the series stationary.</p></li>
+<li><p><span class="math notranslate nohighlight">\(I(d)\)</span> - order of integration. This is simply the number of nonseasonal differences needed to make the series stationary.</p></li>
 </ul>
-<p>Adding this letter to the four gives us the $ARIMA$ model which can handle non-stationary data with the help of nonseasonal differences. Great, one more letter to go!</p>
+<p>Adding this letter to the four gives us the <span class="math notranslate nohighlight">\(ARIMA\)</span> model which can handle non-stationary data with the help of nonseasonal differences. Great, one more letter to go!</p>
 <ul class="simple">
-<li><p>$S(s)$ - this is responsible for seasonality and equals the season period length of the series</p></li>
+<li><p><span class="math notranslate nohighlight">\(S(s)\)</span> - this is responsible for seasonality and equals the season period length of the series</p></li>
 </ul>
-<p>With this, we have three parameters: $(P, D, Q)$</p>
+<p>With this, we have three parameters: <span class="math notranslate nohighlight">\((P, D, Q)\)</span></p>
 <ul class="simple">
-<li><p>$P$ - order of autoregression for the seasonal component of the model, which can be derived from PACF. But you need to look at the number of significant lags, which are the multiples of the season period length. For example, if the period equals 24 and we see the 24-th and 48-th lags are significant in the PACF, that means the initial $P$ should be 2.</p></li>
-<li><p>$Q$ - similar logic using the ACF plot instead.</p></li>
-<li><p>$D$ - order of seasonal integration. This can be equal to 1 or 0, depending on whether seasonal differeces were applied or not.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P\)</span> - order of autoregression for the seasonal component of the model, which can be derived from PACF. But you need to look at the number of significant lags, which are the multiples of the season period length. For example, if the period equals 24 and we see the 24-th and 48-th lags are significant in the PACF, that means the initial <span class="math notranslate nohighlight">\(P\)</span> should be 2.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Q\)</span> - similar logic using the ACF plot instead.</p></li>
+<li><p><span class="math notranslate nohighlight">\(D\)</span> - order of seasonal integration. This can be equal to 1 or 0, depending on whether seasonal differeces were applied or not.</p></li>
 </ul>
 </section>
 <section id="prophet">
@@ -723,29 +735,29 @@ $\hat{y}<em>{t} = \alpha \cdot y_t + (1-\alpha) \cdot \hat y</em>{t-1} $</p>
 <section id="metrics">
 <h2>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p><strong>R squared:</strong> coefficient of determination (in econometrics, this can be interpreted as the percentage of variance explained by the model), $(-\infty, 1]$</p></li>
+<li><p><strong>R squared:</strong> coefficient of determination (in econometrics, this can be interpreted as the percentage of variance explained by the model), <span class="math notranslate nohighlight">\((-\infty, 1]\)</span></p></li>
 </ul>
-<p>$R^2 = 1 - \frac{SS_{res}}{SS_{tot}}$</p>
+<p><span class="math notranslate nohighlight">\(R^2 = 1 - \frac{SS_{res}}{SS_{tot}}\)</span></p>
 <ul class="simple">
-<li><p><strong>Mean Absolute Error:</strong> this is an interpretable metric because it has the same unit of measurment as the initial series, $[0, +\infty)$</p></li>
+<li><p><strong>Mean Absolute Error:</strong> this is an interpretable metric because it has the same unit of measurment as the initial series, <span class="math notranslate nohighlight">\([0, +\infty)\)</span></p></li>
 </ul>
-<p>$MAE = \frac{\sum\limits_{i=1}^{n} |y_i - \hat{y}_i|}{n}$</p>
+<p><span class="math notranslate nohighlight">\(MAE = \frac{\sum\limits_{i=1}^{n} |y_i - \hat{y}_i|}{n}\)</span></p>
 <ul class="simple">
-<li><p><strong>Median Absolute Error:</strong> again, an interpretable metric that is particularly interesting because it is robust to outliers, $[0, +\infty)$</p></li>
+<li><p><strong>Median Absolute Error:</strong> again, an interpretable metric that is particularly interesting because it is robust to outliers, <span class="math notranslate nohighlight">\([0, +\infty)\)</span></p></li>
 </ul>
-<p>$MedAE = median(|y_1 - \hat{y}_1|, … , |y_n - \hat{y}_n|)$</p>
+<p><span class="math notranslate nohighlight">\(MedAE = median(|y_1 - \hat{y}_1|, ... , |y_n - \hat{y}_n|)\)</span></p>
 <ul class="simple">
-<li><p><strong>Mean Squared Error:</strong> the most commonly used metric that gives a higher penalty to large errors and vice versa, $[0, +\infty)$</p></li>
+<li><p><strong>Mean Squared Error:</strong> the most commonly used metric that gives a higher penalty to large errors and vice versa, <span class="math notranslate nohighlight">\([0, +\infty)\)</span></p></li>
 </ul>
-<p>$MSE = \frac{1}{n}\sum\limits_{i=1}^{n} (y_i - \hat{y}_i)^2$</p>
+<p><span class="math notranslate nohighlight">\(MSE = \frac{1}{n}\sum\limits_{i=1}^{n} (y_i - \hat{y}_i)^2\)</span></p>
 <ul class="simple">
-<li><p><strong>Mean Squared Logarithmic Error:</strong> practically, this is the same as MSE, but we take the logarithm of the series. As a result, we give more weight to small mistakes as well. This is usually used when the data has exponential trends, $[0, +\infty)$</p></li>
+<li><p><strong>Mean Squared Logarithmic Error:</strong> practically, this is the same as MSE, but we take the logarithm of the series. As a result, we give more weight to small mistakes as well. This is usually used when the data has exponential trends, <span class="math notranslate nohighlight">\([0, +\infty)\)</span></p></li>
 </ul>
-<p>$MSLE = \frac{1}{n}\sum\limits_{i=1}^{n} (log(1+y_i) - log(1+\hat{y}_i))^2$</p>
+<p><span class="math notranslate nohighlight">\(MSLE = \frac{1}{n}\sum\limits_{i=1}^{n} (log(1+y_i) - log(1+\hat{y}_i))^2\)</span></p>
 <ul class="simple">
-<li><p><strong>Mean Absolute Percentage Error:</strong> this is the same as MAE but is computed as a percentage, which is very convenient when you want to explain the quality of the model to management, $[0, +\infty)$</p></li>
+<li><p><strong>Mean Absolute Percentage Error:</strong> this is the same as MAE but is computed as a percentage, which is very convenient when you want to explain the quality of the model to management, <span class="math notranslate nohighlight">\([0, +\infty)\)</span></p></li>
 </ul>
-<p>$MAPE = \frac{100}{n}\sum\limits_{i=1}^{n} \frac{|y_i - \hat{y}_i|}{y_i}$</p>
+<p><span class="math notranslate nohighlight">\(MAPE = \frac{100}{n}\sum\limits_{i=1}^{n} \frac{|y_i - \hat{y}_i|}{y_i}\)</span></p>
 </section>
 <section id="questions">
 <h2>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">#</a></h2>
@@ -756,7 +768,7 @@ $\hat{y}<em>{t} = \alpha \cdot y_t + (1-\alpha) \cdot \hat y</em>{t-1} $</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
 <p>Normal cross-validation cannot be used for time series because one cannot randomly mix values in a fold while preserving this structure. With randomization, all time dependencies between observations will be lost. But something like “cross-validation on a rolling basis” can be used.</p>
-<p>The idea is rather simple – we train our model on a small segment of the time series from the beginning until some $t$, make predictions for the next $t+n$ steps, and calculate an error. Then, we expand our training sample to $t+n$ value, make predictions from $t+n$ until $t+2*n$, and continue moving our test segment of the time series until we hit the last available observation. As a result, we have as many folds as $n$ will fit between the initial training sample and the last observation.</p>
+<p>The idea is rather simple – we train our model on a small segment of the time series from the beginning until some <span class="math notranslate nohighlight">\(t\)</span>, make predictions for the next <span class="math notranslate nohighlight">\(t+n\)</span> steps, and calculate an error. Then, we expand our training sample to <span class="math notranslate nohighlight">\(t+n\)</span> value, make predictions from <span class="math notranslate nohighlight">\(t+n\)</span> until <span class="math notranslate nohighlight">\(t+2*n\)</span>, and continue moving our test segment of the time series until we hit the last available observation. As a result, we have as many folds as <span class="math notranslate nohighlight">\(n\)</span> will fit between the initial training sample and the last observation.</p>
 </div>
 </section>
 </section>

@@ -53,6 +53,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://ml.pages.dev/contents/NN/Neural Network.html" />
     <link rel="shortcut icon" href="../../_static/logo.gif"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -694,7 +696,7 @@ There are six main things that need to be specified for specifying a neural netw
 <li><p>Neurons are arranged in layers and the layers are arranged sequentially</p></li>
 <li><p>Neurons within the same layer do not interact with each other</p></li>
 <li><p>All the inputs enter the network through the input layer and all the outputs go out of the network through the output layer</p></li>
-<li><p>Neurons in consecutive layers are densely connected, i.e. all neurons in layer $l$ are connected to all neurons in layer $l+1$</p></li>
+<li><p>Neurons in consecutive layers are densely connected, i.e. all neurons in layer <span class="math notranslate nohighlight">\(l\)</span> are connected to all neurons in layer <span class="math notranslate nohighlight">\(l+1\)</span></p></li>
 <li><p>Every interconnection in the neural network has a weight associated with it, and every neuron has a bias associated with it</p></li>
 <li><p>All neurons in a particular layer use the same activation function</p></li>
 </ul>
@@ -721,7 +723,7 @@ Feed forward neural network architecture consists of following main parts – In
 <section id="backpropagation">
 <h2>Backpropagation<a class="headerlink" href="#backpropagation" title="Permalink to this headline">#</a></h2>
 <p>In the neural network training task the goal is to compute the optimal weights and biases by minimizing some cost function. The task of training neural networks is exactly the same as that of other ML models such as linear regression, SVMs etc. The desired output (output from the last layer) minus the actual output is the cost (or the loss), and we to tune the parameters w and b such that the total cost is minimized.</p>
-<p>An important point to note is that if the data is large (which is often the case), loss calculation itself can get pretty messy. For example, if you have a million data points, they will be fed into the network (in batches), the output will be calculated using feedforward and the loss/cost $L_i$ (for $i^{th}$ data point) will be calculated. The total loss is the sum of losses of all the individual data points. We minimize the average of the total loss and the not the total loss. Minimizing the average loss implies that the total loss is getting minimized.</p>
+<p>An important point to note is that if the data is large (which is often the case), loss calculation itself can get pretty messy. For example, if you have a million data points, they will be fed into the network (in batches), the output will be calculated using feedforward and the loss/cost <span class="math notranslate nohighlight">\(L_i\)</span> (for <span class="math notranslate nohighlight">\(i^{th}\)</span> data point) will be calculated. The total loss is the sum of losses of all the individual data points. We minimize the average of the total loss and the not the total loss. Minimizing the average loss implies that the total loss is getting minimized.</p>
 <p>For a large neural network, the number of weight elements and biases becomes so large and minimizing the loss with so many parameters is a difficult task. This complex task is achieved using gradient descent.</p>
 <figure class="align-default" id="image4">
 <a class="reference internal image-reference" href="../../_images/image4.gif"><img alt="../../_images/image4.gif" src="../../_images/image4.gif" style="width: 448.0px; height: 336.0px;" /></a>
@@ -736,13 +738,13 @@ Feed forward neural network architecture consists of following main parts – In
 <p>In most libraries such as Tensorflow, the SGD training procedure is as follows:</p>
 <ul class="simple">
 <li><p>You specify the number of epochs (typical values are 10, 20, 50, 100 etc.) - more epochs require more computational power</p></li>
-<li><p>You specify the number of batches $m$ (typical values are 32, 64, 128, etc.)</p></li>
-<li><p>At the start of each epoch, the data set is reshuffled and divided into $m$ batches</p></li>
+<li><p>You specify the number of batches <span class="math notranslate nohighlight">\(m\)</span> (typical values are 32, 64, 128, etc.)</p></li>
+<li><p>At the start of each epoch, the data set is reshuffled and divided into <span class="math notranslate nohighlight">\(m\)</span> batches</p></li>
 <li><p>The average gradient of each batch is then used to make a weight update</p></li>
 <li><p>The training is complete at the end of all the epochs</p></li>
 </ul>
 <p>Apart from being computationally faster, the SGD training process has another big advantage - it actually helps you reach the global minima (instead of being stuck at a local minima). Also, to avoid the problem of getting stuck at a local optimum, you need to strike a balance between exploration and exploitation.
-Exploration means that you try to minimize the loss function with different starting points of $W$ and $b$, i.e., you initialize $W$ and $b$ with different values. On the other hand, exploitation means that you try to reach the global minima starting from a particular W and b and do not explore the terrain at all. That might lead you to the lowest point locally, but not the necessarily the global minimum.</p>
+Exploration means that you try to minimize the loss function with different starting points of <span class="math notranslate nohighlight">\(W\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, i.e., you initialize <span class="math notranslate nohighlight">\(W\)</span> and <span class="math notranslate nohighlight">\(b\)</span> with different values. On the other hand, exploitation means that you try to reach the global minima starting from a particular W and b and do not explore the terrain at all. That might lead you to the lowest point locally, but not the necessarily the global minimum.</p>
 </section>
 </section>
 <section id="modifications-in-neural-networks">
@@ -755,8 +757,8 @@ Apart from using the parameter norm, there is another popular neural network reg
 <p>Some important points to note regarding dropouts are:</p>
 <ul class="simple">
 <li><p>Dropouts can be applied only to some layers of the network (in fact, that is a common practice - you choose some layer arbitrarily to apply dropouts to)</p></li>
-<li><p>The mask $\alpha$ is generated independently for each layer during feedforward, and the same mask is used in backpropagation</p></li>
-<li><p>The mask changes with each minibatch/iteration, are randomly generated in each iteration (sampled from a Bernoulli with some $p(1)=q$)</p></li>
+<li><p>The mask <span class="math notranslate nohighlight">\(\alpha\)</span> is generated independently for each layer during feedforward, and the same mask is used in backpropagation</p></li>
+<li><p>The mask changes with each minibatch/iteration, are randomly generated in each iteration (sampled from a Bernoulli with some <span class="math notranslate nohighlight">\(p(1)=q\)</span>)</p></li>
 </ul>
 <p>Why the dropout strategy works well is explained through the notion of a manifold. Manifold captures the observation that in high dimensional spaces, the data points often actually lie in a lower-dimensional manifold. The dropout strategy uses this fact to find a lower-dimensional solution to the problem.</p>
 <p>Dropouts help in symmetry breaking as well. There is every possibility of the creation of communities within neurons which restricts them from learning independently. Hence, by setting some random set of the weights to zero in every iteration, this community/symmetry is broken. Note that there, a different mini batch is processed in every iteration in an epoch, and dropouts are applied to each mini batch.</p>

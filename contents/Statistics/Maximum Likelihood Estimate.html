@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://ml.pages.dev/contents/Statistics/Maximum Likelihood Estimate.html" />
     <link rel="shortcut icon" href="../../_static/logo.gif"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -665,18 +667,19 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="maximum-likelihood-estimate">
 <h1>Maximum Likelihood Estimate<a class="headerlink" href="#maximum-likelihood-estimate" title="Permalink to this headline">#</a></h1>
-<p>Suppose we are given a problem where we can assume the <em>parametric class</em> of distribution (e.g. Normal Distribution) that generates a set of data, and we want to determine the most likely parameters of this distribution using the given data. Since this class of distribution has a finite number of parameters (e.g. mean $\mu$ and standard deviation $\sigma$, in case of normal distribution) that need to be figured out in order to identify the particular member of the class, we will use the given data to do so.</p>
+<p>Suppose we are given a problem where we can assume the <em>parametric class</em> of distribution (e.g. Normal Distribution) that generates a set of data, and we want to determine the most likely parameters of this distribution using the given data. Since this class of distribution has a finite number of parameters (e.g. mean <span class="math notranslate nohighlight">\(\mu\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>, in case of normal distribution) that need to be figured out in order to identify the particular member of the class, we will use the given data to do so.</p>
 <p>The obtained parameter estimates will be called <strong>Maximum Likelihood Estimates</strong>.</p>
-<p>Let us consider a Random Variable $X$ to be normally distributed with some mean $\mu$ and standard deviation $\sigma$. We need to estimate $\mu$ and $\sigma$ using our samples which accurately represent the actual $X$ and not just the samples that we have drawn out.</p>
+<p>Let us consider a Random Variable <span class="math notranslate nohighlight">\(X\)</span> to be normally distributed with some mean <span class="math notranslate nohighlight">\(\mu\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>. We need to estimate <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> using our samples which accurately represent the actual <span class="math notranslate nohighlight">\(X\)</span> and not just the samples that we have drawn out.</p>
 <section id="estimating-parameters">
 <h2>Estimating Parameters<a class="headerlink" href="#estimating-parameters" title="Permalink to this headline">#</a></h2>
 <p>Let’s have a look at the Probability Density Function (PDF) for the Normal Distribution and see what they mean.</p>
-<p>$$
+<div class="math notranslate nohighlight" id="equation-eq-normal-dist">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq-normal-dist" title="Permalink to this equation">#</a></span>\[
 \begin{equation}
 f(x; \mu, \sigma) = \frac{e^{-(x - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}}
 \end{equation}
-$$ (eq_normal_dist)</p>
-<p>This equation is used to obtain the probability of our sample $x$ being from our random variable $X$, when the true parameters of the distribution are $\mu$ and $\sigma$. Normal distributions with different $\mu$ and $\sigma$ are shown below.</p>
+\]</div>
+<p>This equation is used to obtain the probability of our sample <span class="math notranslate nohighlight">\(x\)</span> being from our random variable <span class="math notranslate nohighlight">\(X\)</span>, when the true parameters of the distribution are <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>. Normal distributions with different <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> are shown below.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -711,7 +714,7 @@ $$ (eq_normal_dist)</p>
 <img alt="../../_images/Maximum Likelihood Estimate_2_0.png" src="../../_images/Maximum Likelihood Estimate_2_0.png" />
 </div>
 </div>
-<p>Let us consider that our sample = 5. Then what is the probability that it comes from a normal distribution with $\mu = 4$ and $\sigma = 1$? To get this probability, we only need to plug in the values of $x, \mu$ and $\sigma$ in Equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_normal_dist</span></code>. Scipy as a handy function <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html"><code class="docutils literal notranslate"><span class="pre">norm.pdf()</span></code></a> that we can use to obtain this easily.</p>
+<p>Let us consider that our sample = 5. Then what is the probability that it comes from a normal distribution with <span class="math notranslate nohighlight">\(\mu = 4\)</span> and <span class="math notranslate nohighlight">\(\sigma = 1\)</span>? To get this probability, we only need to plug in the values of <span class="math notranslate nohighlight">\(x, \mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> in Equation <a class="reference internal" href="#equation-eq-normal-dist">(1)</a>. Scipy as a handy function <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html"><code class="docutils literal notranslate"><span class="pre">norm.pdf()</span></code></a> that we can use to obtain this easily.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
@@ -726,7 +729,7 @@ $$ (eq_normal_dist)</p>
 </div>
 </div>
 </div>
-<p>What if our sample came from a different distribution with $\mu = 3$ and $\sigma = 2$?</p>
+<p>What if our sample came from a different distribution with <span class="math notranslate nohighlight">\(\mu = 3\)</span> and <span class="math notranslate nohighlight">\(\sigma = 2\)</span>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -739,9 +742,9 @@ $$ (eq_normal_dist)</p>
 </div>
 </div>
 </div>
-<p>As we can see, the PDF equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_normal_dist</span></code> shows us how likely our sample are from a distribution with certain parameters. Current results show that our sample is more likely to have come from the first distribution. But this with just a single sample. What if we had multiple samples and we wanted to estimate the parameters?</p>
-<p>Let us assume we have multiple samples from $X$ which we assume to have come from some normal distribution. Also, all the samples are mutually independent of one another. In this case, the we can get the total probability of observing all samples by multiplying the probabilities of observing each sample individually.</p>
-<p>E.g., The probability that both $7$ and $1$ are drawn from a normal distribution with $\mu = 4$ and $\sigma=2$ is equal to:</p>
+<p>As we can see, the PDF equation <a class="reference internal" href="#equation-eq-normal-dist">(1)</a> shows us how likely our sample are from a distribution with certain parameters. Current results show that our sample is more likely to have come from the first distribution. But this with just a single sample. What if we had multiple samples and we wanted to estimate the parameters?</p>
+<p>Let us assume we have multiple samples from <span class="math notranslate nohighlight">\(X\)</span> which we assume to have come from some normal distribution. Also, all the samples are mutually independent of one another. In this case, the we can get the total probability of observing all samples by multiplying the probabilities of observing each sample individually.</p>
+<p>E.g., The probability that both <span class="math notranslate nohighlight">\(7\)</span> and <span class="math notranslate nohighlight">\(1\)</span> are drawn from a normal distribution with <span class="math notranslate nohighlight">\(\mu = 4\)</span> and <span class="math notranslate nohighlight">\(\sigma=2\)</span> is equal to:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -758,120 +761,135 @@ $$ (eq_normal_dist)</p>
 <section id="likelihood-of-many-samples">
 <h2>Likelihood of many samples<a class="headerlink" href="#likelihood-of-many-samples" title="Permalink to this headline">#</a></h2>
 <p>In maximum likelihood estimation (MLE), we specify a distribution of unknown parameters and then use our data to obtain the actual parameter values. In essence, MLE’s aim is to find the set of parameters for the probability distribution that maximizes the likelihood of the data points. This can be formally expressed as:</p>
-<p>$$
+<div class="math notranslate nohighlight" id="equation-eq-likelihood">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eq-likelihood" title="Permalink to this equation">#</a></span>\[
 \begin{equation}
-\hat{\mu}, \hat{\sigma} = \operatorname*{argmax}<em>{\mu, \sigma} \prod</em>{i=1}^n f(x_i)
+\hat{\mu}, \hat{\sigma} = \operatorname*{argmax}_{\mu, \sigma} \prod_{i=1}^n f(x_i)
 \end{equation}
-$$ (eq_likelihood)</p>
-<p>However, it is difficult to optimize this product of probabilities because of long and messy calculations. Thus, we use log-likelihood which is the logarithm of the probability that the data point is observed. Formally Equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_likelihood</span></code> can be re-written as,</p>
-<p>$$
+\]</div>
+<p>However, it is difficult to optimize this product of probabilities because of long and messy calculations. Thus, we use log-likelihood which is the logarithm of the probability that the data point is observed. Formally Equation <a class="reference internal" href="#equation-eq-likelihood">(2)</a> can be re-written as,</p>
+<div class="math notranslate nohighlight" id="equation-eq-log-likelihood">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq-log-likelihood" title="Permalink to this equation">#</a></span>\[
 \begin{equation}
-\hat{\mu}, \hat{\sigma} = \operatorname*{argmax}<em>{\mu, \sigma}\Sigma</em>{i=1}^n \ln f(x_i)
+\hat{\mu}, \hat{\sigma} = \operatorname*{argmax}_{\mu, \sigma}\Sigma_{i=1}^n \ln f(x_i)
 \end{equation}
-$$ (eq_log_likelihood)</p>
+\]</div>
 <p>This is because logarithmic function is a monotonically increasing function. Thus, taking the log of another function does not change the point where the original function peaks. There are two main advantages of using log-likelihood:</p>
 <ol class="simple">
 <li><p>The exponential terms in the probability density function are more manageable and easily optimizable.</p></li>
-<li><p>The product of all likelihoods become a sum of individual likelihoods which allows these individual components to be maximized rather than working with the product of $n$ probability density functions.</p></li>
+<li><p>The product of all likelihoods become a sum of individual likelihoods which allows these individual components to be maximized rather than working with the product of <span class="math notranslate nohighlight">\(n\)</span> probability density functions.</p></li>
 </ol>
 <p>Now, let us find the maximum likelihood estimates using the log likelihood function.</p>
-<p>$$
+<div class="math notranslate nohighlight" id="equation-eq-mle-all-terms">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eq-mle-all-terms" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align*}
 \begin{split}
-&amp; \ln\left[ L(\mu, \sigma|x_1, …, x_n)\right] \
-&amp;= \ln \left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \times  \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \times … \times  \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}}  \right) \
-&amp;= \ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + \ln\left( \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + … \
-&amp;\quad + \ln\left( \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right)
+&amp; \ln\left[ L(\mu, \sigma|x_1, ..., x_n)\right] \\ 
+ &amp;= \ln \left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \times  \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \times ... \times  \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}}  \right) \\ 
+ &amp;= \ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + \ln\left( \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + ... \\ 
+ &amp;\quad + \ln\left( \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right)
 \end{split}
-\end{align*}
-$$ (eq_mle_all_terms)</p>
+\end{align*} 
+\end{split}\]</div>
 <p>Here,</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align*}
-&amp;\ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) \
-&amp;= \ln\left( \frac{1} {\sigma\sqrt{2\pi}} \right) + \ln\left( e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) } \right) \
-&amp;= \ln\left[ (2\pi\sigma^2)^{\frac{-1}{2}} \right] - \frac{(x_1 - \mu)^2}{2\sigma^2}\ln(e) \
-&amp;= -\frac{1}{2}\ln ( 2\pi\sigma^2) - \frac{(x_1-\mu)^2}{2\sigma^2} \
-&amp;= -\frac{1}{2}\ln(2\pi) - \frac{1}{2}\ln(\sigma^2) - \frac{(x_1 - \mu)^2}{2\sigma^2} \
-\end{align*}
-$$
-$$
+&amp;\ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) \\ 
+&amp;= \ln\left( \frac{1} {\sigma\sqrt{2\pi}} \right) + \ln\left( e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) } \right) \\ 
+&amp;= \ln\left[ (2\pi\sigma^2)^{\frac{-1}{2}} \right] - \frac{(x_1 - \mu)^2}{2\sigma^2}\ln(e) \\
+&amp;= -\frac{1}{2}\ln ( 2\pi\sigma^2) - \frac{(x_1-\mu)^2}{2\sigma^2} \\
+&amp;= -\frac{1}{2}\ln(2\pi) - \frac{1}{2}\ln(\sigma^2) - \frac{(x_1 - \mu)^2}{2\sigma^2} \\
+\end{align*} 
+\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-mle-single-term">
+<span class="eqno">(5)<a class="headerlink" href="#equation-eq-mle-single-term" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align*}
-&amp;= -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_1 - \mu)^2}{2\sigma^2} \
+&amp;= -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_1 - \mu)^2}{2\sigma^2} \\
 \end{align*}
-$$ (eq_mle_single_term)</p>
-<p>Thus, Equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_mle_all_terms</span></code> can be written as:</p>
-<p>$$
+\end{split}\]</div>
+<p>Thus, Equation <a class="reference internal" href="#equation-eq-mle-all-terms">(4)</a> can be written as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align*}
-\ln\left[ L(\mu, \sigma|x_1, …, x_n)\right] &amp;= \ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + \ln\left( \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + … \
-&amp;\quad + \ln\left( \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) \
-&amp;= \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_1 - \mu)^2}{2\sigma^2} \right] \
-&amp;\quad + \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_2- \mu)^2}{2\sigma^2} \right] \
-&amp;\quad + … + \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_n - \mu)^2}{2\sigma^2} \right] \
-\end{align*}
-$$
-$$
+\ln\left[ L(\mu, \sigma|x_1, ..., x_n)\right] &amp;= \ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + \ln\left( \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + ... \\
+ &amp;\quad + \ln\left( \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) \\
+&amp;= \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_1 - \mu)^2}{2\sigma^2} \right] \\ 
+&amp;\quad + \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_2- \mu)^2}{2\sigma^2} \right] \\ 
+&amp;\quad + ... + \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_n - \mu)^2}{2\sigma^2} \right] \\
+\end{align*} 
+\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-mle-simplified">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-mle-simplified" title="Permalink to this equation">#</a></span>\[
 \begin{align*}
-&amp;= -\frac{n}{2}\ln(2\pi) - n\ln(\sigma) - \frac{(x_1-\mu)^2}{2\sigma^2} - \frac{(x_2-\mu)^2}{2\sigma^2} - … - \frac{(x_n-\mu)^2}{2\sigma^2}
+&amp;= -\frac{n}{2}\ln(2\pi) - n\ln(\sigma) - \frac{(x_1-\mu)^2}{2\sigma^2} - \frac{(x_2-\mu)^2}{2\sigma^2} - ... - \frac{(x_n-\mu)^2}{2\sigma^2}
 \end{align*}
-$$ (eq_mle_simplified)</p>
+\]</div>
 </section>
 <section id="values-of-parameters">
 <h2>Values of parameters<a class="headerlink" href="#values-of-parameters" title="Permalink to this headline">#</a></h2>
-<p>Now, we will use Equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_mle_simplified</span></code> to find the values of $\mu$ and $\sigma$. For this purpose, we take the partial derivative of Equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_mle_simplified</span></code> with respect to $\mu$ and $\sigma$.</p>
-<p>$$
+<p>Now, we will use Equation <a class="reference internal" href="#equation-eq-mle-simplified">(6)</a> to find the values of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>. For this purpose, we take the partial derivative of Equation <a class="reference internal" href="#equation-eq-mle-simplified">(6)</a> with respect to <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align*}
-\frac{\partial}{\partial \mu}\ln\left[L(\mu, \sigma|x_1, x_2, …, x_n) \right] &amp;= 0 - 0 + \frac{x_1 - \mu}{\sigma^2} + \frac{x_2 - \mu}{\sigma^2} + … + \frac{x_n - \mu}{\sigma^2} \
-\end{align*}
-$$
-$$
+\frac{\partial}{\partial \mu}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] &amp;= 0 - 0 + \frac{x_1 - \mu}{\sigma^2} + \frac{x_2 - \mu}{\sigma^2} + ... + \frac{x_n - \mu}{\sigma^2} \\
+\end{align*} 
+\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-mu">
+<span class="eqno">(7)<a class="headerlink" href="#equation-eq-mu" title="Permalink to this equation">#</a></span>\[
 \begin{align*}
-\frac{\partial}{\partial \mu}\ln\left[L(\mu, \sigma|x_1, x_2, …, x_n) \right] &amp;= \frac{1}{\sigma^2}\left[ (x_1 + x_2 + … + x_n) - n\mu \right]
-\end{align*}
-$$ (eq_mu)</p>
-<p>$$
+\frac{\partial}{\partial \mu}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] &amp;= \frac{1}{\sigma^2}\left[ (x_1 + x_2 + ... + x_n) - n\mu \right]
+\end{align*} 
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align*}
-\frac{\partial}{\partial \sigma}\ln\left[L(\mu, \sigma|x_1, x_2, …, x_n) \right] &amp;= 0 - \frac{n}{\sigma} + \frac{(x_1 - \mu)^2}{\sigma^3} + \frac{(x_2 - \mu)^2}{\sigma^3} + … + \frac{(x_n - \mu)^2}{\sigma^3} \
-\end{align*}
-$$
-$$
+\frac{\partial}{\partial \sigma}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] &amp;= 0 - \frac{n}{\sigma} + \frac{(x_1 - \mu)^2}{\sigma^3} + \frac{(x_2 - \mu)^2}{\sigma^3} + ... + \frac{(x_n - \mu)^2}{\sigma^3} \\ 
+\end{align*} 
+\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-sigma">
+<span class="eqno">(8)<a class="headerlink" href="#equation-eq-sigma" title="Permalink to this equation">#</a></span>\[
 \begin{align*}
-\frac{\partial}{\partial \sigma}\ln\left[L(\mu, \sigma|x_1, x_2, …, x_n) \right] &amp;= -\frac{n}{\sigma} + \frac{1}{\sigma^3}\left[ (x_1 - \mu)^2 + (x_2 - \mu)^2 + …+ (x_n - \mu)^2 \right]
+\frac{\partial}{\partial \sigma}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] &amp;= -\frac{n}{\sigma} + \frac{1}{\sigma^3}\left[ (x_1 - \mu)^2 + (x_2 - \mu)^2 + ...+ (x_n - \mu)^2 \right]
 \end{align*}
-$$ (eq_sigma)</p>
-<p>Now, to find the maximum likelihood estimate for $\mu$ and $\sigma$, we need to solve for the derivative with respect to $\mu = 0$ and $\sigma = 0$, because the slope is 0 at the peak of the curve.</p>
-<p>Thus, using Equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_mu</span></code> and setting $\frac{\partial}{\partial \mu}\ln\left[L(\mu, \sigma|x_1, x_2, …, x_n) \right] = 0$, we get,</p>
-<p>$$
+\]</div>
+<p>Now, to find the maximum likelihood estimate for <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>, we need to solve for the derivative with respect to <span class="math notranslate nohighlight">\(\mu = 0\)</span> and <span class="math notranslate nohighlight">\(\sigma = 0\)</span>, because the slope is 0 at the peak of the curve.</p>
+<p>Thus, using Equation <a class="reference internal" href="#equation-eq-mu">(7)</a> and setting <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \mu}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] = 0\)</span>, we get,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align*}
-0 &amp;= \frac{1}{\sigma^2}\left[ (x_1 + x_2 + … + x_n) - n\mu \right] \
-0 &amp;= (x_1+x_2 + … + x_n) - n\mu \
-\end{align*}
-$$
-$$
+0 &amp;= \frac{1}{\sigma^2}\left[ (x_1 + x_2 + ... + x_n) - n\mu \right] \\
+0 &amp;= (x_1+x_2 + ... + x_n) - n\mu \\
+\end{align*} 
+\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-mu-final">
+<span class="eqno">(9)<a class="headerlink" href="#equation-eq-mu-final" title="Permalink to this equation">#</a></span>\[
 \begin{align*}
-\mu &amp;= \frac{(x_1+x_2+…+x_n)}{n}
-\end{align*}
-$$ (eq_mu_final)</p>
-<p>Thus, the maximum likelihood estimate for $\mu$ is the mean of the samples.</p>
-<p>Simialrly, using Equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_sigma</span></code> and setting $\frac{\partial}{\partial \sigma}\ln\left[L(\mu, \sigma|x_1, x_2, …, x_n) \right] = 0$, we get,</p>
-<p>$$
+\mu &amp;= \frac{(x_1+x_2+...+x_n)}{n}
+\end{align*} 
+\]</div>
+<p>Thus, the maximum likelihood estimate for <span class="math notranslate nohighlight">\(\mu\)</span> is the mean of the samples.</p>
+<p>Simialrly, using Equation <a class="reference internal" href="#equation-eq-sigma">(8)</a> and setting <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \sigma}\ln\left[L(\mu, \sigma|x_1, x_2, ..., x_n) \right] = 0\)</span>, we get,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align*}
-0 &amp;= -\frac{n}{\sigma} + \frac{1}{\sigma^3}\left[ (x_1 - \mu)^2 + (x_2 - \mu)^2 + …+ (x_n - \mu)^2 \right] \
-0 &amp;= -n + \frac{1}{\sigma^2}\left[ (x_1-\mu)^2 + (x_2-\mu)^2 + …+ (x_n-\mu)^2 \right] \
-n\sigma^2 &amp;= (x_1-\mu)^2 + (x_2-\mu)^2 + …+ (x_n-\mu)^2 \
-\end{align*}
-$$
-$$
+0 &amp;= -\frac{n}{\sigma} + \frac{1}{\sigma^3}\left[ (x_1 - \mu)^2 + (x_2 - \mu)^2 + ...+ (x_n - \mu)^2 \right] \\
+0 &amp;= -n + \frac{1}{\sigma^2}\left[ (x_1-\mu)^2 + (x_2-\mu)^2 + ...+ (x_n-\mu)^2 \right] \\
+n\sigma^2 &amp;= (x_1-\mu)^2 + (x_2-\mu)^2 + ...+ (x_n-\mu)^2 \\ 
+\end{align*} 
+\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-sigma-final">
+<span class="eqno">(10)<a class="headerlink" href="#equation-eq-sigma-final" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align*}
-\sigma &amp;= \sqrt{\frac{(x_1-\mu)^2 + (x_2-\mu)^2 + …+ (x_n-\mu)^2}{n}} \
-\end{align*}
-$$ (eq_sigma_final)</p>
-<p>Thus, the maximum likelihood estimate for $\sigma$ is the standard deviation of the samples.</p>
+\sigma &amp;= \sqrt{\frac{(x_1-\mu)^2 + (x_2-\mu)^2 + ...+ (x_n-\mu)^2}{n}} \\
+\end{align*} 
+\end{split}\]</div>
+<p>Thus, the maximum likelihood estimate for <span class="math notranslate nohighlight">\(\sigma\)</span> is the standard deviation of the samples.</p>
 </section>
 <section id="an-example">
 <h2>An Example<a class="headerlink" href="#an-example" title="Permalink to this headline">#</a></h2>
-<p>Let us now consider 5 samples with values 0, -5,  6, -9 and 8. We want to know the normal distribution from which all of these samples were most likely to be drawn. In other words, we would like to maximize the value of $f(0, -5,  6, -9, 8)$ as given in Equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_normal_dist</span></code>. Since we do not know the values of $\mu$ and $\sigma$ for the required distribution, we need to estimate them using  Equations <code class="xref eq docutils literal notranslate"><span class="pre">eq_mu_final</span></code> and <code class="xref eq docutils literal notranslate"><span class="pre">eq_sigma_final</span></code> respectively.</p>
-<p>Using the formulae of $\mu$ and $\sigma$, we get,</p>
+<p>Let us now consider 5 samples with values 0, -5,  6, -9 and 8. We want to know the normal distribution from which all of these samples were most likely to be drawn. In other words, we would like to maximize the value of <span class="math notranslate nohighlight">\(f(0, -5,  6, -9, 8)\)</span> as given in Equation <a class="reference internal" href="#equation-eq-normal-dist">(1)</a>. Since we do not know the values of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> for the required distribution, we need to estimate them using  Equations <a class="reference internal" href="#equation-eq-mu-final">(9)</a> and <a class="reference internal" href="#equation-eq-sigma-final">(10)</a> respectively.</p>
+<p>Using the formulae of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>, we get,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>

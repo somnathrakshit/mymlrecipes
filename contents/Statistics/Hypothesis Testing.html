@@ -53,6 +53,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://ml.pages.dev/contents/Statistics/Hypothesis Testing.html" />
     <link rel="shortcut icon" href="../../_static/logo.gif"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -664,8 +666,8 @@ title="Print to PDF"
 <h2>Hypothesis Testing<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>Hypothesis testing is used to confirm your conclusions about the population parameter. Through this we can conclude if there is enough evidence to confirm the hypothesis about the population.</p>
 <ul class="simple">
-<li><p>$H_0 =$ null hypothesis, what is already present; always has the following signs: = OR ≤ OR ≥</p></li>
-<li><p>$H_1 =$ alternate hypothesis, a challenge to the null hypothesis; always has the following signs: ≠ OR &gt; OR &lt;</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_0 =\)</span> null hypothesis, what is already present; always has the following signs: = OR ≤ OR ≥</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_1 =\)</span> alternate hypothesis, a challenge to the null hypothesis; always has the following signs: ≠ OR &gt; OR &lt;</p></li>
 </ul>
 <section id="steps">
 <h3>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">#</a></h3>
@@ -674,54 +676,54 @@ title="Print to PDF"
 <li><p>There is an initial research hypothesis of which the truth is unknown.</p></li>
 <li><p>The first step is to state the relevant null and alternative hypotheses. This is important, as mis-stating the hypotheses will muddy the rest of the process.</p></li>
 <li><p>The second step is to consider the statistical assumptions being made about the sample in doing the test; for example, assumptions about the statistical independence or about the form of the distributions of the observations. This is equally important as invalid assumptions will mean that the results of the test are invalid.</p></li>
-<li><p>Decide which test is appropriate, and state the relevant test statistic $T$.</p></li>
+<li><p>Decide which test is appropriate, and state the relevant test statistic <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
 <li><p>Derive the distribution of the test statistic under the null hypothesis from the assumptions. In standard cases this will be a well-known result. For example, the test statistic might follow a Student’s t distribution with known degrees of freedom, or a normal distribution with known mean and variance. If the distribution of the test statistic is completely fixed by the null hypothesis we call the hypothesis simple, otherwise it is called composite.</p></li>
-<li><p>Select a significance level ($\alpha$), a probability threshold below which the null hypothesis will be rejected. Common values are $5%$ and $1%$.</p></li>
-<li><p>The distribution of the test statistic under the null hypothesis partitions the possible values of T into those for which the null hypothesis is rejected—the so-called critical region—and those for which it is not. The probability of the critical region is $\alpha$. In the case of a composite null hypothesis, the maximal probability of the critical region is $\alpha$.</p></li>
-<li><p>Compute from the observations the observed value $t_{obs}$ of the test statistic $T$.</p></li>
-<li><p>Decide to either reject the null hypothesis in favor of the alternative or not reject it. The decision rule is to reject the null hypothesis $H_0$ if the observed value $t_{obs}$ is in the critical region, and not to reject the null hypothesis otherwise.</p></li>
+<li><p>Select a significance level (<span class="math notranslate nohighlight">\(\alpha\)</span>), a probability threshold below which the null hypothesis will be rejected. Common values are <span class="math notranslate nohighlight">\(5\%\)</span> and <span class="math notranslate nohighlight">\(1\%\)</span>.</p></li>
+<li><p>The distribution of the test statistic under the null hypothesis partitions the possible values of T into those for which the null hypothesis is rejected—the so-called critical region—and those for which it is not. The probability of the critical region is <span class="math notranslate nohighlight">\(\alpha\)</span>. In the case of a composite null hypothesis, the maximal probability of the critical region is <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
+<li><p>Compute from the observations the observed value <span class="math notranslate nohighlight">\(t_{obs}\)</span> of the test statistic <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
+<li><p>Decide to either reject the null hypothesis in favor of the alternative or not reject it. The decision rule is to reject the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> if the observed value <span class="math notranslate nohighlight">\(t_{obs}\)</span> is in the critical region, and not to reject the null hypothesis otherwise.</p></li>
 </ul>
 <p>A common alternative formulation of this process goes as follows:</p>
 <ul class="simple">
-<li><p>Compute from the observations the observed value tobs of the test statistic $T$.</p></li>
-<li><p>Calculate the $p$-value. This is the probability, under the null hypothesis, of sampling a test statistic at least as extreme as that which was observed (the maximal probability of that event, if the hypothesis is composite).</p></li>
-<li><p>Reject the null hypothesis, in favor of the alternative hypothesis, if and only if the $p$-value is less than (or equal to) the significance level (the selected probability) threshold ($\alpha$), for example $0.05$ or $0.01$.</p></li>
+<li><p>Compute from the observations the observed value tobs of the test statistic <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
+<li><p>Calculate the <span class="math notranslate nohighlight">\(p\)</span>-value. This is the probability, under the null hypothesis, of sampling a test statistic at least as extreme as that which was observed (the maximal probability of that event, if the hypothesis is composite).</p></li>
+<li><p>Reject the null hypothesis, in favor of the alternative hypothesis, if and only if the <span class="math notranslate nohighlight">\(p\)</span>-value is less than (or equal to) the significance level (the selected probability) threshold (<span class="math notranslate nohighlight">\(\alpha\)</span>), for example <span class="math notranslate nohighlight">\(0.05\)</span> or <span class="math notranslate nohighlight">\(0.01\)</span>.</p></li>
 </ul>
 <p>The former process was advantageous in the past when only tables of test statistics at common probability thresholds were available. It allowed a decision to be made without the calculation of a probability. It was adequate for classwork and for operational use, but it was deficient for reporting results. The latter process relied on extensive tables or on computational support not always available. The explicit calculation of a probability is useful for reporting. The calculations are now trivially performed with appropriate software.</p>
 <p>The difference in the two processes applied to the Radioactive suitcase example (below):</p>
 <ul class="simple">
-<li><p>“The Geiger-counter reading is $10$. The limit is $9$. Check the suitcase.”</p></li>
-<li><p>“The Geiger-counter reading is high; $97%$ of safe suitcases have lower readings. The limit is $95%$. Check the suitcase.”</p></li>
+<li><p>“The Geiger-counter reading is <span class="math notranslate nohighlight">\(10\)</span>. The limit is <span class="math notranslate nohighlight">\(9\)</span>. Check the suitcase.”</p></li>
+<li><p>“The Geiger-counter reading is high; <span class="math notranslate nohighlight">\(97\%\)</span> of safe suitcases have lower readings. The limit is <span class="math notranslate nohighlight">\(95\%\)</span>. Check the suitcase.”</p></li>
 </ul>
 <p>The former report is adequate, the latter gives a more detailed explanation of the data and the reason why the suitcase is being checked.</p>
 </section>
 <section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
-<p>A manufacturer claims that the average life of its products is $36$ months. An auditor selects a sample of $49$ units of the product and calculates the average life to be $34.5$ months. The population standard deviation is $4$ months. Test the manufacturer’s claim at $3%$ significance level.</p>
+<p>A manufacturer claims that the average life of its products is <span class="math notranslate nohighlight">\(36\)</span> months. An auditor selects a sample of <span class="math notranslate nohighlight">\(49\)</span> units of the product and calculates the average life to be <span class="math notranslate nohighlight">\(34.5\)</span> months. The population standard deviation is <span class="math notranslate nohighlight">\(4\)</span> months. Test the manufacturer’s claim at <span class="math notranslate nohighlight">\(3\%\)</span> significance level.</p>
 <p>So as per the above problem:</p>
 <ul class="simple">
-<li><p>$H_0 : \mu = 36$ months</p></li>
-<li><p>$H_1 : \mu ≠ 36$ months</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_0 : \mu = 36\)</span> months</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_1 : \mu ≠ 36\)</span> months</p></li>
 </ul>
-<p>$\alpha = 3%$ or $0.03$
-$\sigma = 4$
-$N = 49$</p>
+<p><span class="math notranslate nohighlight">\(\alpha = 3\%\)</span> or <span class="math notranslate nohighlight">\(0.03\)</span>
+<span class="math notranslate nohighlight">\(\sigma = 4\)</span>
+<span class="math notranslate nohighlight">\(N = 49\)</span></p>
 <p>First we will take a look into the Critical-value method:</p>
-<p>In this case we will have critical region at both sides with total area of $0.03$.</p>
-<p>So the area to the right = $0.015$, which means that area till UCV (cumulative probability till that point) $= 1-0.015=0.985$</p>
-<p>$z$-score of cumulative probability of UCV ($Z_c$ in this case) $= z$-score of $0.985 = 2.17$</p>
-<p>Calculating the critical values UCV/LCV $= \mu \pm Z_c * \frac{\sigma}{\sqrt{N}} $</p>
-<p>UCV/LCV $= 36 \pm 2.17 * \frac{4}{\sqrt{49}} = 37.24 \text{ and } 34.76$</p>
-<p>Now as the sample mean $34.5$ is not between UCV and LCV hence we reject the null hypothesis.</p>
+<p>In this case we will have critical region at both sides with total area of <span class="math notranslate nohighlight">\(0.03\)</span>.</p>
+<p>So the area to the right = <span class="math notranslate nohighlight">\(0.015\)</span>, which means that area till UCV (cumulative probability till that point) <span class="math notranslate nohighlight">\(= 1-0.015=0.985\)</span></p>
+<p><span class="math notranslate nohighlight">\(z\)</span>-score of cumulative probability of UCV (<span class="math notranslate nohighlight">\(Z_c\)</span> in this case) <span class="math notranslate nohighlight">\(= z\)</span>-score of <span class="math notranslate nohighlight">\(0.985 = 2.17\)</span></p>
+<p>Calculating the critical values UCV/LCV <span class="math notranslate nohighlight">\(= \mu \pm Z_c * \frac{\sigma}{\sqrt{N}} \)</span></p>
+<p>UCV/LCV <span class="math notranslate nohighlight">\(= 36 \pm 2.17 * \frac{4}{\sqrt{49}} = 37.24 \text{ and } 34.76\)</span></p>
+<p>Now as the sample mean <span class="math notranslate nohighlight">\(34.5\)</span> is not between UCV and LCV hence we reject the null hypothesis.</p>
 <figure class="align-default" id="image10">
 <img alt="../../_images/image10.png" src="../../_images/image10.png" />
 </figure>
-<p>Now let’s solve it using the $p$-value method:</p>
-<p>Calculate the $z$-score of $34.5 = \frac{\bar{x} -\mu}{\frac{\sigma}{\sqrt{N}}} = -2.62$</p>
-<p>Calculate the p-value from <a class="reference external" href="https://goodcalculators.com/p-value-calculator/">table</a> $= 0.0044$, which is cumulative area till sample point$</p>
-<p>As this it is in the left hand side hence there is no need to substract from $1$.</p>
-<p>Now this will be a 2-tailed test as we are checking for inequality, we need to multiply by $2 = 0.0088$, <em>remember 1-tailed test provides more power to detect an effect because the entire weight is allocated to one direction only.</em></p>
-<p>As $p$-value is $&lt; \alpha$ so we reject null-hypothesis.</p>
+<p>Now let’s solve it using the <span class="math notranslate nohighlight">\(p\)</span>-value method:</p>
+<p>Calculate the <span class="math notranslate nohighlight">\(z\)</span>-score of <span class="math notranslate nohighlight">\(34.5 = \frac{\bar{x} -\mu}{\frac{\sigma}{\sqrt{N}}} = -2.62\)</span></p>
+<p>Calculate the p-value from <a class="reference external" href="https://goodcalculators.com/p-value-calculator/">table</a> <span class="math notranslate nohighlight">\(= 0.0044\)</span>, which is cumulative area till sample point$</p>
+<p>As this it is in the left hand side hence there is no need to substract from <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Now this will be a 2-tailed test as we are checking for inequality, we need to multiply by <span class="math notranslate nohighlight">\(2 = 0.0088\)</span>, <em>remember 1-tailed test provides more power to detect an effect because the entire weight is allocated to one direction only.</em></p>
+<p>As <span class="math notranslate nohighlight">\(p\)</span>-value is <span class="math notranslate nohighlight">\(&lt; \alpha\)</span> so we reject null-hypothesis.</p>
 </section>
 <section id="errors-in-hypothesis-testing">
 <h3>Errors in Hypothesis Testing<a class="headerlink" href="#errors-in-hypothesis-testing" title="Permalink to this headline">#</a></h3>
@@ -754,12 +756,12 @@ $N = 49$</p>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
-<p>Type 1 error will scale the more the number of t-tests are run. If $\alpha = 0.05$ then there is $5%$ chance of Type 1 error on a single test, then across many tests $p(Type I)$ will increase. For example with 2 tests:</p>
-<p>$ P(\text{type I error}) = p(\text{type I error on A OR type I error on B}) $
-$ = 2p(\text{type I error on single test}) - p(\text{type I error on A AND type I error on B}) $
-$ = 2*.05 - .05^2 (\text{assuming independence of tests}) = 0.5 - .025 = .075 $</p>
-<p>If you want your $p(type I error)$ across n-tests to remain at $5%$, you will need to decrease the  $\alpha\ in each individual test. Bonferroni correction can be applied. Basically alpha will be reduced to alpha/n. n is number of experiments you are running.</p>
-<p>Otherwise, you can try and run an F-test to start in order to identify if a least $1$ test sees some significant effect. Then run a t-test on the specific experiment with the highest effect size. Granted, the p-value of the test will also depend on the variance of the sample in the given test, if we assume constant variance across tests, then the test with the highest effect size is in expectation the best performing test. Only running a single t-test will keep your p(type I error) low.</p>
+<p>Type 1 error will scale the more the number of t-tests are run. If <span class="math notranslate nohighlight">\(\alpha = 0.05\)</span> then there is <span class="math notranslate nohighlight">\(5%\)</span> chance of Type 1 error on a single test, then across many tests <span class="math notranslate nohighlight">\(p(Type I)\)</span> will increase. For example with 2 tests:</p>
+<p><span class="math notranslate nohighlight">\( P(\text{type I error}) = p(\text{type I error on A OR type I error on B}) \)</span>
+<span class="math notranslate nohighlight">\( = 2p(\text{type I error on single test}) - p(\text{type I error on A AND type I error on B}) \)</span>
+<span class="math notranslate nohighlight">\( = 2*.05 - .05^2 (\text{assuming independence of tests}) = 0.5 - .025 = .075 \)</span></p>
+<p>If you want your <span class="math notranslate nohighlight">\(p(type I error)\)</span> across n-tests to remain at <span class="math notranslate nohighlight">\(5%\)</span>, you will need to decrease the  $\alpha\ in each individual test. Bonferroni correction can be applied. Basically alpha will be reduced to alpha/n. n is number of experiments you are running.</p>
+<p>Otherwise, you can try and run an F-test to start in order to identify if a least <span class="math notranslate nohighlight">\(1\)</span> test sees some significant effect. Then run a t-test on the specific experiment with the highest effect size. Granted, the p-value of the test will also depend on the variance of the sample in the given test, if we assume constant variance across tests, then the test with the highest effect size is in expectation the best performing test. Only running a single t-test will keep your p(type I error) low.</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: Selection Bias</p>

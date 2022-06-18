@@ -53,6 +53,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://ml.pages.dev/contents/Data/Outlier.html" />
     <link rel="shortcut icon" href="../../_static/logo.gif"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -645,9 +647,9 @@ title="Print to PDF"
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p><strong>Dbscan:</strong> Dbscan is a density based clustering algorithm, it is focused on finding neighbors by density (MinPts) on an ‘n-dimensional sphere’ with radius $\epsilon$. A cluster can be defined as the maximal set of ‘density connected points’ in the feature space.Dbscan then defines different classes of points:</p>
+<li><p><strong>Dbscan:</strong> Dbscan is a density based clustering algorithm, it is focused on finding neighbors by density (MinPts) on an ‘n-dimensional sphere’ with radius <span class="math notranslate nohighlight">\(\epsilon\)</span>. A cluster can be defined as the maximal set of ‘density connected points’ in the feature space.Dbscan then defines different classes of points:</p>
 <ul>
-<li><p><strong>Core point:</strong> A is a core point if its neighborhood (defined by $\epsilon$) contains at least the same number or more points than the parameter MinPts.</p></li>
+<li><p><strong>Core point:</strong> A is a core point if its neighborhood (defined by <span class="math notranslate nohighlight">\(\epsilon\)</span>) contains at least the same number or more points than the parameter MinPts.</p></li>
 <li><p><strong>Border point:</strong> C is a border point that lies in a cluster and its neighborhood does not contain more points than MinPts, but it is still ‘density reachable’ by other points in the cluster.</p></li>
 <li><p><strong>Outlier:</strong> N is an outlier point that lies in no cluster and it is not ‘density reachable’ nor ‘density connected’ to any other point. Thus this point will have “his own cluster”.</p></li>
 </ul>
