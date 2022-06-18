@@ -2,3 +2,8 @@ jupyter-book
 matplotlib
 numpy
 sphinx-sitemap
+scipy
+numpy
+matplotlib
+pandas
+seaborn
