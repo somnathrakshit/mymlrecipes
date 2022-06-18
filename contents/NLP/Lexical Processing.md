@@ -9,7 +9,7 @@ html_meta:
 
 In any large text document (say, a hundred thousand words), the word frequencies follow Zipf distribution:
 
-```{figure} ../NLP/images/image1.PNG
+```{figure} images/image1.PNG
 ---
 name: image1
 scale: 70%
@@ -24,7 +24,7 @@ Zipf distribution
 	- **Lemmatization:** a more sophisticated technique, it doesn’t just chop off the suffix of a word. Instead, it takes an input word and searches for its base word by going recursively through all the variations of dictionary words. The base word, in this case, is called the ‘lemma’. It is more resource intensive and you need to pass the POS tag of the word along with the word to be lemmatized.
 	- **Phonetic Hashing:** certain words which have different pronunciations in different languages. As a result, they end up being spelt differently. Example being Delhi and Dilli
 
-	```{figure} ../NLP/images/image2.PNG
+	```{figure} images/image2.PNG
 	---
 	name: image2
 	scale: 40%

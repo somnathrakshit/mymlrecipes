@@ -13,7 +13,7 @@ Since solving any reasonable SQL problem requires a combination of all the topic
 
 Joins are best explained using Venn diagrams
 
-```{figure} ../SQL/images/image1.PNG
+```{figure} images/image1.PNG
 ---
 name: image1
 ---

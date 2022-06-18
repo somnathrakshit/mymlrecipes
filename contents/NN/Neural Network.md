@@ -27,7 +27,7 @@ Like a perceptron, the input is the weighted sum of inputs. The output is the ac
 
 Some of the common activation functions are as follows:
 
-```{figure} ../NN/images/image1.PNG
+```{figure} images/image1.PNG
 ---
 name: image1
 scale: 40%
@@ -62,7 +62,7 @@ Neural networks require rigorous training. Recall that models such as linear reg
 During training, the neural network learning algorithm fits various models to the training data and selects the best model for prediction. The learning algorithm is trained with a fixed set of hyperparameters - the network structure (number of layers, number of neurons in the input, hidden and output layers etc.). It is trained on the weights and the biases, which are the parameters of the network.
 
 
-```{figure} ../NN/images/image2.gif
+```{figure} images/image2.gif
 ---
 name: image2
 scale: 60%
@@ -75,7 +75,7 @@ Neural Networks can be used to *reasonably* approriximate *most* functions
 In artificial neural networks, the output from one layer is used as input to the next layer. Such networks are called feedforward neural networks.
 Feed forward neural network architecture consists of following main parts – Input Layer, Hidden Layer - If the number of hidden layer is one then it is known as a shallow neural network, else it is known as a deep neural network, Output Layer
 
-```{figure} ../NN/images/image3.gif
+```{figure} images/image3.gif
 ---
 name: image3
 scale: 70%
@@ -91,7 +91,7 @@ An important point to note is that if the data is large (which is often the case
 
 For a large neural network, the number of weight elements and biases becomes so large and minimizing the loss with so many parameters is a difficult task. This complex task is achieved using gradient descent.
 
-```{figure} ../NN/images/image4.gif
+```{figure} images/image4.gif
 ---
 name: image4
 scale: 70%
