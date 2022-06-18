@@ -53,8 +53,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://ml.pages.dev/contents/Algorithms/Generative VS Discriminative Models.html" />
     <link rel="shortcut icon" href="../../_static/logo.gif"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -144,8 +142,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Statistics/Probability%20Distribution.html">
-   Probability Distribution
+  <a class="reference internal" href="../Statistics/Probability%20Distribution%201.html">
+   Probability Distribution 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Statistics/Probability%20Distribution%202.html">
+   Probability Distribution 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Statistics/Maximum%20Likelihood%20Estimate.html">
+   Maximum Likelihood Estimate
   </a>
  </li>
  <li class="toctree-l1">
@@ -635,7 +643,7 @@ title="Print to PDF"
 </section>
 <section id="generative-models">
 <h2>Generative Models<a class="headerlink" href="#generative-models" title="Permalink to this headline">#</a></h2>
-<p>Generative models focus on the distribution of individual classes in a dataset and the learning algorithms tend to model the underlying patterns or distribution of the data points. These models use the concept of joint probability and create the instances where a given feature (<span class="math notranslate nohighlight">\(x\)</span>) or input and the desired output or label (<span class="math notranslate nohighlight">\(y\)</span>) exist at the same time.</p>
+<p>Generative models focus on the distribution of individual classes in a dataset and the learning algorithms tend to model the underlying patterns or distribution of the data points. These models use the concept of joint probability and create the instances where a given feature ($x$) or input and the desired output or label ($y$) exist at the same time.</p>
 <p>These models use probability estimates and likelihood to model data points and differentiate between different class labels present in a dataset. Unlike discriminative models, these models are also capable of generating new data points.</p>
 <p>However, they also have a major drawback – If there is a presence of outliers in the dataset, then it affects these types of models to a significant extent.</p>
 <p>Some examples are:</p>
@@ -657,7 +665,7 @@ title="Print to PDF"
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
-<p>In mathematical terms, a discriminative machine learning trains a model which is done by learning parameters that maximize the conditional probability <span class="math notranslate nohighlight">\(P(Y|X)\)</span>, while on the other hand, a generative model learns parameters by maximizing the joint probability of <span class="math notranslate nohighlight">\(P(X,Y)\)</span>.</p>
+<p>In mathematical terms, a discriminative machine learning trains a model which is done by learning parameters that maximize the conditional probability $P(Y|X)$, while on the other hand, a generative model learns parameters by maximizing the joint probability of $P(X,Y)$.</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: [AMAZON] Difference between Generative and Discriminative Models</p>

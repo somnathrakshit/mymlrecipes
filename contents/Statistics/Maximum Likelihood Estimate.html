@@ -1,0 +1,984 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Maximum Likelihood Estimate &#8212; The Data Science Interview Book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://ml.pages.dev/contents/Statistics/Maximum Likelihood Estimate.html" />
+    <link rel="shortcut icon" href="../../_static/logo.gif"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Central Limit Theorem" href="Central%20Limit%20Theorem.html" />
+    <link rel="prev" title="Probability Distribution 2" href="Probability%20Distribution%202.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.gif" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">The Data Science Interview Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Journey of this project
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../To%20Do%20List.html">
+   Log
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistics
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Probability%20Basics.html">
+   Probability Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Probability%20Distribution%201.html">
+   Probability Distribution 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Probability%20Distribution%202.html">
+   Probability Distribution 2
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Maximum Likelihood Estimate
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Central%20Limit%20Theorem.html">
+   Central Limit Theorem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Bayesian%20vs%20Frequentist%20Reasoning.html">
+   Bayesian vs Frequentist Reasoning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Hypothesis%20Testing.html">
+   Hypothesis Testing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Model Building
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Data/Data.html">
+   Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Data/Scaling.html">
+     Scaling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Data/Missing%20Value.html">
+     Missing Value
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Data/Outlier.html">
+     Outlier
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Data/Hyperparameter%20optimization.html">
+   Hyperparameter Optimization
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Algorithms
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Algorithms/Regression.html">
+   Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Algorithms/Generative%20VS%20Discriminative%20Models.html">
+   Generative vs Discriminative Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Algorithms/Classification.html">
+   Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Algorithms/Tree%20based%20approaches.html">
+   Tree based approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Algorithms/Time%20Series%20Analysis.html">
+   Time Series Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Algorithms/Anomaly%20Detection.html">
+   Anomaly Detection
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Neural Network
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NN/Neural%20Network.html">
+   Neural Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NN/Recurrent%20Neural%20Network.html">
+   Recurrent Neural Network
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  NLP
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NLP/Lexical%20Processing.html">
+   Lexical Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NLP/Syntactic%20Processing.html">
+   Syntactic Processing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Story Telling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StoryTelling/Visualization.html">
+   Visualization
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Python/Basics.html">
+   Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Python/Data%20Manipulation.html">
+   Data Manipulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Python/Statistics.html">
+   Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Python/NLP.html">
+   NLP
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  SQL
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SQL/Select.html">
+   SQL Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SQL/Joins.html">
+   Joins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SQL/Temporary%20Datasets.html">
+   Temporary Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SQL/Windows%20Functions.html">
+   Windows Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SQL/Time.html">
+   Time
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SQL/Functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SQL/Problems.html">
+   Problems
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Excel
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Excel/Excel%20Basics.html">
+   Excel Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Excel/Data%20Manipulation.html">
+   Data Manipulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Excel/Time%20and%20Date.html">
+   Time and Date
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tensorflow
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Tensorflow/Basics.html">
+   Basics
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Analytical Thinking
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Analytical%20Thinking/Business%20Scenarios.html">
+   Business Scenarios
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Analytical%20Thinking/Industry%20Application.html">
+   Industry Application
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/somnathrakshit/mymlrecipes/main?urlpath=tree/contents/Statistics/Maximum Likelihood Estimate.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/somnathrakshit/mymlrecipes/issues/new?title=Issue%20on%20page%20%2Fcontents/Statistics/Maximum Likelihood Estimate.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/contents/Statistics/Maximum Likelihood Estimate.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimating-parameters">
+   Estimating Parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#likelihood-of-many-samples">
+   Likelihood of many samples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#values-of-parameters">
+   Values of parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-example">
+   An Example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Maximum Likelihood Estimate</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimating-parameters">
+   Estimating Parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#likelihood-of-many-samples">
+   Likelihood of many samples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#values-of-parameters">
+   Values of parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-example">
+   An Example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="maximum-likelihood-estimate">
+<h1>Maximum Likelihood Estimate<a class="headerlink" href="#maximum-likelihood-estimate" title="Permalink to this headline">#</a></h1>
+<p>Suppose we are given a problem where we can assume the <em>parametric class</em> of distribution (e.g. Normal Distribution) that generates a set of data, and we want to determine the most likely parameters of this distribution using the given data. Since this class of distribution has a finite number of parameters (e.g. mean $\mu$ and standard deviation $\sigma$, in case of normal distribution) that need to be figured out in order to identify the particular member of the class, we will use the given data to do so.</p>
+<p>The obtained parameter estimates will be called <strong>Maximum Likelihood Estimates</strong>.</p>
+<p>Let us consider a Random Variable $X$ to be normally distributed with some mean $\mu$ and standard deviation $\sigma$. We need to estimate $\mu$ and $\sigma$ using our samples which accurately represent the actual $X$ and not just the samples that we have drawn out.</p>
+<section id="estimating-parameters">
+<h2>Estimating Parameters<a class="headerlink" href="#estimating-parameters" title="Permalink to this headline">#</a></h2>
+<p>Let’s have a look at the Probability Density Function (PDF) for the Normal Distribution and see what they mean.</p>
+<p>$$
+\begin{equation}
+f(x; \mu, \sigma) = \frac{e^{-(x - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}}
+\end{equation}
+$$ (eq_normal_dist)</p>
+<p>This equation is used to obtain the probability of our sample $x$ being from our random variable $X$, when the true parameters of the distribution are $\mu$ and $\sigma$. Normal distributions with different $\mu$ and $\sigma$ are shown below.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_normal</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    https://emredjan.github.io/blog/2017/07/19/plotting-distributions/</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x_range</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    
+<span class="n">mus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">sigmas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">mus</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">sigmas</span><span class="p">)</span>
+<span class="n">x_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">mus</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">):</span>
+    <span class="n">plot_normal</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$\mu$ = </span><span class="si">{</span><span class="n">mu</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, $\sigma$ = </span><span class="si">{</span><span class="n">sigma</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Maximum Likelihood Estimate_2_0.png" src="../../_images/Maximum Likelihood Estimate_2_0.png" />
+</div>
+</div>
+<p>Let us consider that our sample = 5. Then what is the probability that it comes from a normal distribution with $\mu = 4$ and $\sigma = 1$? To get this probability, we only need to plug in the values of $x, \mu$ and $\sigma$ in Equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_normal_dist</span></code>. Scipy as a handy function <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html"><code class="docutils literal notranslate"><span class="pre">norm.pdf()</span></code></a> that we can use to obtain this easily.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+
+<span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.24197072451914337
+</pre></div>
+</div>
+</div>
+</div>
+<p>What if our sample came from a different distribution with $\mu = 3$ and $\sigma = 2$?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.12098536225957168
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see, the PDF equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_normal_dist</span></code> shows us how likely our sample are from a distribution with certain parameters. Current results show that our sample is more likely to have come from the first distribution. But this with just a single sample. What if we had multiple samples and we wanted to estimate the parameters?</p>
+<p>Let us assume we have multiple samples from $X$ which we assume to have come from some normal distribution. Also, all the samples are mutually independent of one another. In this case, the we can get the total probability of observing all samples by multiplying the probabilities of observing each sample individually.</p>
+<p>E.g., The probability that both $7$ and $1$ are drawn from a normal distribution with $\mu = 4$ and $\sigma=2$ is equal to:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.004193701896768355
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="likelihood-of-many-samples">
+<h2>Likelihood of many samples<a class="headerlink" href="#likelihood-of-many-samples" title="Permalink to this headline">#</a></h2>
+<p>In maximum likelihood estimation (MLE), we specify a distribution of unknown parameters and then use our data to obtain the actual parameter values. In essence, MLE’s aim is to find the set of parameters for the probability distribution that maximizes the likelihood of the data points. This can be formally expressed as:</p>
+<p>$$
+\begin{equation}
+\hat{\mu}, \hat{\sigma} = \operatorname*{argmax}<em>{\mu, \sigma} \prod</em>{i=1}^n f(x_i)
+\end{equation}
+$$ (eq_likelihood)</p>
+<p>However, it is difficult to optimize this product of probabilities because of long and messy calculations. Thus, we use log-likelihood which is the logarithm of the probability that the data point is observed. Formally Equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_likelihood</span></code> can be re-written as,</p>
+<p>$$
+\begin{equation}
+\hat{\mu}, \hat{\sigma} = \operatorname*{argmax}<em>{\mu, \sigma}\Sigma</em>{i=1}^n \ln f(x_i)
+\end{equation}
+$$ (eq_log_likelihood)</p>
+<p>This is because logarithmic function is a monotonically increasing function. Thus, taking the log of another function does not change the point where the original function peaks. There are two main advantages of using log-likelihood:</p>
+<ol class="simple">
+<li><p>The exponential terms in the probability density function are more manageable and easily optimizable.</p></li>
+<li><p>The product of all likelihoods become a sum of individual likelihoods which allows these individual components to be maximized rather than working with the product of $n$ probability density functions.</p></li>
+</ol>
+<p>Now, let us find the maximum likelihood estimates using the log likelihood function.</p>
+<p>$$
+\begin{align*}
+\begin{split}
+&amp; \ln\left[ L(\mu, \sigma|x_1, …, x_n)\right] \
+&amp;= \ln \left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \times  \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \times … \times  \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}}  \right) \
+&amp;= \ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + \ln\left( \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + … \
+&amp;\quad + \ln\left( \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right)
+\end{split}
+\end{align*}
+$$ (eq_mle_all_terms)</p>
+<p>Here,</p>
+<p>$$
+\begin{align*}
+&amp;\ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) \
+&amp;= \ln\left( \frac{1} {\sigma\sqrt{2\pi}} \right) + \ln\left( e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) } \right) \
+&amp;= \ln\left[ (2\pi\sigma^2)^{\frac{-1}{2}} \right] - \frac{(x_1 - \mu)^2}{2\sigma^2}\ln(e) \
+&amp;= -\frac{1}{2}\ln ( 2\pi\sigma^2) - \frac{(x_1-\mu)^2}{2\sigma^2} \
+&amp;= -\frac{1}{2}\ln(2\pi) - \frac{1}{2}\ln(\sigma^2) - \frac{(x_1 - \mu)^2}{2\sigma^2} \
+\end{align*}
+$$
+$$
+\begin{align*}
+&amp;= -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_1 - \mu)^2}{2\sigma^2} \
+\end{align*}
+$$ (eq_mle_single_term)</p>
+<p>Thus, Equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_mle_all_terms</span></code> can be written as:</p>
+<p>$$
+\begin{align*}
+\ln\left[ L(\mu, \sigma|x_1, …, x_n)\right] &amp;= \ln\left( \frac{e^{-(x_1 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + \ln\left( \frac{e^{-(x_2 - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) + … \
+&amp;\quad + \ln\left( \frac{e^{-(x_n - \mu)^{2}/(2\sigma^{2}) }} {\sigma\sqrt{2\pi}} \right) \
+&amp;= \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_1 - \mu)^2}{2\sigma^2} \right] \
+&amp;\quad + \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_2- \mu)^2}{2\sigma^2} \right] \
+&amp;\quad + … + \left[ -\frac{1}{2}\ln(2\pi) - \ln(\sigma) - \frac{(x_n - \mu)^2}{2\sigma^2} \right] \
+\end{align*}
+$$
+$$
+\begin{align*}
+&amp;= -\frac{n}{2}\ln(2\pi) - n\ln(\sigma) - \frac{(x_1-\mu)^2}{2\sigma^2} - \frac{(x_2-\mu)^2}{2\sigma^2} - … - \frac{(x_n-\mu)^2}{2\sigma^2}
+\end{align*}
+$$ (eq_mle_simplified)</p>
+</section>
+<section id="values-of-parameters">
+<h2>Values of parameters<a class="headerlink" href="#values-of-parameters" title="Permalink to this headline">#</a></h2>
+<p>Now, we will use Equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_mle_simplified</span></code> to find the values of $\mu$ and $\sigma$. For this purpose, we take the partial derivative of Equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_mle_simplified</span></code> with respect to $\mu$ and $\sigma$.</p>
+<p>$$
+\begin{align*}
+\frac{\partial}{\partial \mu}\ln\left[L(\mu, \sigma|x_1, x_2, …, x_n) \right] &amp;= 0 - 0 + \frac{x_1 - \mu}{\sigma^2} + \frac{x_2 - \mu}{\sigma^2} + … + \frac{x_n - \mu}{\sigma^2} \
+\end{align*}
+$$
+$$
+\begin{align*}
+\frac{\partial}{\partial \mu}\ln\left[L(\mu, \sigma|x_1, x_2, …, x_n) \right] &amp;= \frac{1}{\sigma^2}\left[ (x_1 + x_2 + … + x_n) - n\mu \right]
+\end{align*}
+$$ (eq_mu)</p>
+<p>$$
+\begin{align*}
+\frac{\partial}{\partial \sigma}\ln\left[L(\mu, \sigma|x_1, x_2, …, x_n) \right] &amp;= 0 - \frac{n}{\sigma} + \frac{(x_1 - \mu)^2}{\sigma^3} + \frac{(x_2 - \mu)^2}{\sigma^3} + … + \frac{(x_n - \mu)^2}{\sigma^3} \
+\end{align*}
+$$
+$$
+\begin{align*}
+\frac{\partial}{\partial \sigma}\ln\left[L(\mu, \sigma|x_1, x_2, …, x_n) \right] &amp;= -\frac{n}{\sigma} + \frac{1}{\sigma^3}\left[ (x_1 - \mu)^2 + (x_2 - \mu)^2 + …+ (x_n - \mu)^2 \right]
+\end{align*}
+$$ (eq_sigma)</p>
+<p>Now, to find the maximum likelihood estimate for $\mu$ and $\sigma$, we need to solve for the derivative with respect to $\mu = 0$ and $\sigma = 0$, because the slope is 0 at the peak of the curve.</p>
+<p>Thus, using Equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_mu</span></code> and setting $\frac{\partial}{\partial \mu}\ln\left[L(\mu, \sigma|x_1, x_2, …, x_n) \right] = 0$, we get,</p>
+<p>$$
+\begin{align*}
+0 &amp;= \frac{1}{\sigma^2}\left[ (x_1 + x_2 + … + x_n) - n\mu \right] \
+0 &amp;= (x_1+x_2 + … + x_n) - n\mu \
+\end{align*}
+$$
+$$
+\begin{align*}
+\mu &amp;= \frac{(x_1+x_2+…+x_n)}{n}
+\end{align*}
+$$ (eq_mu_final)</p>
+<p>Thus, the maximum likelihood estimate for $\mu$ is the mean of the samples.</p>
+<p>Simialrly, using Equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_sigma</span></code> and setting $\frac{\partial}{\partial \sigma}\ln\left[L(\mu, \sigma|x_1, x_2, …, x_n) \right] = 0$, we get,</p>
+<p>$$
+\begin{align*}
+0 &amp;= -\frac{n}{\sigma} + \frac{1}{\sigma^3}\left[ (x_1 - \mu)^2 + (x_2 - \mu)^2 + …+ (x_n - \mu)^2 \right] \
+0 &amp;= -n + \frac{1}{\sigma^2}\left[ (x_1-\mu)^2 + (x_2-\mu)^2 + …+ (x_n-\mu)^2 \right] \
+n\sigma^2 &amp;= (x_1-\mu)^2 + (x_2-\mu)^2 + …+ (x_n-\mu)^2 \
+\end{align*}
+$$
+$$
+\begin{align*}
+\sigma &amp;= \sqrt{\frac{(x_1-\mu)^2 + (x_2-\mu)^2 + …+ (x_n-\mu)^2}{n}} \
+\end{align*}
+$$ (eq_sigma_final)</p>
+<p>Thus, the maximum likelihood estimate for $\sigma$ is the standard deviation of the samples.</p>
+</section>
+<section id="an-example">
+<h2>An Example<a class="headerlink" href="#an-example" title="Permalink to this headline">#</a></h2>
+<p>Let us now consider 5 samples with values 0, -5,  6, -9 and 8. We want to know the normal distribution from which all of these samples were most likely to be drawn. In other words, we would like to maximize the value of $f(0, -5,  6, -9, 8)$ as given in Equation <code class="xref eq docutils literal notranslate"><span class="pre">eq_normal_dist</span></code>. Since we do not know the values of $\mu$ and $\sigma$ for the required distribution, we need to estimate them using  Equations <code class="xref eq docutils literal notranslate"><span class="pre">eq_mu_final</span></code> and <code class="xref eq docutils literal notranslate"><span class="pre">eq_sigma_final</span></code> respectively.</p>
+<p>Using the formulae of $\mu$ and $\sigma$, we get,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;mu = </span><span class="si">{</span><span class="n">mu</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> and sigma = </span><span class="si">{</span><span class="n">sigma</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu = 0.00 and sigma = 6.42
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us plot the normal distribution with these values and also mark the given points.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="n">plot_normal</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">clip_on</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Maximum Likelihood Estimate_18_0.png" src="../../_images/Maximum Likelihood Estimate_18_0.png" />
+</div>
+</div>
+<p>Thus, this is the most likely normal distribution from which the five sample points were drawn out.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="https://medium.com/&#64;rrfd/what-is-maximum-likelihood-estimation-examples-in-python-791153818030">What is Maximum Likelihood Estimation — Examples in Python | Medium.com</a></p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/maximum-likelihood-estimation-how-it-works-and-implementing-in-python-b0eb2efb360f">Maximum Likelihood Estimation: How it Works and Implementing in Python | towardsdatascience.com</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/Dn6b9fCIUpM">Maximum Likelihood For the Normal Distribution, step-by-step! | YouTube</a></p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./contents/Statistics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Probability%20Distribution%202.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Probability Distribution 2</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Central%20Limit%20Theorem.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Central Limit Theorem</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Somnath Rakshit | © MIT License - 2022 and onwards<br/>
+  
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

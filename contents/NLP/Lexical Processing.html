@@ -53,8 +53,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://ml.pages.dev/contents/NLP/Lexical Processing.html" />
     <link rel="shortcut icon" href="../../_static/logo.gif"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -144,8 +142,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Statistics/Probability%20Distribution.html">
-   Probability Distribution
+  <a class="reference internal" href="../Statistics/Probability%20Distribution%201.html">
+   Probability Distribution 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Statistics/Probability%20Distribution%202.html">
+   Probability Distribution 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Statistics/Maximum%20Likelihood%20Estimate.html">
+   Maximum Likelihood Estimate
   </a>
  </li>
  <li class="toctree-l1">
@@ -586,7 +594,7 @@ title="Print to PDF"
 <li><p><strong>Bag of Words(BoW):</strong> A table containing which word is present in which document, can be either count or binary</p></li>
 <li><p><strong>tf-idf:</strong> is a numerical statistic that is intended to reflect how important a word is to a document in a collection or corpus. The tf–idf value increases proportionally to the number of times a word appears in the document and is offset by the number of documents in the corpus that contain the word, which helps to adjust for the fact that some words appear more frequently in general.</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\( tf-idf = \frac{\text{freq of term 't' in doc 'd'}}{\text{total terms in 'd'}} * log \frac{\text{total number of docs}}{\text{total number of docs having term 't'}}\)</span></p></li>
+<li><p>$ tf-idf = \frac{\text{freq of term ‘t’ in doc ‘d’}}{\text{total terms in ‘d’}} * log \frac{\text{total number of docs}}{\text{total number of docs having term ‘t’}}$</p></li>
 </ul>
 </li>
 </ul>

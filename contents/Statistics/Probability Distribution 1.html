@@ -1,0 +1,949 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Probability Distribution 1 &#8212; The Data Science Interview Book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://ml.pages.dev/contents/Statistics/Probability Distribution 1.html" />
+    <link rel="shortcut icon" href="../../_static/logo.gif"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Probability Distribution 2" href="Probability%20Distribution%202.html" />
+    <link rel="prev" title="Probability Basics" href="Probability%20Basics.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.gif" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">The Data Science Interview Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Journey of this project
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../To%20Do%20List.html">
+   Log
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Statistics
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Probability%20Basics.html">
+   Probability Basics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Probability Distribution 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Probability%20Distribution%202.html">
+   Probability Distribution 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Maximum%20Likelihood%20Estimate.html">
+   Maximum Likelihood Estimate
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Central%20Limit%20Theorem.html">
+   Central Limit Theorem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Bayesian%20vs%20Frequentist%20Reasoning.html">
+   Bayesian vs Frequentist Reasoning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Hypothesis%20Testing.html">
+   Hypothesis Testing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Model Building
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Data/Data.html">
+   Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Data/Scaling.html">
+     Scaling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Data/Missing%20Value.html">
+     Missing Value
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Data/Outlier.html">
+     Outlier
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Data/Hyperparameter%20optimization.html">
+   Hyperparameter Optimization
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Algorithms
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Algorithms/Regression.html">
+   Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Algorithms/Generative%20VS%20Discriminative%20Models.html">
+   Generative vs Discriminative Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Algorithms/Classification.html">
+   Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Algorithms/Tree%20based%20approaches.html">
+   Tree based approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Algorithms/Time%20Series%20Analysis.html">
+   Time Series Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Algorithms/Anomaly%20Detection.html">
+   Anomaly Detection
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Neural Network
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NN/Neural%20Network.html">
+   Neural Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NN/Recurrent%20Neural%20Network.html">
+   Recurrent Neural Network
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  NLP
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NLP/Lexical%20Processing.html">
+   Lexical Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NLP/Syntactic%20Processing.html">
+   Syntactic Processing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Story Telling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../StoryTelling/Visualization.html">
+   Visualization
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Python/Basics.html">
+   Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Python/Data%20Manipulation.html">
+   Data Manipulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Python/Statistics.html">
+   Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Python/NLP.html">
+   NLP
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  SQL
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SQL/Select.html">
+   SQL Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SQL/Joins.html">
+   Joins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SQL/Temporary%20Datasets.html">
+   Temporary Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SQL/Windows%20Functions.html">
+   Windows Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SQL/Time.html">
+   Time
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SQL/Functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SQL/Problems.html">
+   Problems
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Excel
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Excel/Excel%20Basics.html">
+   Excel Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Excel/Data%20Manipulation.html">
+   Data Manipulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Excel/Time%20and%20Date.html">
+   Time and Date
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tensorflow
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Tensorflow/Basics.html">
+   Basics
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Analytical Thinking
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Analytical%20Thinking/Business%20Scenarios.html">
+   Business Scenarios
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Analytical%20Thinking/Industry%20Application.html">
+   Industry Application
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/somnathrakshit/mymlrecipes/main?urlpath=tree/contents/Statistics/Probability Distribution 1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/somnathrakshit/mymlrecipes/issues/new?title=Issue%20on%20page%20%2Fcontents/Statistics/Probability Distribution 1.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/contents/Statistics/Probability Distribution 1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-variable">
+   Random Variable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discrete-random-variables">
+   Discrete Random Variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuous-random-variables">
+   Continuous Random Variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notation">
+   Notation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#joint-distributions">
+   Joint Distributions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#joint-probability-mass-function-joint-pmf">
+   Joint Probability Mass Function (Joint PMF)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#joint-cumulative-distributive-function-joint-cdf">
+   Joint Cumulative Distributive Function (Joint CDF)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#marginal-probability-mass-function-marginal-pmf">
+   Marginal Probability Mass Function (Marginal PMF)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Probability Distribution 1</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-variable">
+   Random Variable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discrete-random-variables">
+   Discrete Random Variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuous-random-variables">
+   Continuous Random Variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notation">
+   Notation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#joint-distributions">
+   Joint Distributions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#joint-probability-mass-function-joint-pmf">
+   Joint Probability Mass Function (Joint PMF)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#joint-cumulative-distributive-function-joint-cdf">
+   Joint Cumulative Distributive Function (Joint CDF)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#marginal-probability-mass-function-marginal-pmf">
+   Marginal Probability Mass Function (Marginal PMF)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="probability-distribution-1">
+<h1>Probability Distribution 1<a class="headerlink" href="#probability-distribution-1" title="Permalink to this headline">#</a></h1>
+<p>A probability distribution is a list of all of the possible outcomes of a random variable along with their corresponding probability values.</p>
+<section id="random-variable">
+<h2>Random Variable<a class="headerlink" href="#random-variable" title="Permalink to this headline">#</a></h2>
+<p>A random variable is any variable whose outcome is a random event. It can be discrete (e.g., outcome of a coin toss or the roll of a die) as well as continuous (e.g., the heights of students in the class or the time needed by athletes to complete a 100 m race).</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Examples of discrete and continouns probability distributions&#39;</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">binom</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Discrete probability distribution&#39;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Continuous probability distribution&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="discrete-random-variables">
+<h2>Discrete Random Variables<a class="headerlink" href="#discrete-random-variables" title="Permalink to this headline">#</a></h2>
+<p>When a probability function is used to describe a discrete random variable (denoted by $X$), we call this function as probability mass function (PMF). Formally, a PMF is written as:</p>
+<p>$$
+\begin{equation}
+f(x) = p(X=x)
+\end{equation}
+$$</p>
+<p>$p(x)$ is called as a probability mass function if it satisfies the following conditions:</p>
+<ol class="simple">
+<li><p>$p(x) &gt; 0$</p></li>
+<li><p>$p(x) &lt;= 1$</p></li>
+<li><p>$\sum_{x} p(x) = 1$</p></li>
+</ol>
+<p>In the example of an unbiased dice roll, the probability of landing the number 2 (denoted by $x$) is represented as $p(X=x) = \frac{1}{6}$. The PMF just returns the probability of the outcome at a given point $x$.</p>
+</section>
+<section id="continuous-random-variables">
+<h2>Continuous Random Variables<a class="headerlink" href="#continuous-random-variables" title="Permalink to this headline">#</a></h2>
+<p>When a probability function is used to describe a continuous random variable (denoted by $X$), we call this function as probability distribution function (PDF). It is meaningless to represent a probability with any discrete value. To get the probability from a probability density function we need to find the area under the curve. We can then find the probability that the ourcome lies within an interval by calculating the area under the curve. Formally, an interval is used to represent the probability within that interval $X \in (x, x + \delta x)$. $p(x)\delta x$ is the probability that $X \in (x, x+\delta x)$ as $\delta x \rightarrow 0$. The probability density function satisfies the following criteria:</p>
+<ol class="simple">
+<li><p>$p(x) \ge 0$</p></li>
+<li><p>$\int_{-\infty}^{+\infty}p(x)dx = 1$</p></li>
+<li><p>$\int_a^b p(x)dx = P(a \lt X \lt b)$</p></li>
+</ol>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Examples of discrete and continouns probability distributions&#39;</span><span class="p">)</span>
+
+<span class="n">xk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">pk</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="n">custm</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">rv_discrete</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;custm&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">(</span><span class="n">xk</span><span class="p">,</span> <span class="n">pk</span><span class="p">))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">custm</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">xk</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Discrete probability distribution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">150</span><span class="p">:</span><span class="mi">170</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">150</span><span class="p">:</span><span class="mi">170</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cornflowerblue&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Continuous probability distribution&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Probability Distribution 1_5_0.png" src="../../_images/Probability Distribution 1_5_0.png" />
+</div>
+</div>
+</section>
+<section id="notation">
+<h2>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>$p(.)$ can mean different things depending on the context.</p>
+<ol class="simple">
+<li><p>$p(X)$ denotes the distribution (PMF/PDF) of a random variable $X$.</p></li>
+<li><p>$p(X=x)$ or $p(x)$ denotes the proability or probability density at point $x$. The actual meaning needs to be understood from context.</p></li>
+</ol>
+</li>
+<li><p>The following means <strong>drawing from a random sample</strong> from the distribution $p(X)$:</p></li>
+</ol>
+<p>$$
+\begin{equation}
+x \sim p(X)
+\end{equation}
+$$</p>
+</section>
+<section id="joint-distributions">
+<h2>Joint Distributions<a class="headerlink" href="#joint-distributions" title="Permalink to this headline">#</a></h2>
+<p>Often in real life, we are interested in multiple random variables that are related to each other. For example, let us choose a random set of students in a classroom. We would like to study the number of students in the classroom, their ages, salaries in their first job, etc. Each of these is a random variable and they are dependent on one another. The ideas are similar to what we have seen so far. The only difference is that instead of one random variable, we will study two or more random variables.</p>
+</section>
+<section id="joint-probability-mass-function-joint-pmf">
+<h2>Joint Probability Mass Function (Joint PMF)<a class="headerlink" href="#joint-probability-mass-function-joint-pmf" title="Permalink to this headline">#</a></h2>
+<p>For a discrete random variable $X$, we define the PMF as $p_X(x) = p(X=x)$. Now, if there are two random variables $X$ and $Y$, their joint probability mass function is defined as follows:</p>
+<p>$$
+\begin{equation}
+p_{XY}(x,y)=p(X=x, Y=y).
+\end{equation}
+$$</p>
+<p>Since the comman means “and”, so we can write</p>
+<p>$$
+\begin{align}
+p_{XY}(x,y)&amp;=p(X=x, Y=y) \
+&amp;= p\big((X=x)\textrm{ and }(Y=y)\big).
+\end{align}
+$$</p>
+<p>For discrete random variables, the joint PMF $p(X, Y)$ is like a table that sums to 1.</p>
+<p>$$
+\begin{equation}
+\sum_x \sum_y p(X=x, Y=y) = 1
+\end{equation}
+$$</p>
+</section>
+<section id="joint-cumulative-distributive-function-joint-cdf">
+<h2>Joint Cumulative Distributive Function (Joint CDF)<a class="headerlink" href="#joint-cumulative-distributive-function-joint-cdf" title="Permalink to this headline">#</a></h2>
+<p>For a random variable $X$, we define the CDF as $p_X(x)=p(X \leq x)$. Now, if we have two random variables $X$ and $Y$ and we would like to study them jointly, we can define the joint cumulative function as follows:</p>
+<p>$$
+\begin{align}%\label{}
+\nonumber p_{XY}(x,y)=p(X \leq x, Y \leq y).
+\end{align}
+$$</p>
+<p>As usual, comma means “and,” so we can write</p>
+<p>$$
+\begin{align}
+\nonumber p_{XY}(x,y)&amp;=p(X \leq x, Y \leq y) \
+\nonumber &amp;= p\big((X \leq x)\textrm{ and }(Y\leq y)\big)=p\big((X \leq x)\cap(Y\leq y)\big).
+\end{align}
+$$</p>
+<p>For continuous random variables, the joint PDF $p(X, Y)$ is given by</p>
+<p>$$
+\begin{equation}
+\int_x \int_y p(X=x, Y=y)dxdy = 1
+\end{equation}
+$$</p>
+</section>
+<section id="marginal-probability-mass-function-marginal-pmf">
+<h2>Marginal Probability Mass Function (Marginal PMF)<a class="headerlink" href="#marginal-probability-mass-function-marginal-pmf" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>https://www.cse.iitk.ac.in/users/piyush/courses/pml_fall17/material/probabilty_tutorial.pdf</p></li>
+<li><p>https://towardsdatascience.com/probability-concepts-explained-probability-distributions-introduction-part-3-4a5db81858dc</p></li>
+<li><p>http://www.mit.edu/~6.s085/notes/lecture3.pdf</p></li>
+<li><p>http://www.ams.sunysb.edu/~zhu/ams315/ch11.pdf</p></li>
+<li><p>https://bookdown.org/sbikienga/Intro_to_stat_book/foundations-for-inference.html#confidence-intervals</p></li>
+<li><p>https://www.cse.iitk.ac.in/users/piyush/courses/pml_fall17/material/probabilty_tutorial.pdf</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./contents/Statistics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Probability%20Basics.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Probability Basics</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Probability%20Distribution%202.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Probability Distribution 2</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Somnath Rakshit | © MIT License - 2022 and onwards<br/>
+  
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

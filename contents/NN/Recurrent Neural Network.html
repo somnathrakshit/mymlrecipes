@@ -53,8 +53,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://ml.pages.dev/contents/NN/Recurrent Neural Network.html" />
     <link rel="shortcut icon" href="../../_static/logo.gif"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -144,8 +142,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Statistics/Probability%20Distribution.html">
-   Probability Distribution
+  <a class="reference internal" href="../Statistics/Probability%20Distribution%201.html">
+   Probability Distribution 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Statistics/Probability%20Distribution%202.html">
+   Probability Distribution 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Statistics/Maximum%20Likelihood%20Estimate.html">
+   Maximum Likelihood Estimate
   </a>
  </li>
  <li class="toctree-l1">
@@ -670,7 +678,7 @@ title="Print to PDF"
 <figure class="align-default" id="image2">
 <a class="reference internal image-reference" href="../../_images/image24.png"><img alt="../../_images/image24.png" src="../../_images/image24.png" style="width: 445.9px; height: 339.5px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">In RNN each activation is dependent on two things: the activation in the previous layer <span class="math notranslate nohighlight">\(l-1\)</span> at the current timestep <span class="math notranslate nohighlight">\(t\)</span>, and the activation in the same layer <span class="math notranslate nohighlight">\(l\)</span> at the previous timestep <span class="math notranslate nohighlight">\(t-1\)</span></span><a class="headerlink" href="#image2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">In RNN each activation is dependent on two things: the activation in the previous layer $l-1$ at the current timestep $t$, and the activation in the same layer $l$ at the previous timestep $t-1$</span><a class="headerlink" href="#image2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="types-of-rnn">
@@ -733,7 +741,7 @@ title="Print to PDF"
 <li><p><strong>Offline sequences​:</strong> These allow for a lookahead in time. The entire sequence is present for your perusal. For example, a document present in your local drive where you have access to the entire document.</p></li>
 <li><p><strong>Online sequences​:</strong> These don’t allow for a lookahead. For example, a person is speaking and you need to transcribe the speech. In this case, you don’t know what is going to come next.</p></li>
 </ul>
-<p>You can make use of offline sequences by looking ahead. You can feed the offline sequences to an RNN in regular order as well as the reverse order to get better results in whatever task you’re doing. Such an RNN is called a bidirectional RNN​. In a bidirectional RNN, the input at each timestep is a concatenation of the entity present in regular order and the entity present in reverse order. For example, for a sentence of length <span class="math notranslate nohighlight">\(100\)</span>, the input at the first timestep will be a concatenation of the first word <span class="math notranslate nohighlight">\(x_1\)</span> and the last word <span class="math notranslate nohighlight">\(x_{100}\)</span>. A bidirectional RNN has <span class="math notranslate nohighlight">\(2\)</span>x number of parameters​ than a vanilla RNN.</p>
+<p>You can make use of offline sequences by looking ahead. You can feed the offline sequences to an RNN in regular order as well as the reverse order to get better results in whatever task you’re doing. Such an RNN is called a bidirectional RNN​. In a bidirectional RNN, the input at each timestep is a concatenation of the entity present in regular order and the entity present in reverse order. For example, for a sentence of length $100$, the input at the first timestep will be a concatenation of the first word $x_1$ and the last word $x_{100}$. A bidirectional RNN has $2$x number of parameters​ than a vanilla RNN.</p>
 </section>
 <section id="lstm">
 <h2>LSTM<a class="headerlink" href="#lstm" title="Permalink to this headline">#</a></h2>

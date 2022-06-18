@@ -53,13 +53,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://ml.pages.dev/contents/Statistics/Probability Basics.html" />
     <link rel="shortcut icon" href="../../_static/logo.gif"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Probability Distribution" href="Probability%20Distribution.html" />
+    <link rel="next" title="Probability Distribution 1" href="Probability%20Distribution%201.html" />
     <link rel="prev" title="Log" href="../To%20Do%20List.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -144,8 +142,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Probability%20Distribution.html">
-   Probability Distribution
+  <a class="reference internal" href="Probability%20Distribution%201.html">
+   Probability Distribution 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Probability%20Distribution%202.html">
+   Probability Distribution 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Maximum%20Likelihood%20Estimate.html">
+   Maximum Likelihood Estimate
   </a>
  </li>
  <li class="toctree-l1">
@@ -645,17 +653,18 @@ title="Print to PDF"
 <a class="reference internal image-reference" href="../../_images/image121.png"><img alt="../../_images/image121.png" src="../../_images/image121.png" style="width: 400.0px; height: 300.0px;" /></a>
 </figure>
 <p>Probability theory is the mathematical framework that allows us to analyze chance events in a logically sound manner. The probability of an event is a number indicating how likely that event will occur.</p>
-<p>Note that when we say the probability of a head is <span class="math notranslate nohighlight">\(1/2\)</span>, we are not claiming that any sequence of coin tosses will consist of exactly <span class="math notranslate nohighlight">\(50\)</span>% heads. If we toss a fair coin ten times, it would not be surprising to observe <span class="math notranslate nohighlight">\(6\)</span> heads and <span class="math notranslate nohighlight">\(4\)</span> tails, or even <span class="math notranslate nohighlight">\(3\)</span> heads and <span class="math notranslate nohighlight">\(7\)</span> tails. But as we continue to toss the coin over and over again, we expect the long-run frequency of heads to get ever closer to <span class="math notranslate nohighlight">\(50\)</span>%. <strong>In general, it is important in statistics to understand the distinction between theoretical and empirical quantities. Here, the true (theoretical) probability of a head was <span class="math notranslate nohighlight">\(1/2\)</span>, but any realized (empirical) sequence of coin tosses may have more or less than exactly <span class="math notranslate nohighlight">\(50\)</span>% heads.</strong></p>
+<p>Note that when we say the probability of a head is $\frac{1}[2}$, we are not claiming that any sequence of coin tosses will consist of exactly $50%$ heads. If we toss a fair coin ten times, it would not be surprising to observe $6$ heads and $4$ tails, or even $3$ heads and $7$ tails. But as we continue to toss the coin over and over again, we expect the long-run frequency of heads to get ever closer to $50%$. <strong>In general, it is important in statistics to understand the distinction between theoretical and empirical quantities. Here, the true (theoretical) probability of a head was $\frac{1}[2}$, but any realized (empirical) sequence of coin tosses may have more or less than exactly $50$% heads.</strong></p>
 <section id="common-terminologies">
 <h2>Common Terminologies<a class="headerlink" href="#common-terminologies" title="Permalink to this headline">#</a></h2>
-<p>The <strong>sample space is the set of all possible outcomes in the experiment</strong> : for a dice <span class="math notranslate nohighlight">\(Ω = {1, 2, 3, 4, 5, 6}\)</span>.</p>
-<p>Any <strong>subset of <span class="math notranslate nohighlight">\(Ω\)</span> is a valid event</strong>. we can speak of the event <span class="math notranslate nohighlight">\(F\)</span> of rolling a <span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(F = {4}\)</span>.</p>
-<p>Consider the outcome of a single die roll, and call it <span class="math notranslate nohighlight">\(X\)</span>. A reasonable question one might ask is “What is the average value of <span class="math notranslate nohighlight">\(X\)</span>?”. We define this notion of “average” as a weighted sum of outcomes. This is called the <strong>expected value</strong>, or expectation of <span class="math notranslate nohighlight">\(X\)</span>, denoted by <span class="math notranslate nohighlight">\(E(X)\)</span>,</p>
-<p><span class="math notranslate nohighlight">\(Weighted Average = \frac{1}{6} * (1 + 2 + 3 + 4 + 5 + 6) = 3.5\)</span></p>
-<p>If you play the game <span class="math notranslate nohighlight">\( \infty \)</span> times the average value becomes <span class="math notranslate nohighlight">\(E(X)\)</span></p>
-<p>The <strong>variance</strong> of a random variable <span class="math notranslate nohighlight">\(X\)</span> is a nonnegative number that summarizes on average how much <span class="math notranslate nohighlight">\(X\)</span> differs from its mean, or expectation.
+<p>The <strong>sample space is the set of all possible outcomes in the experiment.</strong></p>
+<p>For a dice $\sigma = {1, 2, 3, 4, 5, 6}$.</p>
+<p>Any <strong>subset of $\sigma$ is a valid event</strong>. we can speak of the event $F$ of rolling a $4$, $F = {4}$.</p>
+<p>Consider the outcome of a single die roll, and call it $X$. A reasonable question one might ask is “What is the average value of $X$?”. We define this notion of “average” as a weighted sum of outcomes. This is called the <strong>expected value</strong>, or expectation of $X$, denoted by $E(X)$,</p>
+<p>$Weighted Average = \frac{1}{6} * (1 + 2 + 3 + 4 + 5 + 6) = 3.5$</p>
+<p>If you play the game $ \infty $ times the average value becomes $E(X)$</p>
+<p>The <strong>variance</strong> of a random variable $X$ is a nonnegative number that summarizes on average how much $X$ differs from its mean, or expectation.
 The square root of the variance is called the <strong>standard deviation.</strong></p>
-<p><span class="math notranslate nohighlight">\(Var(X) = \frac{(1−3.5)^2+(2−3.5)^2+(3−3.5)^2+(4−3.5)^2+(5−3.5)^2+(6−3.5)^2}{6} = \frac{17.5}{6}\)</span></p>
+<p>$Var(X) = \frac{(1−3.5)^2+(2−3.5)^2+(3−3.5)^2+(4−3.5)^2+(5−3.5)^2+(6−3.5)^2}{6} = \frac{17.5}{6}$</p>
 </section>
 <hr class="docutils" />
 <section id="set">
@@ -666,15 +675,15 @@ The square root of the variance is called the <strong>standard deviation.</stron
 <h2>Permutation and Combination<a class="headerlink" href="#permutation-and-combination" title="Permalink to this headline">#</a></h2>
 <p>It can be surprisingly difficult to count the number of sequences or sets satisfying certain conditions. This is where <strong>Premutation and Combination</strong> comes in. For example, consider a bag of marbles in which each marble is a different color. If we draw marbles one at a time from the bag without replacement, how many different ordered sequences (permutations) of the marbles are possible? How many different unordered sets (combinations)?</p>
 <ul class="simple">
-<li><p>Permutation(<span class="math notranslate nohighlight">\(AB \neq BA\)</span> , order matters) = <span class="math notranslate nohighlight">\(nPr = \frac{n!}{(n-r)!}\)</span></p></li>
-<li><p>Combination(<span class="math notranslate nohighlight">\(AB = BA\)</span> , order does not matter) = <span class="math notranslate nohighlight">\(nCr = \frac{n!}{r!(n-r)!}\)</span></p></li>
+<li><p>Permutation($AB \neq BA$ , order matters) = $nPr = \frac{n!}{(n-r)!}$</p></li>
+<li><p>Combination($AB = BA$ , order does not matter) = $nCr = \frac{n!}{r!(n-r)!}$</p></li>
 </ul>
 </section>
 <section id="joint-conditional-probability">
 <h2>Joint &amp; Conditional Probability<a class="headerlink" href="#joint-conditional-probability" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>Joint Probability is the probability of <span class="math notranslate nohighlight">\(2\)</span> independent events occuring : <span class="math notranslate nohighlight">\(P(A \cap B) = P(A)*P(B)\)</span></p></li>
-<li><p>Conditional probability tells the probability of <span class="math notranslate nohighlight">\(B\)</span> given <span class="math notranslate nohighlight">\(A\)</span> has occured, it allow us to account for information we have about our system of interest: <span class="math notranslate nohighlight">\(P(B|A) = \frac{P(A \cap B)}{P(A)}\)</span></p></li>
+<li><p>Joint Probability is the probability of $2$ independent events occuring : $P(A \cap B) = P(A)*P(B)$</p></li>
+<li><p>Conditional probability tells the probability of $B$ given $A$ has occured, it allow us to account for information we have about our system of interest: $P(B|A) = \frac{P(A \cap B)}{P(A)}$</p></li>
 </ul>
 <p><strong>If both are same then A and B are independent events.</strong></p>
 </section>
@@ -689,7 +698,7 @@ The square root of the variance is called the <strong>standard deviation.</stron
 </figure>
 <p>An easy way of remembering it is using the below example:</p>
 <p>What is the probability of a fruit being banana given that it is long, sweet and yellow?</p>
-<p><span class="math notranslate nohighlight">\(P(Banana|Long,Sweet,Yellow) = \frac{P(Long|Banana)*P(Sweet|Banana)*P(Yellow|Banana)*P(Banana)}{P(Long)*P(Sweet)*P(Yellow)}\)</span></p>
+<p>$P(Banana|Long,Sweet,Yellow) = \frac{P(Long|Banana)*P(Sweet|Banana)*P(Yellow|Banana)*P(Banana)}{P(Long)*P(Sweet)*P(Yellow)}$</p>
 </section>
 <hr class="docutils" />
 <section id="questions">
@@ -700,36 +709,36 @@ The square root of the variance is called the <strong>standard deviation.</stron
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
-<p>Suppose we get <span class="math notranslate nohighlight">\(4\)</span> in the first roll then,</p>
-<p>Total Probability = <span class="math notranslate nohighlight">\(P(4) * P(5) * P(6) = 1/6 * 1/6 * 1/6 = 1/216\)</span></p>
-<p>Similarly for <span class="math notranslate nohighlight">\(3\)</span>,    <span class="math notranslate nohighlight">\(P(3) * P(4,5 | 4,6 | 5,6) = 1/6 * (1/36 + 1/36 + 1/36) = 3/216\)</span></p>
-<p>Taking into consideration <span class="math notranslate nohighlight">\(P(1)\)</span> and <span class="math notranslate nohighlight">\(P(2)\)</span> we have the total as <span class="math notranslate nohighlight">\(= 10/216 + 6/216 + 3/216 + 1/216 = 20/216\)</span></p>
+<p>Suppose we get $4$ in the first roll then,</p>
+<p>Total Probability = $P(4) * P(5) * P(6) = 1/6 * 1/6 * 1/6 = 1/216$</p>
+<p>Similarly for $3$,    $P(3) * P(4,5 | 4,6 | 5,6) = 1/6 * (1/36 + 1/36 + 1/36) = 3/216$</p>
+<p>Taking into consideration $P(1)$ and $P(2)$ we have the total as $= 10/216 + 6/216 + 3/216 + 1/216 = 20/216$</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: [LINKEDIN] Cards in increasing order</p>
-<p>Imagine a deck of <span class="math notranslate nohighlight">\(500\)</span> cards numbered from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(500\)</span>. If all the cards are shuffled randomly and you are asked to pick three cards, one at a time, what’s the probability of each subsequent card being larger than the previous drawn card?</p>
+<p>Imagine a deck of $500$ cards numbered from $1$ to $500$. If all the cards are shuffled randomly and you are asked to pick three cards, one at a time, what’s the probability of each subsequent card being larger than the previous drawn card?</p>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
-<p>It is actually easy to solve this if you think on it a little. Let’s pick any <span class="math notranslate nohighlight">\(3\)</span> cards, now if you rearrange it there will only be <span class="math notranslate nohighlight">\(1\)</span> way in which each subsequent card is larger the previous card. So a total of <span class="math notranslate nohighlight">\(6\)</span> ways to arrange the cards out of which only <span class="math notranslate nohighlight">\(1\)</span> is valid. So the result is <span class="math notranslate nohighlight">\(\frac{1}{6}\)</span>.</p>
+<p>It is actually easy to solve this if you think on it a little. Let’s pick any $3$ cards, now if you rearrange it there will only be $1$ way in which each subsequent card is larger the previous card. So a total of $6$ ways to arrange the cards out of which only $1$ is valid. So the result is $\frac{1}{6}$.</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: [STATE FARM] Cards without replacement</p>
-<p>Pull <span class="math notranslate nohighlight">\(2\)</span> cards from a deck without replacement what is probability that both are of different colors.</p>
+<p>Pull $2$ cards from a deck without replacement what is probability that both are of different colors.</p>
 <p>There can be many variants to this question.</p>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
 <p><a class="reference external" href="https://www.quora.com/Two-cards-are-drawn-for-a-pack-of-52-cards-What-is-the-probability-that-both-the-cards-are-of-the-same-colour">Source</a></p>
 <p>Here it is not specified which colour the cards should be - so, they can be either red or black.</p>
-<p>The probability that the first card drawn is either red or black is <span class="math notranslate nohighlight">\(1\)</span> since these two are the only possible outcomes.</p>
-<p>After the first draw, the total number of cards remaining in the pack is <span class="math notranslate nohighlight">\(51\)</span>, out of which <span class="math notranslate nohighlight">\(25\)</span> cards are of the same colour as that of the card that is already drawn. Hence the probability of drawing a card of the same colour as the first one is <span class="math notranslate nohighlight">\(\frac{25}{51}\)</span>.</p>
-<p>⇒ The probability of drawing two cards of the same colour is <span class="math notranslate nohighlight">\(1*\frac{25}{51}=\frac{25}{51}\)</span>.</p>
+<p>The probability that the first card drawn is either red or black is $1$ since these two are the only possible outcomes.</p>
+<p>After the first draw, the total number of cards remaining in the pack is $51$, out of which $25$ cards are of the same colour as that of the card that is already drawn. Hence the probability of drawing a card of the same colour as the first one is $\frac{25}{51}$.</p>
+<p>⇒ The probability of drawing two cards of the same colour is $1*\frac{25}{51}=\frac{25}{51}$.</p>
 <p><em>Another approach to this can be:</em></p>
-<p>Two cards of a particular colour can be drawn in <span class="math notranslate nohighlight">\(C(26,2)\)</span> ways.</p>
-<p>⇒ Two cards of either red or black can be drawn in <span class="math notranslate nohighlight">\(2×C(26,2)\)</span> ways.</p>
-<p>The total number of ways of drawing any two cards from the pack is <span class="math notranslate nohighlight">\(C(52,2)\)</span>.</p>
-<p>⇒ The probability of drawing two cards of the same colour is <span class="math notranslate nohighlight">\(\frac{2×C(26,2)}{C(52,2)} = \frac{2×26!}{2!×24!}\frac{2!×50!}{52!}=\frac{25}{51}\)</span></p>
+<p>Two cards of a particular colour can be drawn in $C(26,2)$ ways.</p>
+<p>⇒ Two cards of either red or black can be drawn in $2×C(26,2)$ ways.</p>
+<p>The total number of ways of drawing any two cards from the pack is $C(52,2)$.</p>
+<p>⇒ The probability of drawing two cards of the same colour is $\frac{2×C(26,2)}{C(52,2)} = \frac{2×26!}{2!×24!}\frac{2!×50!}{52!}=\frac{25}{51}$</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: [FACEBOOK] N Dice</p>
@@ -741,11 +750,11 @@ The square root of the variance is called the <strong>standard deviation.</stron
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
-<p>P(at least 1 three) <span class="math notranslate nohighlight">\(=\)</span> P(exactly 1 three) <span class="math notranslate nohighlight">\(+\)</span>  P(2 three) <span class="math notranslate nohighlight">\(= 1/6 * 5/6 + 5/6 * 1/6 + 1/36 = 11/36\)</span></p>
+<p>P(at least 1 three) $=$ P(exactly 1 three) $+$  P(2 three) $= 1/6 * 5/6 + 5/6 * 1/6 + 1/36 = 11/36$</p>
 <p>The second part of the question is a little tricky, let’s start by generalizing the above equation:</p>
-<p>P(at least 1 three) <span class="math notranslate nohighlight">\(= 2*(5^1/6^2) + 5^0/6^2\)</span></p>
-<p>Now for N dice: P(at least 1 three) <span class="math notranslate nohighlight">\(=\)</span> P(exactly 1 three) <span class="math notranslate nohighlight">\(+\)</span>  P(2 three) <span class="math notranslate nohighlight">\(+\)</span>  P(3 three) … <span class="math notranslate nohighlight">\(+\)</span>  P(N three)</p>
-<p>Combining both <span class="math notranslate nohighlight">\(= N * \frac{5^{N-1}}{6^N} + N * \frac{5^{N-2}}{6^N} + N * \frac{5^{N-3}}{6^N} + ... + N * \frac{5^0}{6^N} = \frac{N}{6^N}(5^{N-1} + 5^{N-2} + .. + 1)\)</span></p>
+<p>P(at least 1 three) $= 2*(5^1/6^2) + 5^0/6^2$</p>
+<p>Now for N dice: P(at least 1 three) $=$ P(exactly 1 three) $+$  P(2 three) $+$  P(3 three) … $+$  P(N three)</p>
+<p>Combining both $= N * \frac{5^{N-1}}{6^N} + N * \frac{5^{N-2}}{6^N} + N * \frac{5^{N-3}}{6^N} + … + N * \frac{5^0}{6^N} = \frac{N}{6^N}(5^{N-1} + 5^{N-2} + .. + 1)$</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: [FACEBOOK] 3 Zebras</p>
@@ -755,9 +764,9 @@ The square root of the variance is called the <strong>standard deviation.</stron
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
-<p>Each zebra has 2 options of travel: clockwise or anticlockwise. So a total of <span class="math notranslate nohighlight">\(2*2*2 = 8\)</span> options.</p>
-<p>Out of this only way in which they donot collide is if all of them travel clockwise or anticlockwise. So a total of <span class="math notranslate nohighlight">\(2\)</span>.</p>
-<p>Therefore the probability of no collision <span class="math notranslate nohighlight">\(= 2/8 = 25%\)</span></p>
+<p>Each zebra has 2 options of travel: clockwise or anticlockwise. So a total of $2<em>2</em>2 = 8$ options.</p>
+<p>Out of this only way in which they donot collide is if all of them travel clockwise or anticlockwise. So a total of $2$.</p>
+<p>Therefore the probability of no collision $= 2/8 = 25%$</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: [POSTMATES] Four Person Elevator</p>
@@ -766,9 +775,9 @@ The square root of the variance is called the <strong>standard deviation.</stron
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
-<p>The number of ways to assigning five floors to four different people is to get the total sample space. In this case it would be <span class="math notranslate nohighlight">\(5 * 5 * 5 * 5\)</span>.</p>
-<p>The number of ways to assign five floors to four people without repetition of floors is <span class="math notranslate nohighlight">\(5 * 4 * 3 * 2\)</span> because for the first passenger you have five different options. The second person has four, and so on. Note that this number counts all possible orders between passengers as well.</p>
-<p>The result is then <span class="math notranslate nohighlight">\(\frac{5 * 4 * 3 * 2}{5 * 5 * 5 * 5} = 0.192\)</span></p>
+<p>The number of ways to assigning five floors to four different people is to get the total sample space. In this case it would be $5 * 5 * 5 * 5$.</p>
+<p>The number of ways to assign five floors to four people without repetition of floors is $5 * 4 * 3 * 2$ because for the first passenger you have five different options. The second person has four, and so on. Note that this number counts all possible orders between passengers as well.</p>
+<p>The result is then $\frac{5 * 4 * 3 * 2}{5 * 5 * 5 * 5} = 0.192$</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: [AMAZON] Found Item</p>
@@ -777,91 +786,90 @@ The square root of the variance is called the <strong>standard deviation.</stron
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
-<p>Probability of the item being present= <span class="math notranslate nohighlight">\(1-\)</span> p(item NOT in A AND NOT in B) <span class="math notranslate nohighlight">\(= 1-(0.4*0.2)=0.92\)</span></p>
+<p>Probability of the item being present= $1-$ p(item NOT in A AND NOT in B) $= 1-(0.4*0.2)=0.92$</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: [SPOTIFY] Max Dice Roll</p>
-<p>A fair die is rolled <span class="math notranslate nohighlight">\(n\)</span> times. What is the probability that the largest number rolled is <span class="math notranslate nohighlight">\(r\)</span>, for each <span class="math notranslate nohighlight">\(r\)</span> in <span class="math notranslate nohighlight">\(1..6\)</span>?</p>
+<p>A fair die is rolled $n$ times. What is the probability that the largest number rolled is $r$, for each $r$ in $1..6$?</p>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
-<p>If <span class="math notranslate nohighlight">\(r(1≤r≤6)\)</span> is the largest number you have allowed for your <span class="math notranslate nohighlight">\(n\)</span> rolls, then you forbid any number larger than <span class="math notranslate nohighlight">\(r\)</span>. That is, you forbid <span class="math notranslate nohighlight">\(6−r\)</span> values. The probability that your single roll does not show any of these <span class="math notranslate nohighlight">\(6−r\)</span> values is <span class="math notranslate nohighlight">\(\frac{6−r}{6}\)</span> and the probability that this happens each time during a series of <span class="math notranslate nohighlight">\(n\)</span> rolls is the obviously <span class="math notranslate nohighlight">\((\frac{6−r}{6})^n\)</span></p>
-<p>There is a subtle nuance to this problem, in the above solution we have assumed the <span class="math notranslate nohighlight">\(max&lt;=r\)</span> which is different from <span class="math notranslate nohighlight">\(max=r\)</span> or in other words if <span class="math notranslate nohighlight">\(r=3\)</span>, the above solution gives results for <span class="math notranslate nohighlight">\(r= 1,2,3\)</span>. The solution of <span class="math notranslate nohighlight">\(r=3\)</span> is a little more involved:</p>
-<p>Let’s take <span class="math notranslate nohighlight">\(r=3\)</span>, for <span class="math notranslate nohighlight">\(n\)</span> die rolls we should have atleast one <span class="math notranslate nohighlight">\(r\)</span>. The Probability of that is:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-P(r=3) \\
-&amp; = P(\text{of getting all n values as 1,2,3} * P(\text{atleast one 3})) \\
-&amp; = (\frac{3}{6})^n * (1-P(\text{no 3's occuring})) \\
-&amp; = (\frac{3}{6})^n * (1-(\frac{\text{only getting 1,2}}{\text{out of 1,2,3}})^n) \\
-&amp; = (\frac{3}{6})^n * (1-(\frac{2}{3})^n) \\
-&amp; = \text{generalizing } (\frac{r}{6})^n * (1-(\frac{r-1}{r})^n) \\
-&amp; = \frac{r^n - (r-1)^n}{6^n}\\
-\end{split}\]</div>
+<p>If $r(1≤r≤6)$ is the largest number you have allowed for your $n$ rolls, then you forbid any number larger than $r$. That is, you forbid $6−r$ values. The probability that your single roll does not show any of these $6−r$ values is $\frac{6−r}{6}$ and the probability that this happens each time during a series of $n$ rolls is the obviously $(\frac{6−r}{6})^n$</p>
+<p>There is a subtle nuance to this problem, in the above solution we have assumed the $max&lt;=r$ which is different from $max=r$ or in other words if $r=3$, the above solution gives results for $r= 1,2,3$. The solution of $r=3$ is a little more involved:</p>
+<p>Let’s take $r=3$, for $n$ die rolls we should have atleast one $r$. The Probability of that is:</p>
+<p>$$
+P(r=3) \
+&amp; = P(\text{of getting all n values as 1,2,3} * P(\text{atleast one 3})) \
+&amp; = (\frac{3}{6})^n * (1-P(\text{no 3’s occuring})) \
+&amp; = (\frac{3}{6})^n * (1-(\frac{\text{only getting 1,2}}{\text{out of 1,2,3}})^n) \
+&amp; = (\frac{3}{6})^n * (1-(\frac{2}{3})^n) \
+&amp; = \text{generalizing } (\frac{r}{6})^n * (1-(\frac{r-1}{r})^n) \
+&amp; = \frac{r^n - (r-1)^n}{6^n}\
+$$</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: [FACEBOOK] Labeling Content</p>
-<p>Facebook has a content team that labels pieces of content on the platform as spam or not spam. <span class="math notranslate nohighlight">\(90%\)</span> of them are diligent raters and will label <span class="math notranslate nohighlight">\(20%\)</span> of the content as spam and <span class="math notranslate nohighlight">\(80%\)</span> as non-spam. The remaining <span class="math notranslate nohighlight">\(10%\)</span> are non-diligent raters and will label <span class="math notranslate nohighlight">\(0%\)</span> of the content as spam and <span class="math notranslate nohighlight">\(100%\)</span> as non-spam. Assume the pieces of content are labeled independently from one another, for every rater. Given that a rater has labeled <span class="math notranslate nohighlight">\(4\)</span> pieces of content as good, what is the probability that they are a diligent rater?</p>
+<p>Facebook has a content team that labels pieces of content on the platform as spam or not spam. $90%$ of them are diligent raters and will label $20%$ of the content as spam and $80%$ as non-spam. The remaining $10%$ are non-diligent raters and will label $0%$ of the content as spam and $100%$ as non-spam. Assume the pieces of content are labeled independently from one another, for every rater. Given that a rater has labeled $4$ pieces of content as good, what is the probability that they are a diligent rater?</p>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
 <p>This can be solved using Baye’s theorem:</p>
 <ul class="simple">
-<li><p>Not Spam = <span class="math notranslate nohighlight">\(NS\)</span></p></li>
-<li><p>Spam = <span class="math notranslate nohighlight">\(S\)</span></p></li>
-<li><p>Diligent =<span class="math notranslate nohighlight">\(D\)</span></p></li>
-<li><p>NotDiligent =<span class="math notranslate nohighlight">\(ND\)</span></p></li>
+<li><p>Not Spam = $NS$</p></li>
+<li><p>Spam = $S$</p></li>
+<li><p>Diligent =$D$</p></li>
+<li><p>NotDiligent =$ND$</p></li>
 </ul>
-<p><span class="math notranslate nohighlight">\(P(D|NS, NS, NS, NS) = \frac{P(NS, NS, NS, NS|D)*P(D)}{P(NS, NS, NS, NS|D)*P(D)+P(NS, NS, NS, NS|ND)*P(ND)}\)</span>
-<span class="math notranslate nohighlight">\(P(D|NS, NS, NS, NS) = \frac{0.8^4*0.9}{0.8^4*0.9+1^4*0.1}\)</span> = ~<span class="math notranslate nohighlight">\(0.787\)</span></p>
+<p>$P(D|NS, NS, NS, NS) = \frac{P(NS, NS, NS, NS|D)<em>P(D)}{P(NS, NS, NS, NS|D)<em>P(D)+P(NS, NS, NS, NS|ND)<em>P(ND)}$
+$P(D|NS, NS, NS, NS) = \frac{0.8^4</em>0.9}{0.8^4</em>0.9+1^4</em>0.1}$ = ~$0.787$</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: [FACEBOOK] Raining</p>
-<p>You are about to get on a plane to Seattle. You want to know if you should bring an umbrella. You call <span class="math notranslate nohighlight">\(3\)</span> random friends of yours who live there and ask each independently if it’s raining. Each of your friends has a <span class="math notranslate nohighlight">\(2/3\)</span> chance of telling you the truth and a <span class="math notranslate nohighlight">\(1/3\)</span> chance of messing with you by lying. All <span class="math notranslate nohighlight">\(3\)</span> friends tell you that “Yes” it is raining.</p>
+<p>You are about to get on a plane to Seattle. You want to know if you should bring an umbrella. You call $3$ random friends of yours who live there and ask each independently if it’s raining. Each of your friends has a $2/3$ chance of telling you the truth and a $1/3$ chance of messing with you by lying. All $3$ friends tell you that “Yes” it is raining.</p>
 <p>What is the probability that it’s actually raining in Seattle?</p>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
 <p>Even though the problem is straightforward one can interpret the problem in many ways. Taking a Bayesian approach is probably appropriate in a real world sense, but if you are told by the interviewer you have no ability to determine the priors, you can’t use Bayesian. <a class="reference external" href="https://math.stackexchange.com/questions/1335235/facebook-question-data-science">Check this thread</a> for a detailed discussion on this problem.</p>
 <p>For it to be not raining, all friends must be lying. Therefore, the solution must be the inverse of the probability that all three are “messing with you.”
-<span class="math notranslate nohighlight">\((1/3)*(1/3)*(1/3)=1/27\)</span> (3.7% chance they are all lying).</p>
-<p>Since there is only a <span class="math notranslate nohighlight">\(3.7%\)</span> chance all three friends are messing with you, there is a <span class="math notranslate nohighlight">\(96.3%\)</span> chance it is raining.</p>
+$(1/3)<em>(1/3)</em>(1/3)=1/27$ (3.7% chance they are all lying).</p>
+<p>Since there is only a $3.7%$ chance all three friends are messing with you, there is a $96.3%$ chance it is raining.</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: [MICROSOFT] First to Six</p>
-<p>Amy and Brad take turns in rolling a fair six-sided die. Whoever rolls a <span class="math notranslate nohighlight">\(6\)</span> first wins the game. Amy starts by rolling first.</p>
+<p>Amy and Brad take turns in rolling a fair six-sided die. Whoever rolls a $6$ first wins the game. Amy starts by rolling first.</p>
 <p>What’s the probability that Amy wins?</p>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
 <p>Amy can win on the first roll, third roll, fifth roll, and so on.</p>
-<p>Probability of Amy winning in the first roll = P(six rolled by her) = <span class="math notranslate nohighlight">\(1/6\)</span></p>
-<p>Probability of Amy winning in the third roll = P(six NOT rolled by her in first try) * P(six NOT rolled by Brad in first try) * P(six rolled by her in 2nd try) = <span class="math notranslate nohighlight">\((5/6) * (5/6) * (1/6) = 1/6 * (5/6)^2\)</span></p>
-<p>Similarly, the probability of Amy winning in the fifth roll = <span class="math notranslate nohighlight">\((1/6) * (5/6)^4\)</span></p>
-<p>Similarly, the probability of Amy winning in the seventh roll = <span class="math notranslate nohighlight">\((1/6) * (5/6)^6\)</span></p>
-<p>Hence, total probability of Amy winning = Sum of all such events = <span class="math notranslate nohighlight">\((1/6) + (1/6 * (5/6)^2) + (1/6 * (5/6)^4) + (1/6 * (5/6)^6) + ...\)</span></p>
-<p>The sum of such an infinite Geometric Progression series is = <span class="math notranslate nohighlight">\(\frac{a}{1-r} = (1/6) / (1 - 25/36) = (1/6) / (11/36) = 6/11\)</span></p>
-<p>Hence, probability of Amy winning in any of her turns = <span class="math notranslate nohighlight">\(6/11\)</span></p>
+<p>Probability of Amy winning in the first roll = P(six rolled by her) = $1/6$</p>
+<p>Probability of Amy winning in the third roll = P(six NOT rolled by her in first try) * P(six NOT rolled by Brad in first try) * P(six rolled by her in 2nd try) = $(5/6) * (5/6) * (1/6) = 1/6 * (5/6)^2$</p>
+<p>Similarly, the probability of Amy winning in the fifth roll = $(1/6) * (5/6)^4$</p>
+<p>Similarly, the probability of Amy winning in the seventh roll = $(1/6) * (5/6)^6$</p>
+<p>Hence, total probability of Amy winning = Sum of all such events = $(1/6) + (1/6 * (5/6)^2) + (1/6 * (5/6)^4) + (1/6 * (5/6)^6) + …$</p>
+<p>The sum of such an infinite Geometric Progression series is = $\frac{a}{1-r} = (1/6) / (1 - 25/36) = (1/6) / (11/36) = 6/11$</p>
+<p>Hence, probability of Amy winning in any of her turns = $6/11$</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: [GOOGLE][FACEBOOK] Double Sided Coin</p>
-<p>A jar has <span class="math notranslate nohighlight">\(1000\)</span> coins, of which <span class="math notranslate nohighlight">\(999\)</span> are fair and <span class="math notranslate nohighlight">\(1\)</span> is double headed. Pick a coin at random, and toss it <span class="math notranslate nohighlight">\(10\)</span> times. Given that you see <span class="math notranslate nohighlight">\(10\)</span> heads, what is the probability that the next toss of that coin is also a head?</p>
+<p>A jar has $1000$ coins, of which $999$ are fair and $1$ is double headed. Pick a coin at random, and toss it $10$ times. Given that you see $10$ heads, what is the probability that the next toss of that coin is also a head?</p>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
 <p>There are two ways of choosing the coin. One is to pick a fair coin and the other is to pick the one with two heads.</p>
 <ul class="simple">
-<li><p>Probability of selecting fair coin <span class="math notranslate nohighlight">\(= 999/1000 = 0.999\)</span></p></li>
-<li><p>Probability of selecting unfair coin <span class="math notranslate nohighlight">\(= 1/1000 = 0.001\)</span></p></li>
+<li><p>Probability of selecting fair coin $= 999/1000 = 0.999$</p></li>
+<li><p>Probability of selecting unfair coin $= 1/1000 = 0.001$</p></li>
 </ul>
-<p>Selecting <span class="math notranslate nohighlight">\(10\)</span> heads in a row = Selecting fair coin * Getting 10 heads + Selecting an unfair coin</p>
+<p>Selecting $10$ heads in a row = Selecting fair coin * Getting 10 heads + Selecting an unfair coin</p>
 <ul class="simple">
-<li><p>P (A) <span class="math notranslate nohighlight">\(= 0.999 * (1/2)^5 = 0.999 * (1/1024) = 0.000976\)</span></p></li>
-<li><p>P (B) <span class="math notranslate nohighlight">\(= 0.001 * 1 = 0.001\)</span></p></li>
-<li><p>P( A / A + B ) <span class="math notranslate nohighlight">\(= 0.000976 / (0.000976 + 0.001) = 0.4939\)</span></p></li>
-<li><p>P( B / A + B ) <span class="math notranslate nohighlight">\(= 0.001 / 0.001976 = 0.5061\)</span></p></li>
+<li><p>P (A) $= 0.999 * (1/2)^5 = 0.999 * (1/1024) = 0.000976$</p></li>
+<li><p>P (B) $= 0.001 * 1 = 0.001$</p></li>
+<li><p>P( A / A + B ) $= 0.000976 / (0.000976 + 0.001) = 0.4939$</p></li>
+<li><p>P( B / A + B ) $= 0.001 / 0.001976 = 0.5061$</p></li>
 </ul>
-<p>Probability of selecting another head <span class="math notranslate nohighlight">\(= P(A/A+B) * 0.5 + P(B/A+B) * 1 = 0.4939 * 0.5 + 0.5061 = 0.7531\)</span></p>
+<p>Probability of selecting another head $= P(A/A+B) * 0.5 + P(B/A+B) * 1 = 0.4939 * 0.5 + 0.5061 = 0.7531$</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: [GOOGLE] Forming a triangle</p>
@@ -870,14 +878,14 @@ P(r=3) \\
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
 <p><a class="reference external" href="https://www.quora.com/A-10-feet-pole-is-randomly-cut-into-3-pieces-What-is-the-probability-that-exactly-form-a-triangle">Source</a></p>
-<p>Suppose the pole is <span class="math notranslate nohighlight">\(AB\)</span> and there are two points <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> such that <span class="math notranslate nohighlight">\(AP = x\)</span> and <span class="math notranslate nohighlight">\(PQ = y\)</span>, so that <span class="math notranslate nohighlight">\(QB = 10 – x – y\)</span> as we know that sum of two sides of a triangle is greater than the 3rd side. Hence</p>
-<p><span class="math notranslate nohighlight">\(x + y &gt; (10 – x – y)\)</span> or <span class="math notranslate nohighlight">\(x + y &gt; 5\)</span></p>
-<p><span class="math notranslate nohighlight">\(y + (10 – x – y) &gt; x\)</span> or <span class="math notranslate nohighlight">\(x &lt; 5\)</span></p>
-<p><span class="math notranslate nohighlight">\((10 – x – y) &gt; y\)</span> or <span class="math notranslate nohighlight">\(y &lt; 5\)</span></p>
-<p>Also we know that, all the parts of pole must be greater than <span class="math notranslate nohighlight">\(0\)</span>,</p>
-<p>or <span class="math notranslate nohighlight">\(x &gt; 0, y &gt; 0, 10 – x – y &gt; 0 or x &gt; 0, y &gt; 0, x + y &lt; 10\)</span></p>
-<p>Plotting the lines <span class="math notranslate nohighlight">\(x + y = 10 x + y = 5, x = 5, y = 5\)</span>. Now favorable area is the area of the middle red shaded triangle.</p>
-<p>Required probability <span class="math notranslate nohighlight">\(= 1/4\)</span></p>
+<p>Suppose the pole is $AB$ and there are two points $P$ and $Q$ such that $AP = x$ and $PQ = y$, so that $QB = 10 – x – y$ as we know that sum of two sides of a triangle is greater than the 3rd side. Hence</p>
+<p>$x + y &gt; (10 – x – y)$ or $x + y &gt; 5$</p>
+<p>$y + (10 – x – y) &gt; x$ or $x &lt; 5$</p>
+<p>$(10 – x – y) &gt; y$ or $y &lt; 5$</p>
+<p>Also we know that, all the parts of pole must be greater than $0$,</p>
+<p>or $x &gt; 0, y &gt; 0, 10 – x – y &gt; 0 or x &gt; 0, y &gt; 0, x + y &lt; 10$</p>
+<p>Plotting the lines $x + y = 10 x + y = 5, x = 5, y = 5$. Now favorable area is the area of the middle red shaded triangle.</p>
+<p>Required probability $= 1/4$</p>
 <figure class="align-default" id="image13">
 <a class="reference internal image-reference" href="../../_images/image131.png"><img alt="../../_images/image131.png" src="../../_images/image131.png" style="width: 354.0px; height: 321.59999999999997px;" /></a>
 </figure>
@@ -889,19 +897,19 @@ P(r=3) \\
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
 <p><a class="reference external" href="http://www.codechef.com/wiki/tutorial-expectation">Source</a>:</p>
-<p>Let’s first assume <span class="math notranslate nohighlight">\(x\)</span> is the expected number of coin flips required for getting two heads in a row. Now:</p>
+<p>Let’s first assume $x$ is the expected number of coin flips required for getting two heads in a row. Now:</p>
 <ul class="simple">
-<li><p>If the first flip turns out to be tail you need <span class="math notranslate nohighlight">\(x\)</span> more flips since the events are independent. Probability of the event <span class="math notranslate nohighlight">\(1/2\)</span>. Since <span class="math notranslate nohighlight">\(1\)</span> flip was wasted total number of flips required <span class="math notranslate nohighlight">\((1+x)\)</span>.</p></li>
-<li><p>If the first flip becomes head, but the second one is tail(<span class="math notranslate nohighlight">\(HT\)</span>) - <span class="math notranslate nohighlight">\(2\)</span> flips are wasted, here total number flips required would be <span class="math notranslate nohighlight">\((2+x)\)</span>. Probability of <span class="math notranslate nohighlight">\(HT\)</span> out of <span class="math notranslate nohighlight">\(HH, HT, TH, TT\)</span> is <span class="math notranslate nohighlight">\((1/4)\)</span></p></li>
-<li><p>The best case, the first two flips turn out to be heads both(<span class="math notranslate nohighlight">\(HH\)</span>). Probability, <span class="math notranslate nohighlight">\(1/4\)</span> i.e. <span class="math notranslate nohighlight">\(HH\)</span> out of <span class="math notranslate nohighlight">\(HH, HT, TH, TT\)</span>. No of flips required <span class="math notranslate nohighlight">\(2\)</span>.</p></li>
+<li><p>If the first flip turns out to be tail you need $x$ more flips since the events are independent. Probability of the event $1/2$. Since $1$ flip was wasted total number of flips required $(1+x)$.</p></li>
+<li><p>If the first flip becomes head, but the second one is tail($HT$) - $2$ flips are wasted, here total number flips required would be $(2+x)$. Probability of $HT$ out of $HH, HT, TH, TT$ is $(1/4)$</p></li>
+<li><p>The best case, the first two flips turn out to be heads both($HH$). Probability, $1/4$ i.e. $HH$ out of $HH, HT, TH, TT$. No of flips required $2$.</p></li>
 </ul>
 <p>So from the above scenarios,
-<span class="math notranslate nohighlight">\(x = 1/2(1+x) + 1/4(2+x) + (1/4 )* 2\)</span>
-<span class="math notranslate nohighlight">\(= 1/2 [ (1+x) + 1/2(2+x) + 1 ]\)</span>
-<span class="math notranslate nohighlight">\(= 1/2 [ 1 + x + 1 + x/2 + 1 ]\)</span></p>
-<p><span class="math notranslate nohighlight">\(x / 4 = 3/2\)</span>
-<span class="math notranslate nohighlight">\(x = 6\)</span></p>
-<p>So the expected number of flips would be <span class="math notranslate nohighlight">\(6\)</span></p>
+$x = 1/2(1+x) + 1/4(2+x) + (1/4 )* 2$
+$= 1/2 [ (1+x) + 1/2(2+x) + 1 ]$
+$= 1/2 [ 1 + x + 1 + x/2 + 1 ]$</p>
+<p>$x / 4 = 3/2$
+$x = 6$</p>
+<p>So the expected number of flips would be $6$</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: [LYFT] Number of cards before an ace</p>
@@ -910,14 +918,14 @@ P(r=3) \\
 <div class="dropdown admonition">
 <p class="admonition-title">Solution:</p>
 <p><a class="reference external" href="https://aksoy.io/math/probability/book/2020/03/10/problem-40-first-ace.html#:~:text=Thus%2C%20on%20average%20it%20will,get%20the%201%20st%20ace.">Source</a>:</p>
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> represent the number of cards that are turned up to produce the <span class="math notranslate nohighlight">\(1^{st}\)</span> ace. For this problem, we cannot apply the Geometric Distribution because cards are sampled without replacement.</p>
-<p>Instead, we begin by considering the probabilities of drawing the <span class="math notranslate nohighlight">\(1^{st}\)</span> ace on the <span class="math notranslate nohighlight">\(1^{st}\)</span> card, <span class="math notranslate nohighlight">\(2^{nd}\)</span> card, and so on:</p>
-<p><span class="math notranslate nohighlight">\(P(1^{st} card)= \frac{4}{52}\)</span></p>
-<p><span class="math notranslate nohighlight">\(P(2^{nd} card)= \frac{48}{52}\frac{4}{51}\)</span></p>
-<p><span class="math notranslate nohighlight">\(P(3^{rd} card)= \frac{48}{52}\frac{47}{51}\frac{4}{50}\)</span></p>
-<p><span class="math notranslate nohighlight">\(P(n^{th} card)= 4* \frac{48!}{(49-x)!}\frac{(52-x)!}{(52)!}\)</span></p>
+<p>Let $X$ represent the number of cards that are turned up to produce the $1^{st}$ ace. For this problem, we cannot apply the Geometric Distribution because cards are sampled without replacement.</p>
+<p>Instead, we begin by considering the probabilities of drawing the $1^{st}$ ace on the $1^{st}$ card, $2^{nd}$ card, and so on:</p>
+<p>$P(1^{st} card)= \frac{4}{52}$</p>
+<p>$P(2^{nd} card)= \frac{48}{52}\frac{4}{51}$</p>
+<p>$P(3^{rd} card)= \frac{48}{52}\frac{47}{51}\frac{4}{50}$</p>
+<p>$P(n^{th} card)= 4* \frac{48!}{(49-x)!}\frac{(52-x)!}{(52)!}$</p>
 <p>With this we can calculate the average number of cards by applying the definition of expected value:</p>
-<p><span class="math notranslate nohighlight">\(E[X]= \sum\limits_{x=1}^{52} 4x \frac{48!}{(49-x)!}\frac{(52-x)!}{(52)!} = \frac{53}{5} = 10.6\)</span></p>
+<p>$E[X]= \sum\limits_{x=1}^{52} 4x \frac{48!}{(49-x)!}\frac{(52-x)!}{(52)!} = \frac{53}{5} = 10.6$</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: [FACEBOOK] Ad Raters</p>
@@ -936,17 +944,17 @@ P(r=3) \\
 <ul class="simple">
 <li><p>100 raters are divided into 2 groups according to probabilities:</p></li>
 </ul>
-<p><span class="math notranslate nohighlight">\(20\)</span> lazy raters: <span class="math notranslate nohighlight">\(100%\)</span> good ads -&gt; <span class="math notranslate nohighlight">\(20\)</span> good ads;
-<span class="math notranslate nohighlight">\(80\)</span> careful raters: <span class="math notranslate nohighlight">\(60%\)</span> good ads -&gt; <span class="math notranslate nohighlight">\(80 * 0.6 = 48\)</span> good ads.
-Total <span class="math notranslate nohighlight">\(68\)</span> good ads.</p>
+<p>$20$ lazy raters: $100%$ good ads -&gt; $20$ good ads;
+$80$ careful raters: $60%$ good ads -&gt; $80 * 0.6 = 48$ good ads.
+Total $68$ good ads.</p>
 <ul class="simple">
 <li><p>There could be 2 cases:</p></li>
 </ul>
-<p>Random rater is careful with probability of <span class="math notranslate nohighlight">\(0.8: 0.8 * 0.6 = 0.48\)</span> - probability or rating good ad
-Random rater is lazy with probability of <span class="math notranslate nohighlight">\(0.2: 0.2 * 1 = 0.2\)</span> - probability or rating good ad
-Total probability of rating ad as good is <span class="math notranslate nohighlight">\(0.48+0.2 = 0.68\)</span>. The expected amount of good rates <span class="math notranslate nohighlight">\(100*0.68 = 68\)</span>.</p>
+<p>Random rater is careful with probability of $0.8: 0.8 * 0.6 = 0.48$ - probability or rating good ad
+Random rater is lazy with probability of $0.2: 0.2 * 1 = 0.2$ - probability or rating good ad
+Total probability of rating ad as good is $0.48+0.2 = 0.68$. The expected amount of good rates $100*0.68 = 68$.</p>
 <ul class="simple">
-<li><p>It’s <span class="math notranslate nohighlight">\(0\)</span> probability that the rater is lazy because lazy raters always rate ads as good.</p></li>
+<li><p>It’s $0$ probability that the rater is lazy because lazy raters always rate ads as good.</p></li>
 </ul>
 </div>
 </section>
@@ -986,10 +994,10 @@ Total probability of rating ad as good is <span class="math notranslate nohighli
             <p class="prev-next-title">Log</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Probability%20Distribution.html" title="next page">
+    <a class='right-next' id="next-link" href="Probability%20Distribution%201.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Probability Distribution</p>
+        <p class="prev-next-title">Probability Distribution 1</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

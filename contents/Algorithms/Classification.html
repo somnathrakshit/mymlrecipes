@@ -53,8 +53,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://ml.pages.dev/contents/Algorithms/Classification.html" />
     <link rel="shortcut icon" href="../../_static/logo.gif"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -144,8 +142,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Statistics/Probability%20Distribution.html">
-   Probability Distribution
+  <a class="reference internal" href="../Statistics/Probability%20Distribution%201.html">
+   Probability Distribution 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Statistics/Probability%20Distribution%202.html">
+   Probability Distribution 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Statistics/Maximum%20Likelihood%20Estimate.html">
+   Maximum Likelihood Estimate
   </a>
  </li>
  <li class="toctree-l1">
@@ -672,17 +680,17 @@ Linear regression is unbounded, and this brings logistic regression into picture
 <p><strong>Reference:</strong> <a class="reference external" href="https://www.displayr.com/how-to-interpret-logistic-regression-coefficients/">Explanation</a></p>
 <p>Let’s explain this using an example. The table below shows the main outputs from the logistic regression. It is very obvious which are the categorial variables out here:</p>
 <p><img alt="Estimate of Coefficients" src="../../_images/image1.png" /></p>
-<p>The first category (usually not shown) has a coefficient of <span class="math notranslate nohighlight">\(0\)</span>. So, if we can say, for example, that:</p>
+<p>The first category (usually not shown) has a coefficient of $0$. So, if we can say, for example, that:</p>
 <ul class="simple">
-<li><p>The effect of having a DSL service versus having no DSL service <span class="math notranslate nohighlight">\((0.92 - 0 = 0.92)\)</span> is a little more than twice as big in terms of leading to churn as is the effect of being a senior citizen <span class="math notranslate nohighlight">\((0.41)\)</span>.</p></li>
+<li><p>The effect of having a DSL service versus having no DSL service $(0.92 - 0 = 0.92)$ is a little more than twice as big in terms of leading to churn as is the effect of being a senior citizen $(0.41)$.</p></li>
 <li><p>The effect of having a Fiber optic service is approximately twice as big as having a DSL service.</p></li>
 <li><p>If somebody has a One year contract and a DSL service, these two effects almost completely cancel each other out.</p></li>
 </ul>
-<p>Consider the scenario of a senior citizen with a <span class="math notranslate nohighlight">\(2\)</span> month tenure, with no internet service, a one year contract and a monthly charge of $<span class="math notranslate nohighlight">\(100\)</span>. If we compute all the effects and add them up we have:</p>
-<p><span class="math notranslate nohighlight">\(0.41\)</span> (Senior Citizen = Yes) <span class="math notranslate nohighlight">\(- 0.06 (2*-0.03\)</span>; tenure) <span class="math notranslate nohighlight">\(+ 0\)</span> (no internet service) <span class="math notranslate nohighlight">\(- 0.88\)</span> (one year contract) <span class="math notranslate nohighlight">\(+ 0 (100*0\)</span>; monthly charge) <span class="math notranslate nohighlight">\(= -0.53\)</span>.</p>
-<p>We then need to add the (Intercept), also sometimes called the constant, which gives us <span class="math notranslate nohighlight">\(-0.53- 1.41 = -1.94\)</span>. To make the next bit a little more transparent, I am going to substitute <span class="math notranslate nohighlight">\(-1.94\)</span> with <span class="math notranslate nohighlight">\(x\)</span>. The logistic transformation is:</p>
-<p>Probability <span class="math notranslate nohighlight">\(= \frac{1} {1 + \exp^{-x}} = \frac{1}{1 + \exp^{1.94}} = 0.13 = 13\%\)</span>.</p>
-<p>Thus, the senior citizen with a <span class="math notranslate nohighlight">\(2\)</span> month tenure, no internet service, a one year contract, and a monthly charge of $<span class="math notranslate nohighlight">\(100\)</span>, is predicted as having a <span class="math notranslate nohighlight">\(13\%\)</span> chance of cancelling their subscription. By contrast if we redo this, just changing one thing, which is substituting the effect for no internet service <span class="math notranslate nohighlight">\((0)\)</span> with that for a fiber optic connection <span class="math notranslate nohighlight">\((1.86)\)</span>, we compute that they have a <span class="math notranslate nohighlight">\(48\%\)</span> chance of cancelling.</p>
+<p>Consider the scenario of a senior citizen with a $2$ month tenure, with no internet service, a one year contract and a monthly charge of $$100$. If we compute all the effects and add them up we have:</p>
+<p>$0.41$ (Senior Citizen = Yes) $- 0.06 (2*-0.03$; tenure) $+ 0$ (no internet service) $- 0.88$ (one year contract) $+ 0 (100*0$; monthly charge) $= -0.53$.</p>
+<p>We then need to add the (Intercept), also sometimes called the constant, which gives us $-0.53- 1.41 = -1.94$. To make the next bit a little more transparent, I am going to substitute $-1.94$ with $x$. The logistic transformation is:</p>
+<p>Probability $= \frac{1} {1 + \exp^{-x}} = \frac{1}{1 + \exp^{1.94}} = 0.13 = 13%$.</p>
+<p>Thus, the senior citizen with a $2$ month tenure, no internet service, a one year contract, and a monthly charge of $$100$, is predicted as having a $13%$ chance of cancelling their subscription. By contrast if we redo this, just changing one thing, which is substituting the effect for no internet service $(0)$ with that for a fiber optic connection $(1.86)$, we compute that they have a $48%$ chance of cancelling.</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Problem: Multinomial Logistic Regression</p>
