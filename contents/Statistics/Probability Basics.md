@@ -8,7 +8,7 @@ html_meta:
 
 ## Probability Basics
 
-```{figure} images/image12.PNG
+```{figure}../images/Statistics/images/image12.PNG
 ---
 name: image12
 scale: 100%
@@ -61,7 +61,7 @@ It can be surprisingly difficult to count the number of sequences or sets satisf
 
 Bayes' theorem, named after 18th-century British mathematician Thomas Bayes, is a mathematical formula for determining conditional probability. **Conditional probability is the likelihood of an outcome occurring, based on a previous outcome occurring.**
 
-```{figure} images/image1.PNG
+```{figure} ../images/Statistics/image1.PNG
 ---
 height: 150px
 name: image1
@@ -365,7 +365,7 @@ Plotting the lines $x + y = 10 x + y = 5, x = 5, y = 5$. Now favorable area is t
 
 Required probability $= 1/4$
 
-```{figure} images/image13.PNG
+```{figure} ../images/Statistics/image13.PNG
 ---
 name: image13
 scale: 60%
