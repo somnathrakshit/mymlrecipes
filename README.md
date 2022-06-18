@@ -1,35 +1,17 @@
-# my-ml-recipes
+# About this Book
 
-My ML Recipes
 
-## Usage
+Preparing for interviews is a stressful task. There is an enormous amount of resources available in the internet, multiple repositories, there are even companies that help students prepare for interviews at the Big Tech companies. The idea here is to create an accessible version of these resources so people on this journey can benefit from it.
 
-### Building the book
+This book does not cover the topics in depth, it covers just enough to get you ready for the interview. The assumption here is that the person using it is already familiar with the topic and is here to brush up on the same. Additonal resources for someone eager to explore the topic in depth is added.
 
-If you'd like to develop on and build the my-ml-recipes book, you should:
+This book IS AND ALWAYS WILL BE a work in progress. The book gets updated weekly with new sections, more questions and richer content, so please keep visiting back.
 
-- Clone this repository and run
-- Run `pip install -r requirements.txt` (it is recommended you do this within a virtual environment)
-- (Recommended) Remove the existing `my-ml-recipes/_build/` directory
-- Run `jupyter-book build my-ml-recipes/`
+If this has helped you in any way please feel free to contribute. 
 
-A fully-rendered HTML version of the book will be built in `my-ml-recipes/_build/html/`.
+- The best way to do so is by adding more content to make this more relevant, feel free to create a merge request
+- You can also support by Sponsoring, click on the button at the left bottom corner to do so 
 
-### Hosting the book
+The Discussion Forum (🙊🙈🙉) of the book is available at [this link.](https://github.com/dipranjan/dsinterviewqns/discussions)
 
-The html version of the book is hosted on the `gh-pages` branch of this repo. A GitHub actions workflow has been created that automatically builds and pushes the book to this branch on a push or pull request to main.
-
-If you wish to disable this automation, you may remove the GitHub actions workflow and build the book manually by:
-
-- Navigating to your local build; and running,
-- `ghp-import -n -p -f my-ml-recipes/_build/html`
-
-This will automatically push your build to the `gh-pages` branch. More information on this hosting process can be found [here](https://jupyterbook.org/publish/gh-pages.html#manually-host-your-book-with-github-pages).
-
-## Contributors
-
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/somnathrakshit/my_ml_recipes/graphs/contributors).
-
-## Credits
-
-This project is created using the excellent open source [Jupyter Book project](https://jupyterbook.org/) and the [executablebooks/cookiecutter-jupyter-book template](https://github.com/executablebooks/cookiecutter-jupyter-book).
+<a href="https://www.buymeacoffee.com/dearc" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
