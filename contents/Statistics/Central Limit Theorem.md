@@ -15,7 +15,7 @@ Let's start with an example, suppose from the SAT math scores
 - Then, you do it again. And again. And again...... and get the following means for each of those three new samples of $10$ people: $550$, $517$, $472$ 
 
 
-```{figure} ../images/Statistics/image8.PNG
+```{figure} images/image8.png
 ---
 name: image8
 scale: 80%
@@ -30,7 +30,7 @@ The sampling distribution, which is basically the distribution of sample means o
 To prove the thrid point let's take a uniform distribution, in the image below $500,000$ times for each sample size $(5, 20, 40)$ have been drawn and their mean plotted.
 We’d expect the average to be $(1 + 2 + 3 + 4 + 5 + 6 / 6 = 3.5)$. The sampling distributions of the means center on this value. Just as the central limit theorem predicts, as we increase the sample size, the sampling distributions more closely approximate a normal distribution and have a tighter spread of values.
 
-```{figure}../images/Statistics/images/image9.PNG
+```{figure} images/image9.png
 ---
 name: image9
 scale: 60%

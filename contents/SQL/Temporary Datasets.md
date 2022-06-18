@@ -20,7 +20,7 @@ CTE can be of 2 types:
 - A **recursive CTE** is one that references itself within that CTE. The recursive CTE is useful when working with hierarchical data because the CTE continues to execute until the query returns the entire hierarchy
 - A **non-recursive CTE** is one that does not reference itself within the CTE. Nonrecursive CTEs tend to be simpler than recursive CTEs
 
-```{figure} ../images/SQL/image4.PNG
+```{figure} images/image4.png
 ---
 name: image4
 ---
