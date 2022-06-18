@@ -9,7 +9,7 @@ html_meta:
 
 Machine learning models can be classified into two types of models – Discriminative and Generative models. In simple words, a discriminative model makes predictions on the unseen data based on conditional probability and can be used either for classification or regression problem statements. On the contrary, a generative model focuses on the distribution of a dataset to return a probability for a given example.
 
-```{figure} images/image7.PNG
+```{figure} ../images/Algorithms/image7.PNG
 ---
 name: image7
 scale: 60%

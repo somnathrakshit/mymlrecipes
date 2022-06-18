@@ -9,7 +9,7 @@ html_meta:
 
 **Reference:** [📖Explanation](https://nbviewer.jupyter.org/github/Yorko/mlcourse_open/blob/master/jupyter_english/topic09_time_series/topic9_part1_time_series_python.ipynb)
 
-```{figure} images/image14.PNG
+```{figure} ../images/Algorithms/image14.PNG
 ---
 name: image14
 scale: 70%

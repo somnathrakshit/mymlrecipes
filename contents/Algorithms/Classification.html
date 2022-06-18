@@ -630,7 +630,7 @@ title="Print to PDF"
 <p><em>It is easy to say that the linear regression predicts a “value” of the targeted variable through a linear combination of the given features, while on the other hand, a Logistic regression predicts “probability value” through a linear combination of the given features plugged inside a logistic function.
 Linear regression is unbounded, and this brings logistic regression into picture. Their value strictly ranges from 0 to 1.</em></p>
 <figure class="align-default" id="image3">
-<a class="reference internal image-reference" href="contents/Algorithms/images/image3.PNG"><img alt="contents/Algorithms/images/image3.PNG" src="contents/Algorithms/images/image3.PNG" /></a>
+<a class="reference internal image-reference" href="contents/images/Algorithms/image3.PNG"><img alt="contents/images/Algorithms/image3.PNG" src="contents/images/Algorithms/image3.PNG" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text">Logistic regression uses Sigmoid function to transform linear regression into the logit function. Logit is nothing but log of Odds. Then using log of Odds it calculate the required probability.(<a class="reference external" href="https://www.vebuso.com/2020/02/linear-to-logistic-regression-explained-step-by-step/">📖Source</a>)</span><a class="headerlink" href="#image3" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -639,7 +639,7 @@ Linear regression is unbounded, and this brings logistic regression into picture
 <h3>Cost Function<a class="headerlink" href="#cost-function" title="Permalink to this headline">#</a></h3>
 <p>One more thing to note here is that logistic regression uses maximum likelihood estimation (MLE) instead of least squares method of minimizing the error which is used in linear models. In Linear regression we minimized SSE. In Logistic Regression we maximize log likelihood instead. Linear regression uses mean squared error as its cost function. If this is used for logistic regression, then it will be a non-convex function of parameters (theta). Gradient descent will converge into global minimum only if the function is convex.</p>
 <figure class="align-default" id="image4">
-<a class="reference internal image-reference" href="contents/Algorithms/images/image4.PNG"><img alt="contents/Algorithms/images/image4.PNG" src="contents/Algorithms/images/image4.PNG" /></a>
+<a class="reference internal image-reference" href="contents/images/Algorithms/image4.PNG"><img alt="contents/images/Algorithms/image4.PNG" src="contents/images/Algorithms/image4.PNG" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">Cost function(<a class="reference external" href="https://pvgisours.tistory.com/59">📖Source</a>)</span><a class="headerlink" href="#image4" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -649,13 +649,13 @@ Linear regression is unbounded, and this brings logistic regression into picture
 <section id="metrics">
 <h2>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">#</a></h2>
 <figure class="align-default" id="image5">
-<a class="reference internal image-reference" href="contents/Algorithms/images/image5.PNG"><img alt="contents/Algorithms/images/image5.PNG" src="contents/Algorithms/images/image5.PNG" /></a>
+<a class="reference internal image-reference" href="contents/images/Algorithms/image5.PNG"><img alt="contents/images/Algorithms/image5.PNG" src="contents/images/Algorithms/image5.PNG" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 15 </span><span class="caption-text">Confusion Matrix and key Metrics</span><a class="headerlink" href="#image5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="image6">
-<a class="reference internal image-reference" href="contents/Algorithms/images/image6.PNG"><img alt="contents/Algorithms/images/image6.PNG" src="contents/Algorithms/images/image6.PNG" /></a>
+<a class="reference internal image-reference" href="contents/images/Algorithms/image6.PNG"><img alt="contents/images/Algorithms/image6.PNG" src="contents/images/Algorithms/image6.PNG" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">(a) ROC curve (b) Precision-Recall curve. Both are a helpful diagnostic tool for evaluating a single classifier but challenging for comparing classifiers. Like ROC AUC, we can calculate the area under the curve as a score and use that score to compare classifiers. The focus on the minority class makes the Precision-Recall AUC more useful for imbalanced classification problems. (<a class="reference external" href="https://machinelearningmastery.com/tour-of-evaluation-metrics-for-imbalanced-classification/">📖Source</a>)</span><a class="headerlink" href="#image6" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -671,7 +671,7 @@ Linear regression is unbounded, and this brings logistic regression into picture
 <p class="admonition-title">Solution:</p>
 <p><strong>Reference:</strong> <a class="reference external" href="https://www.displayr.com/how-to-interpret-logistic-regression-coefficients/">Explanation</a></p>
 <p>Let’s explain this using an example. The table below shows the main outputs from the logistic regression. It is very obvious which are the categorial variables out here:</p>
-<p><img alt="Estimate of Coefficients" src="contents/Algorithms/images/image1.PNG" /></p>
+<p><img alt="Estimate of Coefficients" src="contents/images/Algorithms/image1.PNG" /></p>
 <p>The first category (usually not shown) has a coefficient of <span class="math notranslate nohighlight">\(0\)</span>. So, if we can say, for example, that:</p>
 <ul class="simple">
 <li><p>The effect of having a DSL service versus having no DSL service <span class="math notranslate nohighlight">\((0.92 - 0 = 0.92)\)</span> is a little more than twice as big in terms of leading to churn as is the effect of being a senior citizen <span class="math notranslate nohighlight">\((0.41)\)</span>.</p></li>

@@ -25,7 +25,7 @@ They allow you to add your favourite aggregate function to a non-aggregate query
 	- **DENSE_RANK:** doesnot skip and rank number
 	- **NTILE:** It assigns bucket numbers to the rows instead of row numbers or ranks
 
-```{figure} images/image2.PNG
+```{figure} ../images/SQL/image2.PNG
 ---
 name: image2
 ---

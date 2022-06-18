@@ -739,7 +739,7 @@ title="Print to PDF"
 <p>Markov processes are commonly used to model sequential data, such as text and speech. The first-order Markov assumption states that the probability of an event (or state) depends only on the previous state. The Hidden Markov Model, an extension to the Markov process, is used to model phenomena where the states are hidden and they emit observations.
 The transition and the emission probabilities specify the probabilities of transition between states and emission of observations from states, respectively. In POS tagging, the states are the POS tags while the words are the observations. To summarise, a Hidden Markov Model is defined by the initial state, emission, and the transition probabilities.</p>
 <figure class="align-default" id="image3">
-<a class="reference internal image-reference" href="contents/NLP/images/image3.PNG"><img alt="contents/NLP/images/image3.PNG" src="contents/NLP/images/image3.PNG" /></a>
+<a class="reference internal image-reference" href="contents/images/NLP/image3.PNG"><img alt="contents/images/NLP/image3.PNG" src="contents/images/NLP/image3.PNG" /></a>
 </figure>
 <p>The POS tag <span class="math notranslate nohighlight">\(T_i\)</span> for given word <span class="math notranslate nohighlight">\(W_i\)</span> depends on two things: POS tag of the previous word and the word itself.</p>
 <p><span class="math notranslate nohighlight">\(P(T_i| W_i) = P(W_i|T_i) * P(T_i-1|T_i)\)</span></p>
@@ -792,7 +792,7 @@ The transition and the emission probabilities specify the probabilities of trans
 <p>Top-down parsers have a specific limitation- Left Recursion.</p>
 <p>Example of a left recursion: VP -&gt; VP NP. Whenever a top-down parser encounters such a rule, it runs into an infinite loop, thus no parse tree is obtained. Following is the illustration of top-down parse:</p>
 <figure class="align-default" id="image4">
-<a class="reference internal image-reference" href="contents/NLP/images/image4.PNG"><img alt="contents/NLP/images/image4.PNG" src="contents/NLP/images/image4.PNG" /></a>
+<a class="reference internal image-reference" href="contents/images/NLP/image4.PNG"><img alt="contents/images/NLP/image4.PNG" src="contents/images/NLP/image4.PNG" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 26 </span><span class="caption-text">Top-down parse</span><a class="headerlink" href="#image4" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -801,7 +801,7 @@ The transition and the emission probabilities specify the probabilities of trans
 <li><p><strong>Bottom-up parsing:</strong> reduces each terminal word to a production rule, i.e. reduces the right-hand-side of the grammar to the left-hand-side. It continues the reduction process until the entire sentence has been reduced to the start symbol S. Shift-Reduce Parser algorithm, which parses the words of the sentence one-by-one either by shifting a word to the stack or reducing the stack by using the production rules. Below is an example of bottom-up parse tree.</p></li>
 </ul>
 <figure class="align-default" id="image5">
-<a class="reference internal image-reference" href="contents/NLP/images/image5.PNG"><img alt="contents/NLP/images/image5.PNG" src="contents/NLP/images/image5.PNG" /></a>
+<a class="reference internal image-reference" href="contents/images/NLP/image5.PNG"><img alt="contents/images/NLP/image5.PNG" src="contents/images/NLP/image5.PNG" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 27 </span><span class="caption-text">Bottom-up parse</span><a class="headerlink" href="#image5" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -834,7 +834,7 @@ Overall probability for a parsed structure of the sentence is probabilities of a
 <p>Free word order languages such as Hindi, Bengali are difficult to parse using constituency parsing techniques. This is because, in such free-word-order languages, the order of words/constituents may change significantly while keeping the meaning exactly the same. It is thus difficult to fit the sentences into the finite set of production rules that CFGs offer.
 Dependencies in a sentence are defined using the elements Subject-Verb-Object (SVO). The following table shows SVO dependencies in three types of sentences - declarative, interrogative, and imperative</p>
 <figure class="align-default" id="image6">
-<a class="reference internal image-reference" href="contents/NLP/images/image6.PNG"><img alt="contents/NLP/images/image6.PNG" src="contents/NLP/images/image6.PNG" /></a>
+<a class="reference internal image-reference" href="contents/images/NLP/image6.PNG"><img alt="contents/images/NLP/image6.PNG" src="contents/images/NLP/image6.PNG" /></a>
 </figure>
 <p>Apart from dependencies defined in the form of subject-verb-object, there’s a non-exhaustive list of dependency relationships, which are called <strong>universal dependencies</strong>.</p>
 <p>Dependencies are represented as labelled arcs of the form <span class="math notranslate nohighlight">\(h → d(l)\)</span> where ‘<span class="math notranslate nohighlight">\(h\)</span>’ is called the “head” of the dependency, ‘<span class="math notranslate nohighlight">\(d\)</span>’ is the “dependent” and <span class="math notranslate nohighlight">\(l\)</span> is the “label” assigned to the arc. In a dependency parse, we start from the root of the sentence, which is often a verb. And then start to establish dependencies between root and other words.</p>

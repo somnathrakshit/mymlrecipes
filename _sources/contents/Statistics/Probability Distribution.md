@@ -29,7 +29,7 @@ Looking at the table we see just 1 case of Three Heads, but 3 cases of Two Heads
 
 And this is what becomes the **probability distribution.**
 
-```{figure} images/image2.PNG
+```{figure} ../images/Statistics/image2.PNG
 ---
 height: 250px
 name: image2
@@ -49,7 +49,7 @@ Now depending on the problem type one can choose the corresponding distribution 
 ### Types of Distribution
 Some common types of probability distribution are as follows:
 
-```{figure} images/image3.PNG
+```{figure} ../images/Statistics/image3.PNG
 ---
 name: image3
 ---
@@ -88,7 +88,7 @@ Following are the measures of central tendency:
 - **Median:** the value, which divides the population in two half
 - **Mode:** the most frequent value in a population
 
-```{figure} images/image4.PNG
+```{figure} ../images/Statistics/image4.PNG
 ---
 name: image4
 ---
@@ -104,7 +104,7 @@ Measures of dispersion reveal how is the population distributed around the measu
 - **Variance:** The average of the squared differences from the Mean.
 - **Standard Deviation:** is square root of Variance
 
-```{figure} images/image5.PNG
+```{figure} ../images/Statistics/image5.PNG
 ---
 name: image5
 ---
@@ -116,7 +116,7 @@ name: image5
 - **Skewness:** Skewness is a measure of the asymmetry. Negatively skewed curve has a long left tail and vice versa.
 - **Kurtosis:** Kurtosis is a measure of the “peaked ness”. Distributions with higher peaks have positive kurtosis and vice-versa
 
-```{figure} images/image6.PNG
+```{figure} ../images/Statistics/image6.PNG
 ---
 name: image6
 scale: 60%
@@ -126,7 +126,7 @@ scale: 60%
 #### Box Plots
 
 Box plots are one of the easiest and most intuitive way to understand distributions. They show mean, median, quartiles and Outliers on single plot.
-```{figure} images/image7.PNG
+```{figure} ../images/Statistics/image7.PNG
 ---
 name: image7
 scale: 60%
