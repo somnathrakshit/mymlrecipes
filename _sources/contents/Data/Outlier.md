@@ -8,7 +8,7 @@ html_meta:
 
 ## Outlier
 
-```{figure} ../Data/images/image1.PNG
+```{figure} images/image1.PNG
 ---
 name: image1
 scale: 55%
@@ -21,7 +21,7 @@ An outlier may occur due to the variability in the data, or due to experimental 
 
 In the cases when you have a small sample size, outliers can significantly mess up all your results. For statistical analysis of data, outliers can impact the normality test results of our data, invalidate the basic assumptions like constant variances for regression testing etc.
 
-```{figure} ../Data/images/image2.PNG
+```{figure} images/image2.PNG
 ---
 name: image2
 scale: 80%
@@ -39,7 +39,7 @@ Here are some of the techniques for detecting outliers:
 
 - **IQR and Boxplots:** Usually data points which lie 1.5 times of IQR above Q3 and below Q1 are considered outliers
 
-```{figure} ../Data/images/image3.PNG
+```{figure} images/image3.PNG
 ---
 name: image3
 scale: 80%
@@ -47,7 +47,7 @@ scale: 80%
 ```
 - **Z-Score or Extreme Value Analysis (parametric):** The z-score or standard score of an observation is a metric that indicates how many standard deviations a data point is from the sample’s mean, assuming a gaussian distribution. This makes z-score a parametric method. Very frequently data points are not to described by a gaussian distribution, this problem can be solved by applying transformations to data ie: scaling it. It is a very effective method if you can describe the values in the feature space with a gaussian distribution. However, it is only convenient to use in a low dimensional feature space, in a small to medium sized dataset.
 
-```{figure} ../Data/images/image4.PNG
+```{figure} images/image4.PNG
 ---
 name: image4
 scale: 40%
@@ -62,7 +62,7 @@ Any data point whose Z-score falls out of 3rd standard deviation is usually cons
 
 It is an unsupervised model and needs to be re-calibrated each time a new batch of data is analyzed.
 
-```{figure} ../Data/images/image5.PNG
+```{figure} images/image5.PNG
 ---
 name: image5
 scale: 55%
@@ -75,7 +75,7 @@ Then for prediction, it compares an observation against that splitting value in 
 
 If not correctly optimized, training time can be very long and computationally expensive.
 
-```{figure} ../Data/images/image6.PNG
+```{figure} images/image6.PNG
 ---
 name: image6
 scale: 55%

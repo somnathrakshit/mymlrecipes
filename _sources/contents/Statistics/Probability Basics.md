@@ -8,7 +8,7 @@ html_meta:
 
 ## Probability Basics
 
-```{figure} ../Statistics/images/image12.PNG
+```{figure} images/image12.PNG
 ---
 name: image12
 scale: 100%

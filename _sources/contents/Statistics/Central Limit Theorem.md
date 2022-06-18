@@ -15,7 +15,7 @@ Let's start with an example, suppose from the SAT math scores
 - Then, you do it again. And again. And again...... and get the following means for each of those three new samples of $10$ people: $550$, $517$, $472$ 
 
 
-```{figure} ../Statistics/images/image8.PNG
+```{figure} images/image8.PNG
 ---
 name: image8
 scale: 80%
