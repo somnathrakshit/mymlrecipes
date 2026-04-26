@@ -1,8 +1,6 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science Interview focusing on Bayesian vs Frequentist Reasoning."
-  "keywords": "interview, data science, machine learning, Bayesian, Frequentist"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science Interview focusing on Bayesian vs Frequentist Reasoning."
+keywords: "interview, data science, machine learning, Bayesian, Frequentist"
 ---
 
 ## Bayesian vs Frequentist Reasoning

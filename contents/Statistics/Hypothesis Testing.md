@@ -1,8 +1,6 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science Interview focusing on Hypothesis Testing."
-  "keywords": "interview, data science, machine learning, Hypothesis Testing"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science Interview focusing on Hypothesis Testing."
+keywords: "interview, data science, machine learning, Hypothesis Testing"
 ---
 
 ## Hypothesis Testing
@@ -26,7 +24,7 @@ Hypothesis testing is used to confirm your conclusions about the population para
 
 #### Steps
 
-[�-Source](https://en.wikipedia.org/wiki/Statistical_hypothesis_testing)
+[📖Source](https://en.wikipedia.org/wiki/Statistical_hypothesis_testing)
 
 - There is an initial research hypothesis of which the truth is unknown.
 - The first step is to state the relevant null and alternative hypotheses. This is important, as mis-stating the hypotheses will muddy the rest of the process.
@@ -83,7 +81,7 @@ Now as the sample mean $34.5$ is not between UCV and LCV hence we reject the nul
 
 ```{figure} images/image10.png
 ---
-name: image10
+name: hypothesis_testing_image10
 ---
 ```
 
@@ -103,10 +101,10 @@ As $p$-value is $< \alpha$ so we reject null-hypothesis.
 
 ```{figure} images/image11.png
 ---
-name: image11
+name: hypothesis_testing_image11
 width: 60%
 ---
-Types of Errors in Hypothesis testing [(�-Source)](https://www.sixsigmadaily.com/type-i-and-type-ii-errors-in-hypothesis-testing/)
+Types of Errors in Hypothesis testing [(📖Source)](https://www.sixsigmadaily.com/type-i-and-type-ii-errors-in-hypothesis-testing/)
 ```
 
 ---
@@ -138,14 +136,14 @@ You are testing hundreds of hypotheses with a t-test, what considerations should
 ```{admonition} Solution:
 :class: dropdown
 
-Type 1 error will scale the more the number of t-tests are run. If $\alpha = 0.05$ then there is $5%$ chance of Type 1 error on a single test, then across many tests $p(Type I)$ will increase. For example with 2 tests:
+Type 1 error will scale the more the number of t-tests are run. If $\alpha = 0.05$ then there is $5\%$ chance of Type 1 error on a single test, then across many tests $p(Type I)$ will increase. For example with 2 tests:
 
 $ P(\text{type I error}) = p(\text{type I error on A OR type I error on B}) $
 $ = 2p(\text{type I error on single test}) - p(\text{type I error on A AND type I error on B}) $
 $ = 2*.05 - .05^2 (\text{assuming independence of tests}) = 0.5 - .025 = .075 $
 
 
-If you want your $p(type I error)$ across n-tests to remain at $5%$, you will need to decrease the  $\alpha\ in each individual test. Bonferroni correction can be applied. Basically alpha will be reduced to alpha/n. n is number of experiments you are running.
+If you want your $p(type I error)$ across n-tests to remain at $5\%$, you will need to decrease the  $\alpha\ in each individual test. Bonferroni correction can be applied. Basically alpha will be reduced to alpha/n. n is number of experiments you are running.
 
 Otherwise, you can try and run an F-test to start in order to identify if a least $1$ test sees some significant effect. Then run a t-test on the specific experiment with the highest effect size. Granted, the p-value of the test will also depend on the variance of the sample in the given test, if we assume constant variance across tests, then the test with the highest effect size is in expectation the best performing test. Only running a single t-test will keep your p(type I error) low.
 
@@ -154,7 +152,7 @@ Otherwise, you can try and run an F-test to start in order to identify if a leas
 
 ```{admonition} Problem: Selection Bias
 :class: tip, dropdown
-[�-Source](https://towardsdatascience.com/40-statistics-interview-problems-and-answers-for-data-scientists-6971a02b7eee)
+[📖Source](https://towardsdatascience.com/40-statistics-interview-problems-and-answers-for-data-scientists-6971a02b7eee)
 
 Explain selection bias (with regard to a dataset, not variable selection). Why is it important? How can data management procedures such as missing data handling make it worse?
 ```
@@ -169,8 +167,8 @@ Types of selection bias include:
 - time interval: selecting a specific time frame that supports the desired conclusion. e.g. conducting a sales analysis near Christmas.
 - exposure: includes clinical susceptibility bias, protopathic bias, indication bias. Read more here.
 - data: includes cherry-picking, suppressing evidence, and the fallacy of incomplete evidence.
-- attrition: attrition bias is similar to survivorship bias, where only those that ‘survived’ a long process are included in an analysis, or failure bias, where those that ‘failed’ are only included
+- attrition: attrition bias is similar to survivorship bias, where only those that ‘survived' a long process are included in an analysis, or failure bias, where those that ‘failed' are only included
 - observer selection: related to the Anthropic principle, which is a philosophical consideration that any data we collect about the universe is filtered by the fact that, in order for it to be observable, it must be compatible with the conscious and sapient life that observes it.
 
-Handling missing data can make selection bias worse because different methods impact the data in different ways. For example, if you replace null values with the mean of the data, you adding bias in the sense that you’re assuming that the data is not as spread out as it might actually be.
+Handling missing data can make selection bias worse because different methods impact the data in different ways. For example, if you replace null values with the mean of the data, you adding bias in the sense that you're assuming that the data is not as spread out as it might actually be.
 ```

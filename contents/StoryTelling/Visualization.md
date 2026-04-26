@@ -1,8 +1,6 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science Interview focusing on Hyperparameter optimization."
-  "keywords": "interview, data science, machine learning, visualization, graphs"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science Interview focusing on Hyperparameter optimization."
+keywords: "interview, data science, machine learning, visualization, graphs"
 ---
 
 ## Visualization
@@ -13,7 +11,7 @@ This page is a work in progress
 
 ```{figure} images/image1.jpg
 ---
-name: image1
+name: visualization_image1
 width: 13%
 align: center
 ---

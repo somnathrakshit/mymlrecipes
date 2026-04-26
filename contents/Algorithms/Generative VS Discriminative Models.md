@@ -1,30 +1,28 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science Interview focusing on Generative vs Discriminative Models."
-  "keywords": "interview, data science, machine learning, Generative, Discriminative"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science Interview focusing on Generative vs Discriminative Models."
+keywords: "interview, data science, machine learning, Generative, Discriminative"
 ---
 
 ## Generative vs Discriminative Models
 
-Machine learning models can be classified into two types of models – Discriminative and Generative models. In simple words, a discriminative model makes predictions on the unseen data based on conditional probability and can be used either for classification or regression problem statements. On the contrary, a generative model focuses on the distribution of a dataset to return a probability for a given example.
+Machine learning models can be classified into two types of models " Discriminative and Generative models. In simple words, a discriminative model makes predictions on the unseen data based on conditional probability and can be used either for classification or regression problem statements. On the contrary, a generative model focuses on the distribution of a dataset to return a probability for a given example.
 
 ```{figure} images/image7.png
 ---
-name: image7
+name: generative_vs_discriminative_models_image7
 width: 60%
 ---
-This essentially summarizes Generative vs Discriminative Models [�-Source](https://dataisutopia.com/blog/discremenet-generative-models/)
+This essentially summarizes Generative vs Discriminative Models [📖Source](https://dataisutopia.com/blog/discremenet-generative-models/)
 ```
 
 ### Discriminative Models
 
-Discriminative models separate classes instead of modeling the conditional probability and don’t make any assumptions about the data points. But these models are not capable of generating new data points. Therefore, the ultimate objective of discriminative models is to separate one class from another.
+Discriminative models separate classes instead of modeling the conditional probability and don't make any assumptions about the data points. But these models are not capable of generating new data points. Therefore, the ultimate objective of discriminative models is to separate one class from another.
 
 In case of outliers present in the dataset, then discriminative models work better compared to generative models i.e, discriminative models are more robust to outliers. However, there is one major drawback of these models is the misclassification problem, i.e., wrongly classifying a data point.
 
 Some examples are:
-‌
+"
 - Scalar Vector Machine(SVMs)
 - Conditional Random Fields (CRFs)
 - Decision Trees and Random Forest
@@ -39,13 +37,13 @@ Generative models focus on the distribution of individual classes in a dataset a
 
 These models use probability estimates and likelihood to model data points and differentiate between different class labels present in a dataset. Unlike discriminative models, these models are also capable of generating new data points.
 
-However, they also have a major drawback – If there is a presence of outliers in the dataset, then it affects these types of models to a significant extent.
+However, they also have a major drawback " If there is a presence of outliers in the dataset, then it affects these types of models to a significant extent.
 
 Some examples are:
-- Naïve Bayes
+- NaÃ¯ve Bayes
 - Bayesian networks
 - Markov random fields
-‌- Hidden Markov Models (HMMs)
+"- Hidden Markov Models (HMMs)
 - Latent Dirichlet Allocation (LDA)
 - Generative Adversarial Networks (GANs)
 - Autoregressive Model

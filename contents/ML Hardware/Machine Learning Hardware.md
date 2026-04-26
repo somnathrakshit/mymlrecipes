@@ -11,7 +11,7 @@ According to [John Henssey](https://en.wikipedia.org/wiki/John_L._Hennessy), fat
 ```{figure} ./image2.png
 ---
 height: 250px
-name: image1
+name: machine_learning_hardware_image1
 ---
 ```
 
@@ -24,7 +24,7 @@ But, because the CPU is so flexible, the hardware doesn't always know what would
 ```{figure} ./image1.png
 ---
 height: 250px
-name: image2
+name: machine_learning_hardware_image2
 ---
 von Neumann Architecture
 ```
@@ -35,7 +35,7 @@ Furthermore, the physical movement of data consumes a significant amount of ener
 
 ## How does a GPU work?
 
-To gain higher throughput than a CPU, a GPU uses a simple strategy: why not have thousands of ALUs in a processor? The modern GPU usually has 2,500–5,000 ALUs  in a single processor that means you could execute thousands of multiplications and additions simultaneously.
+To gain higher throughput than a CPU, a GPU uses a simple strategy: why not have thousands of ALUs in a processor? The modern GPU usually has 2,500-5,000 ALUs  in a single processor that means you could execute thousands of multiplications and additions simultaneously.
 
 This GPU architecture works well on applications with massive parallelism, such as matrix multiplication in a neural network. Actually, you would see order of magnitude higher throughput than CPU on typical training workload for deep learning. This is why the GPU is the most popular processor architecture used in deep learning at time of writing.
 
@@ -57,7 +57,7 @@ This is why the TPU can achieve a high computational throughput on neural networ
 ```{figure} ./image3.png
 ---
 height: 300px
-name: image3
+name: machine_learning_hardware_image3
 ---
 CPU vs GPU vs TPU
 ```

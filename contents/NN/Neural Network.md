@@ -1,14 +1,12 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science Interview focusing on Regression."
-  "keywords": "interview, data science, machine learning, Neural Network, basics"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science Interview focusing on Regression."
+keywords: "interview, data science, machine learning, Neural Network, basics"
 ---
 
 
 ## Neural Network
 
-```{admonition} ðŸ“- Resource
+```{admonition} ðŸ“– Resource
 :class: tip
 
 [This is an excellent resource available for free on Neural Networks](http://neuralnetworksanddeeplearning.com/chap1.html)
@@ -29,10 +27,10 @@ Some of the common activation functions are as follows:
 
 ```{figure} images/image1.png
 ---
-name: image1
+name: neural_network_image1
 width: 40%
 ---
-[ðŸ“-Source](https://www.v7labs.com/blog/neural-networks-activation-functions) 
+[ðŸ“–Source](https://www.v7labs.com/blog/neural-networks-activation-functions) 
 ```
 
 **An artificial neural network is a network of such neurons.** Neurons in a neural network are arranged in layers. The *first* and the *last* layer are called the *input* and *output* layers. Input layers have as many neurons as the number of attributes in the data set and the output layer has as many neurons as the number of classes of the target variable (for a classification problem). For a regression problem, the number of neurons in the output layer would be 1 (a numeric variable).
@@ -64,7 +62,7 @@ During training, the neural network learning algorithm fits various models to th
 
 ```{figure} images/image2.gif
 ---
-name: image2
+name: neural_network_image2
 width: 60%
 ---
 Neural Networks can be used to *reasonably* approriximate *most* functions
@@ -73,14 +71,14 @@ Neural Networks can be used to *reasonably* approriximate *most* functions
 ### Feed forward
 
 In artificial neural networks, the output from one layer is used as input to the next layer. Such networks are called feedforward neural networks.
-Feed forward neural network architecture consists of following main parts â€“ Input Layer, Hidden Layer - If the number of hidden layer is one then it is known as a shallow neural network, else it is known as a deep neural network, Output Layer
+Feed forward neural network architecture consists of following main parts " Input Layer, Hidden Layer - If the number of hidden layer is one then it is known as a shallow neural network, else it is known as a deep neural network, Output Layer
 
 ```{figure} images/image3.gif
 ---
-name: image3
+name: neural_network_image3
 width: 70%
 ---
-[ðŸ“-Source](https://machinelearningknowledge.ai/animated-explanation-of-feed-forward-neural-network-architecture/)
+[ðŸ“–Source](https://machinelearningknowledge.ai/animated-explanation-of-feed-forward-neural-network-architecture/)
 ```
 
 ### Backpropagation
@@ -93,10 +91,10 @@ For a large neural network, the number of weight elements and biases becomes so 
 
 ```{figure} images/image4.gif
 ---
-name: image4
+name: neural_network_image4
 width: 70%
 ---
-[ðŸ“-Source](https://machinelearningknowledge.ai/animated-explanation-of-feed-forward-neural-network-architecture/)
+[ðŸ“–Source](https://machinelearningknowledge.ai/animated-explanation-of-feed-forward-neural-network-architecture/)
 ```
 
 For updating weights and biases using plain backpropagation, you have to scan through the entire data set to make a single update to the weights. This is computationally very expensive for large datasets. Thus, you use multiple batches (or **mini-batches**) of data points, compute the average gradient for a batch, and update the weights based on that gradient.

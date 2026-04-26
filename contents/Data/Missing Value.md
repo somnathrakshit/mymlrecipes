@@ -1,13 +1,11 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science Interview focusing on Missing value treatment."
-  "keywords": "interview, data science, machine learning, Missing value"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science Interview focusing on Missing value treatment."
+keywords: "interview, data science, machine learning, Missing value"
 ---
 
 ## Missing Value
 
-[ðŸ“-Source](https://www.analyticsvidhya.com/blog/2016/01/guide-data-exploration/)
+[ðŸ“–Source](https://www.analyticsvidhya.com/blog/2016/01/guide-data-exploration/)
 
 Data can have missing values and it is very common. The reason of such missing data can be any of the following:
 

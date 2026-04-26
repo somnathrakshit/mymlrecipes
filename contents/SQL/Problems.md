@@ -1,8 +1,6 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science focusing on SQL problems, containing questions asked in Top Tech companies."
-  "keywords": "interview, data science, machine learning, SQL, practice questions"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science focusing on SQL problems, containing questions asked in Top Tech companies."
+keywords: "interview, data science, machine learning, SQL, practice questions"
 ---
 
 ## Problems

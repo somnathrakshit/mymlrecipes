@@ -1,8 +1,6 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science focusing on SQL, specifically JOINS."
-  "keywords": "interview, data science, machine learning, SQL"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science focusing on SQL, specifically JOINS."
+keywords: "interview, data science, machine learning, SQL"
 ---
 
 ## Joins
@@ -15,7 +13,7 @@ Joins are best explained using Venn diagrams
 
 ```{figure} images/image1.png
 ---
-name: image1
+name: joins_image1
 ---
 TSQL JOIN Types, [Reference](https://stevestedman.com/2015/05/tsql-join-types-poster-version-4-1/)
 ```

@@ -1,8 +1,6 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science Interview focusing on Probability."
-  "keywords": "interview, data science, machine learning, probability"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science Interview focusing on Probability."
+keywords: "interview, data science, machine learning, probability"
 ---
 
 
@@ -32,7 +30,7 @@ And this is what becomes the **probability distribution.**
 ```{figure} images/image2.png
 ---
 height: 250px
-name: image2
+name: probability_distribution_2_image2
 ---
 Probability Distribution vs Frequency Distribution
 ```
@@ -51,7 +49,7 @@ Some common types of probability distribution are as follows:
 
 ```{figure} images/image3.png
 ---
-name: image3
+name: probability_distribution_2_image3
 ---
 Types of Probability Distribution
 ```
@@ -61,7 +59,7 @@ Types of Probability Distribution
 The normal distribution is the most important probability distribution in statistics because it fits many natural phenomena. For example, heights, blood pressure, measurement error, and IQ scores follow the normal distribution.
 
 Despite the different shapes, all forms of the normal distribution have the following characteristic properties.
-- They’re all symmetric. The normal distribution cannot model skewed distributions.
+- They're all symmetric. The normal distribution cannot model skewed distributions.
 - The mean, median, and mode are all equal.
 - Half of the population is less than the mean and half is greater than the mean.
 - The Empirical Rule, which describes the percentage of the data that fall within specific numbers of standard deviations from the mean for bell-shaped curves.
@@ -90,7 +88,7 @@ Following are the measures of central tendency:
 
 ```{figure} images/image4.png
 ---
-name: image4
+name: probability_distribution_2_image4
 ---
 Measure of Central Tendency. Mean is typically affected the most by Outliers, followed by the median and mode.
 ```
@@ -106,7 +104,7 @@ Measures of dispersion reveal how is the population distributed around the measu
 
 ```{figure} images/image5.png
 ---
-name: image5
+name: probability_distribution_2_image5
 ---
 2 distributions with different standard deviations
 ```
@@ -118,7 +116,7 @@ name: image5
 
 ```{figure} images/image6.png
 ---
-name: image6
+name: probability_distribution_2_image6
 width: 60%
 ---
 ```
@@ -128,7 +126,7 @@ width: 60%
 Box plots are one of the easiest and most intuitive way to understand distributions. They show mean, median, quartiles and Outliers on single plot.
 ```{figure} images/image7.png
 ---
-name: image7
+name: probability_distribution_2_image7
 width: 60%
 ---
 ```
@@ -136,7 +134,7 @@ width: 60%
 ---
 ## Unbiased Estimator
 
-An unbiased estimator is an accurate statistic that’s used to approximate a population parameter. “Accurate” in this sense means that it’s neither an overestimate nor an underestimate. If an overestimate or underestimate does happen, the mean of the difference is called a “bias.” That’s just saying if the estimator (i.e. the sample mean) equals the parameter (i.e. the population mean), then it’s an unbiased estimator.
+An unbiased estimator is an accurate statistic that's used to approximate a population parameter. “Accurate” in this sense means that it's neither an overestimate nor an underestimate. If an overestimate or underestimate does happen, the mean of the difference is called a “bias.” That's just saying if the estimator (i.e. the sample mean) equals the parameter (i.e. the population mean), then it's an unbiased estimator.
 
 
 ## Maximum Likelihood Estimation (MLE)
@@ -148,7 +146,7 @@ An unbiased estimator is an accurate statistic that’s used to approximate a po
 
 Say you have some data. Say you're willing to assume that the data comes from some distribution -- perhaps Gaussian. There are an infinite number of different Gaussians that the data could have come from (which correspond to the combination of the infinite number of means and variances that a Gaussian distribution can have). MLE will pick the Gaussian (i.e., the mean and variance) that is "most consistent" with your data (the precise meaning of consistent is explained below).
 
-So, say you've got a data set of $y={−1,3,7}$. The most consistent Gaussian from which that data could have come has a mean of $3$ and a variance of $16$. It could have been sampled from some other Gaussian. But one with a mean of $3$ and variance of $16$ is most consistent with the data in the following sense: the probability of getting the particular $y$ values you observed is greater with this choice of mean and variance, than it is with any other choice.
+So, say you've got a data set of $y={-1,3,7}$. The most consistent Gaussian from which that data could have come has a mean of $3$ and a variance of $16$. It could have been sampled from some other Gaussian. But one with a mean of $3$ and variance of $16$ is most consistent with the data in the following sense: the probability of getting the particular $y$ values you observed is greater with this choice of mean and variance, than it is with any other choice.
 
 Maximum Likelihood Estimation can be applied to both regression and classification problems.
 
@@ -173,7 +171,7 @@ If the sampling had been done correctly then the estimator would have been unbia
 ```{admonition} Problem: [GOOGLE] Median of Uniform Distribution
 :class: tip, dropdown
 
-Given 3 i.i.d. variables from an uniform distribution of $0$ to $4$, what’s the chance the median is greater than $3$?
+Given 3 i.i.d. variables from an uniform distribution of $0$ to $4$, what's the chance the median is greater than $3$?
 ```
 
 ```{admonition} Solution:
@@ -218,7 +216,7 @@ mean = $np$ = $576*0.5 = 288$, var= $np(1-p)= 576*0.5*0.5 = 144$, stddev = sqrt(
 
 For normal distribution, *68% of the data falls within one standard deviation, 95% percent within two standard deviations, and 99.7% within three standard deviations from the mean.*
 
-$312= 288$(mean)$+2*12$(stddev), which means the probability of flipping at least $312$ heads or tails is $5%$. Since we are only looking at the probability of at least $321$ heads, it is the right tail area of the distribution, which is $5%/2= 2.5%$. So the probability of flipping at least $312$ heads is $2.5%$.
+$312= 288$(mean)$+2*12$(stddev), which means the probability of flipping at least $312$ heads or tails is $5\%$. Since we are only looking at the probability of at least $321$ heads, it is the right tail area of the distribution, which is $5\%/2= 2.5\%$. So the probability of flipping at least $312$ heads is $2.5\%$.
 ```
 
 ```{admonition} Problem: [GOOGLE]  Non-normal Probability Distribution

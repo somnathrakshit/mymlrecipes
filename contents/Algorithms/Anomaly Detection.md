@@ -1,8 +1,6 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science focusing on Anomaly Detection."
-  "keywords": "interview, data science, machine learning, Anomaly Detection, Isolation Forest"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science focusing on Anomaly Detection."
+keywords: "interview, data science, machine learning, Anomaly Detection, Isolation Forest"
 ---
 
 ## Anomaly Detection
@@ -21,7 +19,7 @@ What if the data is bivariate?
 
 ```{admonition} Solution:
 :class: dropdown
-**Reference:** [ðŸ“-Explanation](https://towardsdatascience.com/anomaly-detection-for-dummies-15f148e559c1)
+**Reference:** [ðŸ“–Explanation](https://towardsdatascience.com/anomaly-detection-for-dummies-15f148e559c1)
 
 Anomaly detection is the process of identifying unexpected items or events in data sets, which differ from the norm. And anomaly detection is often applied on unlabeled data which is known as unsupervised anomaly detection. Anomaly detection has two basic assumptions:
 - Anomalies only occur very rarely in the data.

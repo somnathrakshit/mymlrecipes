@@ -1,8 +1,6 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science focusing on Syntactic Processing."
-  "keywords": "interview, data science, machine learning, Syntactic Processing"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science focusing on Syntactic Processing."
+keywords: "interview, data science, machine learning, Syntactic Processing"
 ---
 
 ## Syntactic Processing
@@ -23,7 +21,7 @@ POS tagging is a crucial task in syntactic processing and is used as a preproces
 
 The four main techniques used for POS tagging:
 - **Lexicon-based** approach uses the following simple statistical algorithm: for each word, it assigns the POS tag that most frequently occurs for that word in some training corpus. For example, it will assign the tag "verb" to any occurrence of the word "run" if "run" is used as a verb more often than any other tag.
-- **Rule-based** taggers first assign the tag using the lexicon method and then apply predefined rules. Some examples of rules are: Change the tag to VBG for words ending with ‘-ing’, Changes the tag to VBD for words ending with ‘-ed’, etc.
+- **Rule-based** taggers first assign the tag using the lexicon method and then apply predefined rules. Some examples of rules are: Change the tag to VBG for words ending with ‘-ing', Changes the tag to VBD for words ending with ‘-ed', etc.
 - **Probabilistic (or stochastic)** techniques don't naively assign the highest frequency tag to each word, instead, they look at slightly longer parts of the sequence and often use the tag(s) and the word(s) appearing before the target word to be tagged. The commonly used probabilistic algorithm for POS tagging is Hidden Markov Model (HMM)
 - **Deep-learning based** POS tagging: Recurrent Neural Networks (RNNs) are used for sequential modeling processes
 
@@ -34,7 +32,7 @@ The transition and the emission probabilities specify the probabilities of trans
 
 ```{figure} images/image3.png
 ---
-name: image3
+name: syntactic_processing_image3
 width: 70%
 ---
 ```
@@ -88,9 +86,9 @@ Example a CFG is:
 - S -> NP VP
 - NP -> DT N| N| N PP
 - VP -> V| V NP
-- N -> ‘woman’| ‘bear’
-- V -> ‘ate’
-- DT -> ‘the’| ‘a’
+- N -> ‘woman'| ‘bear'
+- V -> ‘ate'
+- DT -> ‘the'| ‘a'
 
 There are two broad approaches to constituency parsing:
 - **Top-down parsing:** starts with the start symbol $S$ at the top and uses the production rules to parse each word one by one. And, you continue to parse until all the words have been allocated to some production rule. 
@@ -101,7 +99,7 @@ Example of a left recursion: VP -> VP NP. Whenever a top-down parser encounters 
 
 ```{figure} images/image4.png
 ---
-name: image4
+name: syntactic_processing_image4
 width: 80%
 ---
 Top-down parse
@@ -111,7 +109,7 @@ Top-down parse
 
 ```{figure} images/image5.png
 ---
-name: image5
+name: syntactic_processing_image5
 width: 80%
 ---
 Bottom-up parse
@@ -123,7 +121,7 @@ Since natural languages are inherently ambiguous, there are often cases where mu
 
 NP -> Det N (0.5) | N (0.3) |N PP (0.2)
 
-It means that the probability of an NP breaking down to a ‘Det N’ is 0.50, to an 'N' is 0.30 and to an ‘N PP’ is 0.20. Note that the sum of probabilities is 1.00.
+It means that the probability of an NP breaking down to a ‘Det N' is 0.50, to an 'N' is 0.30 and to an ‘N PP' is 0.20. Note that the sum of probabilities is 1.00.
 Overall probability for a parsed structure of the sentence is probabilities of all rules used in that parsed structure. The parsed tree with maximum probability is best possible interpretation of the sentence.
 
 #### Chomsky Normal Form
@@ -149,7 +147,7 @@ Dependencies in a sentence are defined using the elements Subject-Verb-Object (S
 
 ```{figure} images/image6.png
 ---
-name: image6
+name: syntactic_processing_image6
 width: 80%
 ---
 ```
@@ -183,7 +181,7 @@ There are various techniques and models for building Named Entity Recognition (N
 	- Decision trees
 	- Conditional Random Fields (CRFs)
 
-IOB (or BIO) method tags each token in the sentence with one of the three labels: **I - inside (the entity), O- outside (the entity) and B - beginning (of entity).** You saw that IOB labeling is especially helpful if the entities contain multiple words. For example: words like ‘Delta Airlines’, ‘New York, etc, are single entities.
+IOB (or BIO) method tags each token in the sentence with one of the three labels: **I - inside (the entity), O- outside (the entity) and B - beginning (of entity).** You saw that IOB labeling is especially helpful if the entities contain multiple words. For example: words like ‘Delta Airlines', ‘New York, etc, are single entities.
 
 #### Rule-based method for NER
 
@@ -219,7 +217,7 @@ CRFs are used in a wide variety of sequence labelling tasks across various domai
 - **Discriminative classifiers** learn the boundary between classes by modelling the conditional probability distribution $P(Y|X)$, where $Y$ is the vector of class labels and $X$ represents the input features. Examples are Logistic Regression, SVMs etc.
 - **Generative classifiers** model the joint probability distribution $P(Y|X)$. Examples of generative classifiers are Naive Bayes, HMMs etc.
 
-CRFs use ‘feature functions’ rather than the input word sequence $x$ itself. The idea is similar to how features are extracted for building the naive Bayes and decision tree classifiers in a previous section. Some example ‘word-features’ (each word has these features) are:
+CRFs use ‘feature functions' rather than the input word sequence $x$ itself. The idea is similar to how features are extracted for building the naive Bayes and decision tree classifiers in a previous section. Some example ‘word-features' (each word has these features) are:
 - Word and POS tag based features: word_is_city, word_is_digit, pos, previous_pos, etc.
 - Label-based features: previous_label
 
@@ -231,13 +229,13 @@ A feature function takes the following four inputs:
 
 Let's see an example of a feature function:
 
-A feature function $f_1$ which returns $1$ if the word $x_i$ is a city and the corresponding label $y_i$ is ‘I-location’, else $0$. This can be represented as:
+A feature function $f_1$ which returns $1$ if the word $x_i$ is a city and the corresponding label $y_i$ is ‘I-location', else $0$. This can be represented as:
 
 $f_{1}(x,i,y_i,y_{i-1})= [[x_i \text{ is in city last name}] \text{ and } [y_i \text{ is I-location}]]$
 
-The feature function returns $1$ only if both the conditions are satisfied, i.e. when the word is a city name and is tagged as ‘I-location’ (e.g. Tokyo/I-location).
+The feature function returns $1$ only if both the conditions are satisfied, i.e. when the word is a city name and is tagged as ‘I-location' (e.g. Tokyo/I-location).
 
-Every feature function $f_i$ has a weight $w_i$ associated with it, which represents the ‘importance’ of that feature function. This is almost exactly the same as logistic regression where coefficients of features represent their importance. Training a CRF means to compute the optimal weight vector $w$ which best represents the observed sequences $y$ for the given word sequences $x$. In other words, we want to find the set of weights $w$ which maximises $P(y|x,w)$.
+Every feature function $f_i$ has a weight $w_i$ associated with it, which represents the ‘importance' of that feature function. This is almost exactly the same as logistic regression where coefficients of features represent their importance. Training a CRF means to compute the optimal weight vector $w$ which best represents the observed sequences $y$ for the given word sequences $x$. In other words, we want to find the set of weights $w$ which maximises $P(y|x,w)$.
 
 In CRFs, the conditional probabilities $P(y|x,w)$ are modeled using a scoring function. If there are $k$ feature functions (and thus $k$ weights), for each word $i$ in the sequence $x$, a scoring function for a word is defined as follows:
 

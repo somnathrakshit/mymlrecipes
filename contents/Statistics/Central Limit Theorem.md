@@ -1,8 +1,6 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science Interview focusing on Central Limit Theorem."
-  "keywords": "interview, data science, machine learning, CLT, Central Limit Theorem"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science Interview focusing on Central Limit Theorem."
+keywords: "interview, data science, machine learning, CLT, Central Limit Theorem"
 ---
 
 ## Central Limit Theorem
@@ -17,22 +15,22 @@ Let's start with an example, suppose from the SAT math scores
 
 ```{figure} images/image8.png
 ---
-name: image8
+name: central_limit_theorem_image8
 width: 80%
 ---
 ```
 
-The sampling distribution, which is basically the distribution of sample means of a population, has some interesting properties which are collectively called the **central limit theorem**, *which states that no matter how the original population is distributed, the sampling distribution will follow these three properties* –
-- Sampling Distribution’s Mean $(\mu_{\bar{x}}) =$ Population Mean $(\mu)$
-- Sampling Distribution’s Standard Deviation (Standard Error) $= \sigma\sqrt{n}$, where $\sigma$ is the population’s standard deviation and $n$ is the sample size
+The sampling distribution, which is basically the distribution of sample means of a population, has some interesting properties which are collectively called the **central limit theorem**, *which states that no matter how the original population is distributed, the sampling distribution will follow these three properties* -
+- Sampling Distribution's Mean $(\mu_{\bar{x}}) =$ Population Mean $(\mu)$
+- Sampling Distribution's Standard Deviation (Standard Error) $= \sigma\sqrt{n}$, where $\sigma$ is the population's standard deviation and $n$ is the sample size
 - For $n > 30$, the sampling distribution becomes a normal distribution. Strongly skewed distributions can require larger sample sizes.
 
 To prove the thrid point let's take a uniform distribution, in the image below $500,000$ times for each sample size $(5, 20, 40)$ have been drawn and their mean plotted.
-We’d expect the average to be $(1 + 2 + 3 + 4 + 5 + 6 / 6 = 3.5)$. The sampling distributions of the means center on this value. Just as the central limit theorem predicts, as we increase the sample size, the sampling distributions more closely approximate a normal distribution and have a tighter spread of values.
+We'd expect the average to be $(1 + 2 + 3 + 4 + 5 + 6 / 6 = 3.5)$. The sampling distributions of the means center on this value. Just as the central limit theorem predicts, as we increase the sample size, the sampling distributions more closely approximate a normal distribution and have a tighter spread of values.
 
 ```{figure} images/image9.png
 ---
-name: image9
+name: central_limit_theorem_image9
 width: 60%
 ---
 ```

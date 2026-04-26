@@ -1,8 +1,6 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science Interview focusing on Probability."
-  "keywords": "interview, data science, machine learning, outlier"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science Interview focusing on Probability."
+keywords: "interview, data science, machine learning, outlier"
 ---
 
 
@@ -10,7 +8,7 @@ html_meta:
 
 ```{figure} images/image1.png
 ---
-name: image1
+name: outlier_image1
 width: 55%
 ---
 ```
@@ -23,7 +21,7 @@ In the cases when you have a small sample size, outliers can significantly mess 
 
 ```{figure} images/image2.png
 ---
-name: image2
+name: outlier_image2
 width: 80%
 ---
 Outliers tend to affect mean more than mdeian or mode
@@ -41,30 +39,30 @@ Here are some of the techniques for detecting outliers:
 
 ```{figure} images/image3.png
 ---
-name: image3
+name: outlier_image3
 width: 80%
 ---
 ```
-- **Z-Score or Extreme Value Analysis (parametric):** The z-score or standard score of an observation is a metric that indicates how many standard deviations a data point is from the sample’s mean, assuming a gaussian distribution. This makes z-score a parametric method. Very frequently data points are not to described by a gaussian distribution, this problem can be solved by applying transformations to data ie: scaling it. It is a very effective method if you can describe the values in the feature space with a gaussian distribution. However, it is only convenient to use in a low dimensional feature space, in a small to medium sized dataset.
+- **Z-Score or Extreme Value Analysis (parametric):** The z-score or standard score of an observation is a metric that indicates how many standard deviations a data point is from the sample's mean, assuming a gaussian distribution. This makes z-score a parametric method. Very frequently data points are not to described by a gaussian distribution, this problem can be solved by applying transformations to data ie: scaling it. It is a very effective method if you can describe the values in the feature space with a gaussian distribution. However, it is only convenient to use in a low dimensional feature space, in a small to medium sized dataset.
 
 ```{figure} images/image4.png
 ---
-name: image4
+name: outlier_image4
 width: 40%
 ---
 Any data point whose Z-score falls out of 3rd standard deviation is usually considered an outlier
 ```
 
-- **Dbscan:** Dbscan is a density based clustering algorithm, it is focused on finding neighbors by density (MinPts) on an ‘n-dimensional sphere’ with radius $\epsilon$. A cluster can be defined as the maximal set of ‘density connected points’ in the feature space.Dbscan then defines different classes of points:
+- **Dbscan:** Dbscan is a density based clustering algorithm, it is focused on finding neighbors by density (MinPts) on an ‘n-dimensional sphere' with radius $\epsilon$. A cluster can be defined as the maximal set of ‘density connected points' in the feature space.Dbscan then defines different classes of points:
 	- **Core point:** A is a core point if its neighborhood (defined by $\epsilon$) contains at least the same number or more points than the parameter MinPts.
-	- **Border point:** C is a border point that lies in a cluster and its neighborhood does not contain more points than MinPts, but it is still ‘density reachable’ by other points in the cluster.
-	- **Outlier:** N is an outlier point that lies in no cluster and it is not ‘density reachable’ nor ‘density connected’ to any other point. Thus this point will have “his own cluster”.
+	- **Border point:** C is a border point that lies in a cluster and its neighborhood does not contain more points than MinPts, but it is still ‘density reachable' by other points in the cluster.
+	- **Outlier:** N is an outlier point that lies in no cluster and it is not ‘density reachable' nor ‘density connected' to any other point. Thus this point will have “his own cluster”.
 
 It is an unsupervised model and needs to be re-calibrated each time a new batch of data is analyzed.
 
 ```{figure} images/image5.png
 ---
-name: image5
+name: outlier_image5
 width: 55%
 ---
 ```
@@ -77,7 +75,7 @@ If not correctly optimized, training time can be very long and computationally e
 
 ```{figure} images/image6.png
 ---
-name: image6
+name: outlier_image6
 width: 55%
 ---
 ```

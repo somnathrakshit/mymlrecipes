@@ -1,15 +1,13 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science Interview focusing on Decision Tree based models."
-  "keywords": "interview, data science, machine learning, Boosting, Bagging, Random Forest, Decision Tree, Classification"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science Interview focusing on Decision Tree based models."
+keywords: "interview, data science, machine learning, Boosting, Bagging, Random Forest, Decision Tree, Classification"
 ---
 
 ## Tree based approaches
 
 ```{figure} images/image13.png
 ---
-name: image13
+name: tree_based_approaches_image13
 width: 70%
 ---
 ```
@@ -22,13 +20,13 @@ Decision Trees follow Sum of Product (SOP) representation. The Sum of product (S
 
 The primary challenge in the decision tree implementation is to identify which attributes do we need to consider as the root node and each level. Handling this is to know as the attributes selection. We have different attributes selection measures to identify the attribute which can be considered as the root note at each level.
 
-The decision of making strategic splits heavily affects a tree’s accuracy. The decision criteria are different for classification and regression trees.
+The decision of making strategic splits heavily affects a tree's accuracy. The decision criteria are different for classification and regression trees.
 
 Decision trees use multiple algorithms to decide to split a node into two or more sub-nodes. The creation of sub-nodes increases the homogeneity of resultant sub-nodes. In other words, we can say that the purity of the node increases with respect to the target variable. The decision tree splits the nodes on all available variables and then selects the split which results in most homogeneous sub-nodes.
 
 ```{figure} images/image11.png
 ---
-name: image11
+name: tree_based_approaches_image11
 width: 80%
 ---
 Decision Tree
@@ -55,7 +53,7 @@ The ID3 algorithm builds decision trees using a top-down greedy search approach 
 - The set is then split by the selected attribute to produce a subset of the data
 - The algorithm continues to recur on each subset, considering only attributes never selected before
 
-Decision trees have a strong tendency to overfit the data. So practical uses of the decision tree must necessarily incorporate some ’regularization’ measures to ensure the decision tree built does not become more complex than is necessary and starts to overfit. There are broadly two ways of regularization on decision trees:
+Decision trees have a strong tendency to overfit the data. So practical uses of the decision tree must necessarily incorporate some 'regularization' measures to ensure the decision tree built does not become more complex than is necessary and starts to overfit. There are broadly two ways of regularization on decision trees:
 - **Truncation:** Truncate the decision tree during the training (growing) process preventing it from degenerating into one with one leaf for every data point in the training dataset. Below criterion are used to decide if the decision tree needs to be grown further:
 	- Minimum Size of the Partition for a Split: Stop partitioning further when the current partition is small enough.
 	- Minimum Change in Homogeneity Measure: Do not partition further when even the best split causes an insignificant change in the purity measure (difference between the current purity and the purity of the partitions created by the split).
@@ -127,7 +125,7 @@ An ensemble is a collection of models which ideally should predict better than i
 ---
 
 ### AdaBoost
-[�-Read](https://towardsdatascience.com/log-book-adaboost-the-math-behind-the-algorithm-a014c8afbbcc)
+[📖Read](https://towardsdatascience.com/log-book-adaboost-the-math-behind-the-algorithm-a014c8afbbcc)
 
 - AdaBoost starts by assigning equal weight to each datapoint, the idea is to adjust the weights of each observation after every iteration such that the the algorithm is forced to take a harder look at these difficult to classify observations
 - Post each iteration we will have a weak learner using which we will calculate 2 things:
@@ -137,7 +135,7 @@ An ensemble is a collection of models which ideally should predict better than i
 
 ```{figure} images/image10.png
 ---
-name: image10
+name: tree_based_approaches_image10
 width: 80%
 ---
 Adaboost Pseudocode
@@ -157,11 +155,11 @@ This is in short of the intuition as to how Gradient Boosting works. In case of 
 ---
 
 ### XGBoost
-[�-Read](https://towardsdatascience.com/log-book-xgboost-the-math-behind-the-algorithm-54ddc5008850)
+[📖Read](https://towardsdatascience.com/log-book-xgboost-the-math-behind-the-algorithm-54ddc5008850)
 
 XGBoost stands for "Extreme Gradient Boosting", where the term "Gradient Boosting" originates from the paper Greedy Function Approximation: A Gradient Boosting Machine, by Friedman. It initially started as a research project by Tianqi Chen as part of the Distributed (Deep) Machine Learning Community (DMLC) group. It became well known in the ML competition circles after its use in the winning solution of the Higgs Machine Learning Challenge.
 
-XGBoost and GBM both follow the principle of gradient boosted trees, but XGBoost uses a more regularized (by taking the model complexity into account) model formulation to control over-fitting, which gives it better performance, which is why it’s also known as ‘regularized boosting’ technique. In Stochastic Gradient Descent, used by Gradient Boosting, we use less point to take less time to compute the direction we should go towards, in order to make more of them, in the hope we go there quicker. In Newton’s method, used by XGBoost, we take more time to compute the direction we want to go into, in the hope we have to take fewer steps in order to get there.
+XGBoost and GBM both follow the principle of gradient boosted trees, but XGBoost uses a more regularized (by taking the model complexity into account) model formulation to control over-fitting, which gives it better performance, which is why it's also known as ‘regularized boosting' technique. In Stochastic Gradient Descent, used by Gradient Boosting, we use less point to take less time to compute the direction we should go towards, in order to make more of them, in the hope we go there quicker. In Newton's method, used by XGBoost, we take more time to compute the direction we want to go into, in the hope we have to take fewer steps in order to get there.
 
 **Why is XGBoost so good?**
 
@@ -196,7 +194,7 @@ Steps:
 
 As for why or when we use it over logistic regression, the answer is it depends:
 
-- If your problem/data is linearly separable, then first try logistic regression. If you don’t know, then still start with logistic regression because that will be your baseline, followed by non-linear classifier such as random forest. Do not forget to tune the parameters of logistic regression / random forest for maximizing their performance on your data.
+- If your problem/data is linearly separable, then first try logistic regression. If you don't know, then still start with logistic regression because that will be your baseline, followed by non-linear classifier such as random forest. Do not forget to tune the parameters of logistic regression / random forest for maximizing their performance on your data.
 - If your data is categorical, then random forest should be your first choice; however, logistic regression can be dealt with categorical data
 - If you want easy to understand results, logistic regression is a better choice because it leads to simple interpretation of the explanatory variables.
 - If speed is your criteria, then logistic regression should be your choice
@@ -208,7 +206,7 @@ As for why or when we use it over logistic regression, the answer is it depends:
 ```{admonition} Problem: Explain CART
 :class: tip, dropdown
 
-[�-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[📖Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 Explain the CART Algorithm for Decision Trees.
 
@@ -219,7 +217,7 @@ Explain the CART Algorithm for Decision Trees.
 
 The CART stands for Classification and Regression Trees is a greedy algorithm that greedily searches for an optimum split at the top level, then repeats the same process at each of the subsequent levels.
 
-Moreover, it does verify whether the split will lead to the lowest impurity or not as well as the solution provided by the greedy algorithm is not guaranteed to be optimal, it often produces a solution that’s reasonably good since finding the optimal Tree is an NP-Complete problem that requires exponential time complexity.
+Moreover, it does verify whether the split will lead to the lowest impurity or not as well as the solution provided by the greedy algorithm is not guaranteed to be optimal, it often produces a solution that's reasonably good since finding the optimal Tree is an NP-Complete problem that requires exponential time complexity.
 
 As a result, it makes the problem intractable even for small training sets. This is why we must go for a “reasonably good” solution instead of an optimal solution.
 ```
@@ -227,7 +225,7 @@ As a result, it makes the problem intractable even for small training sets. This
 ```{admonition} Problem: Properties of Gini Impurity
 :class: tip, dropdown
 
-[�-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[📖Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 Briefly explain the properties of Gini Impurity.
 
@@ -236,14 +234,14 @@ Briefly explain the properties of Gini Impurity.
 ```{admonition} Solution:
 :class: dropdown
 
-Gini Impurity is the probability of incorrectly classifying a randomly chosen element in the dataset if it were randomly labeled according to the class distribution in the dataset. It’s calculated as
+Gini Impurity is the probability of incorrectly classifying a randomly chosen element in the dataset if it were randomly labeled according to the class distribution in the dataset. It's calculated as
 
 $\text{Gini Impurity} = 1 - \text{Gini Index}$
 
 So there can be 2 cases:
 
 - When all the data points belong to a single class: $G = 1 - (1^2 + 0^2) = 0$
-- When $50%$ of the data points belong to a class: $G = 1 - (0.5^2 + 0.5^2) = 0.5$
+- When $50\%$ of the data points belong to a class: $G = 1 - (0.5^2 + 0.5^2) = 0.5$
 
 ![image 12](images/image12.png)
 
@@ -253,7 +251,7 @@ Gini impurity tends to isolate the most frequent class in its own branch of the 
 ```{admonition} Problem: CART vs ID3
 :class: tip, dropdown
 
-[�-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[📖Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 Explain the difference between the CART and ID3 Algorithms.
 
@@ -270,7 +268,7 @@ On the contrary, other Tree algorithms such as ID3 can produce Decision Trees wi
 ```{admonition} Problem: Types of nodes
 :class: tip, dropdown
 
-[�-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[📖Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 List down the different types of nodes in Decision Trees.
 
@@ -289,7 +287,7 @@ The Decision Tree consists of the following different types of nodes:
 ```{admonition} Problem: Information Gain
 :class: tip, dropdown
 
-[�-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[📖Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 What do you understand of Information gain? Any disadvantages that you can think of?
 
@@ -307,7 +305,7 @@ Some points keep in mind about information gain:
 - Thus, the higher the difference, the higher the information gain, and the better the feature used for the split.
 Mathematically, the information gain can be computed by the equation as follows:
 
-Information Gain = $E(S1) – E(S2)$, $E(S1)$ denotes the entropy of data belonging to the node before the split and $E(S2)$ denotes the weighted summation of the entropy of children nodes by considering the weights as the proportion of data instances falling in specific children nodes.
+Information Gain = $E(S1) - E(S2)$, $E(S1)$ denotes the entropy of data belonging to the node before the split and $E(S2)$ denotes the weighted summation of the entropy of children nodes by considering the weights as the proportion of data instances falling in specific children nodes.
 
 As for the disadvantages, Information gain biases the Decision Tree against considering attributes with a large number of distinct values which might lead to overfitting. In order to solve this problem, the Information Gain Ratio is used.
 ```
@@ -315,7 +313,7 @@ As for the disadvantages, Information gain biases the Decision Tree against cons
 ```{admonition} Problem: Space Time complexity of a Decision tree
 :class: tip, dropdown
 
-[�-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[📖Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 Explain the time and space complexity of training and testing in the case of a Decision Tree.
 
@@ -324,7 +322,7 @@ Explain the time and space complexity of training and testing in the case of a D
 ```{admonition} Solution:
 :class: dropdown
 
-What happens in the training stage is that for each of the features (dimensions) in the dataset we’ll sort the data which takes $O(n log n)$ time following which we traverse the data points to find the right threshold which takes $O(n)$ time. For $d$ dimensions, total time complexity would be:
+What happens in the training stage is that for each of the features (dimensions) in the dataset we'll sort the data which takes $O(n log n)$ time following which we traverse the data points to find the right threshold which takes $O(n)$ time. For $d$ dimensions, total time complexity would be:
 
 $O(n * log n * d) + O(n*d) \text{which asymptotically is } O(n * log n * d)$
 
@@ -348,7 +346,7 @@ Note: Random Forest is comparatively faster than other algorithms.
 ```{admonition} Problem: Training time
 :class: tip, dropdown
 
-[�-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[📖Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 If it takes one hour to train a Decision Tree on a training set containing 1 million instances, roughly how much time will it take to train another Decision Tree on a training set containing 10 million instances?
 
@@ -371,7 +369,7 @@ Therefore, we can expect the training time to be roughly $11.7$ hours.
 ```{admonition} Problem: Missing data and neumerical values
 :class: tip, dropdown
 
-[�-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[📖Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 How does a Decision Tree handle missing attribute values? How does it deal with continuous(numerical) features?
 
@@ -390,7 +388,7 @@ Decision Trees handle continuous features by converting these continuous feature
 ```{admonition} Problem: Inductive Bias
 :class: tip, dropdown
 
-[�-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[📖Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 What is the Inductive Bias of Decision Trees?
 ```
@@ -404,7 +402,7 @@ The ID3 algorithm preferred Shorter Trees over longer Trees. In Decision Trees, 
 ```{admonition} Problem: Compare different selection measures
 :class: tip, dropdown
 
-[�-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[📖Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 Compare the different attribute selection measures.
 ```
@@ -422,7 +420,7 @@ The three measures, in general, returns good results, but:
 ```{admonition} Problem: Effect of Outliers
 :class: tip, dropdown
 
-[�-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[📖Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 Are Decision Trees affected by the outliers? Explain
 ```
@@ -436,7 +434,7 @@ Decision Trees are not sensitive to noisy data or outliers since, extreme values
 ```{admonition} Problem: Advantages and Disadvantages of Decision Tree
 :class: tip, dropdown
 
-[�-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[📖Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 Discuss the advantages and disadvantages of Decision tree
 ```
@@ -450,7 +448,7 @@ Discuss the advantages and disadvantages of Decision tree
 - This can be used for both classification and regression problems.
 - Decision Trees can handle both continuous and categorical variables.
 - **No feature scaling required:** There is no requirement of feature scaling techniques such as standardization and normalization in the case of Decision Tree as it uses a rule-based approach instead of calculation of distances.
-- **Handles nonlinear parameters efficiently:** Unlike curve-based algorithms, the performance of decision trees can’t be affected by the Non-linear parameters. So, if there is high non-linearity present between the independent variables, Decision Trees may outperform as compared to other curve-based algorithms.
+- **Handles nonlinear parameters efficiently:** Unlike curve-based algorithms, the performance of decision trees can't be affected by the Non-linear parameters. So, if there is high non-linearity present between the independent variables, Decision Trees may outperform as compared to other curve-based algorithms.
 - Decision Tree can automatically handle missing values.
 - Decision Tree handles the outliers automatically, hence they are usually robust to outliers.
 - **Less Training Period:** The training period of decision trees is less as compared to ensemble techniques like Random Forest because it generates only one Tree unlike the forest of trees in the Random Forest.

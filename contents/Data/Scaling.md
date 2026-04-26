@@ -1,8 +1,6 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science Interview focusing on Data Scaling."
-  "keywords": "interview, data science, machine learning, Scaling, Data Normalization"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science Interview focusing on Data Scaling."
+keywords: "interview, data science, machine learning, Scaling, Data Normalization"
 ---
 
 ## Scaling
@@ -14,7 +12,7 @@ Another reason why feature scaling is applied is that gradient descent converges
 
 ### Rescaling (min-max normalization)
 
-Also known as min-max scaling or min-max normalization, is the simplest method and consists in rescaling the range of features to scale the range in $[0, 1]$ or $[−1, 1]$. Selecting the target range depends on the nature of the data. The general formula is given as: 
+Also known as min-max scaling or min-max normalization, is the simplest method and consists in rescaling the range of features to scale the range in $[0, 1]$ or $[-1, 1]$. Selecting the target range depends on the nature of the data. The general formula is given as: 
 
 $x^{\prime} = \frac{x - min(x)}{max(x) - min(x)}$
 

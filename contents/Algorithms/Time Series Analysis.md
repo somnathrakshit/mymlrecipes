@@ -1,17 +1,15 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science Interview focusing on Time Series Analysis."
-  "keywords": "interview, data science, machine learning, Time Series, ARIMA, SARIMA, ARIMAX, Prophet"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science Interview focusing on Time Series Analysis."
+keywords: "interview, data science, machine learning, Time Series, ARIMA, SARIMA, ARIMAX, Prophet"
 ---
 
 ## Time Series Analysis
 
-**Reference:** [�-Explanation](https://nbviewer.jupyter.org/github/Yorko/mlcourse_open/blob/master/jupyter_english/topic09_time_series/topic9_part1_time_series_python.ipynb)
+**Reference:** [📖Explanation](https://nbviewer.jupyter.org/github/Yorko/mlcourse_open/blob/master/jupyter_english/topic09_time_series/topic9_part1_time_series_python.ipynb)
 
 ```{figure} images/image14.png
 ---
-name: image14
+name: time_series_analysis_image14
 width: 70%
 ---
 ```
@@ -58,18 +56,18 @@ $\hat{y}_{t} = \alpha \cdot y_t + (1-\alpha) \cdot \hat y_{t-1} $
 
 	Below is the code for a triple exponential smoothing model, which is also known by the last names of its creators, Charles Holt and his student Peter Winters. Additionally, the Brutlag method was included in the model to produce confidence intervals:
 
-	$$\hat y_{max_x}=\ell_{x−1}+b_{x−1}+s_{x−T}+m⋅d_{t−T}$$
+	$$\hat y_{max_x}=\ell_{x-1}+b_{x-1}+s_{x-T}+m·d_{t-T}$$
 
-	$$\hat y_{min_x}=\ell_{x−1}+b_{x−1}+s_{x−T}-m⋅d_{t−T}$$
+	$$\hat y_{min_x}=\ell_{x-1}+b_{x-1}+s_{x-T}-m·d_{t-T}$$
 
-	$$d_t=\gamma∣y_t−\hat y_t∣+(1−\gamma)d_{t−T},$$
+	$$d_t=\gamma|y_t-\hat y_t|+(1-\gamma)d_{t-T},$$
 
 	where $T$ is the length of the season, $d$ is the predicted deviation. Other parameters were taken from triple exponential smoothing. You can read more about the method and its applicability to anomaly detection in time series [here](http://fedcsis.org/proceedings/2012/pliks/118.pdf).
 
-	Exponentiality is hidden in the recursiveness of the function – we multiply by $(1-\alpha)$ each time, which already contains a multiplication by $(1-\alpha)$ of previous model values.
+	Exponentiality is hidden in the recursiveness of the function " we multiply by $(1-\alpha)$ each time, which already contains a multiplication by $(1-\alpha)$ of previous model values.
 
 
-#### Stationarity
+### Stationarity
 
 Before we start modeling, we should mention such an important property of time series, **stationarity**.
 
@@ -77,7 +75,7 @@ So why is stationarity so important? Because it is easy to make predictions on a
 
 When running a linear regression the assumption is that all of the observations are all independent of each other. In a time series, however, we know that observations are time dependent. It turns out that a lot of nice results that hold for independent random variables (law of large numbers and central limit theorem to name a couple) hold for stationary random variables. So by making the data stationary, we can actually apply regression techniques to this time dependent variable.
 
-**Dickey-Fuller test** can be used as a check for stationarity. If ‘Test Statistic’ is greater than the ‘Critical Value’ then the time series is stationary.
+**Dickey-Fuller test** can be used as a check for stationarity. If 'Test Statistic' is greater than the 'Critical Value' then the time series is stationary.
 
 There are a few ways to deal with non-stationarity:
 
@@ -90,7 +88,7 @@ There are a few ways to deal with non-stationarity:
 Plot the ACF and PACF charts and find the optimal parameters.
 
 
-#### ARIMA family
+### ARIMA family
 
 
 We will explain this model by building up letter by letter. $SARIMA(p, d, q)(P, D, Q, s)$, Seasonal Autoregression Moving Average model:
@@ -102,7 +100,7 @@ Let's combine our first 4 letters:
 
 $AR(p) + MA(q) = ARMA(p, q)$
 
-What we have here is the Autoregressive–moving-average model! If the series is stationary, it can be approximated with these 4 letters. Let's continue.
+What we have here is the Autoregressive"moving-average model! If the series is stationary, it can be approximated with these 4 letters. Let's continue.
 
 - $I(d)$ - order of integration. This is simply the number of nonseasonal differences needed to make the series stationary.
 
@@ -119,14 +117,14 @@ With this, we have three parameters: $(P, D, Q)$
 - $D$ - order of seasonal integration. This can be equal to 1 or 0, depending on whether seasonal differeces were applied or not.
 
 
-#### Prophet
+### Prophet
 
-[�- Check out this discussion](https://stats.stackexchange.com/questions/472266/inference-in-time-series-prophet-vs-arima)
+[📖 Check out this discussion](https://stats.stackexchange.com/questions/472266/inference-in-time-series-prophet-vs-arima)
 
 ARIMA and similar models assume some sort of causal relationship between past values and past errors and future values of the time series. Facebook Prophet doesn't look for any such causal relationships between past and future. Instead, it simply tries to find the best curve to fit to the data, using a linear or logistic curve, and Fourier coefficients for the seasonal components. There is also a regression component, but that is for external regressors, not for the time series itself (The Prophet model is a special case of GAM - Generalized Additive Model).
 
 
-#### Metrics
+### Metrics
 
 - **R squared:** coefficient of determination (in econometrics, this can be interpreted as the percentage of variance explained by the model), $(-\infty, 1]$
 
@@ -158,7 +156,7 @@ $MAPE = \frac{100}{n}\sum\limits_{i=1}^{n} \frac{|y_i - \hat{y}_i|}{y_i}$
 
 
 
-#### Questions
+### Questions
 
 ```{admonition} Problem: Cross Validation with Time Series
 :class: tip, dropdown

@@ -1,8 +1,6 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science Interview focusing on Hyperparameter optimization."
-  "keywords": "interview, data science, machine learning, Hyperparameter, optimization, tuning"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science Interview focusing on Hyperparameter optimization."
+keywords: "interview, data science, machine learning, Hyperparameter, optimization, tuning"
 ---
 
 ## Hyperparameter Optimization
@@ -90,7 +88,7 @@ Ray provides a simple, universal API for building distributed applications. Tune
 
 #### Optuna
 
-Optuna is designed specially for machine learning. It’s a black-box optimizer, so it needs an objective function. This objective function decides where to sample in upcoming trials, and returns numerical values (the performance of the hyperparameters). It uses different algorithms, such as GridSearch, Random Search, Bayesian and Evolutionary algorithms to find the optimal hyperparameter values.
+Optuna is designed specially for machine learning. It's a black-box optimizer, so it needs an objective function. This objective function decides where to sample in upcoming trials, and returns numerical values (the performance of the hyperparameters). It uses different algorithms, such as GridSearch, Random Search, Bayesian and Evolutionary algorithms to find the optimal hyperparameter values.
 
 #### HyperOpt
 
@@ -98,4 +96,4 @@ Hyperopt is a Python library for serial and parallel optimization over awkward s
 
 #### Scikit-Optimize
 
-Scikit-Optimize is an open-source library for hyperparameter optimization in Python. It was developed by the team behind Scikit-learn. It’s relatively easy to use compared to other hyperparameter optimization libraries. It has sequential model-based optimization libraries known as Bayesian Hyperparameter Optimization (BHO). The advantage of BHO is that they find better model settings than random search in fewer iterations.
+Scikit-Optimize is an open-source library for hyperparameter optimization in Python. It was developed by the team behind Scikit-learn. It's relatively easy to use compared to other hyperparameter optimization libraries. It has sequential model-based optimization libraries known as Bayesian Hyperparameter Optimization (BHO). The advantage of BHO is that they find better model settings than random search in fewer iterations.

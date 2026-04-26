@@ -1,8 +1,6 @@
 ---
-html_meta:
-  "description lang=en": "Interview resource of Data Science Interview focusing on Regression."
-  "keywords": "interview, data science, machine learning, Recurrent Neural Network, RNN, LSTM, GRU"
-  "property=og:locale": "en_US"
+description: "Interview resource of Data Science Interview focusing on Regression."
+keywords: "interview, data science, machine learning, Recurrent Neural Network, RNN, LSTM, GRU"
 ---
 
 
@@ -22,7 +20,7 @@ Sequential data contains multiple entities​ and the order in which these entit
 
 ```{figure} images/image2.png
 ---
-name: image2
+name: recurrent_neural_network_image2
 width: 70%
 ---
 In RNN each activation is dependent on two things: the activation in the previous layer $l-1$ at the current timestep $t$, and the activation in the same layer $l$ at the previous timestep $t-1$
@@ -36,7 +34,7 @@ In RNN each activation is dependent on two things: the activation in the previou
 
 ```{figure} images/image3.png
 ---
-name: image3
+name: recurrent_neural_network_image3
 width: 70%
 ---
 ```
@@ -74,8 +72,8 @@ Any given term in an RNN depends not only on the current input but also on the i
 
 There are two kinds of problems in sequences:
 - **Offline sequences​:** These allow for a lookahead in time. The entire sequence is present for your perusal. For example, a document present in your local drive where you have access to the entire document.
-- **Online sequences​:** These don’t allow for a lookahead. For example, a person is speaking and you need to transcribe the speech. In this case, you don’t know what is going to come next. 
+- **Online sequences​:** These don't allow for a lookahead. For example, a person is speaking and you need to transcribe the speech. In this case, you don't know what is going to come next. 
 
-You can make use of offline sequences by looking ahead. You can feed the offline sequences to an RNN in regular order as well as the reverse order to get better results in whatever task you’re doing. Such an RNN is called a bidirectional RNN​. In a bidirectional RNN, the input at each timestep is a concatenation of the entity present in regular order and the entity present in reverse order. For example, for a sentence of length $100$, the input at the first timestep will be a concatenation of the first word $x_1$ and the last word $x_{100}$. A bidirectional RNN has $2$x number of parameters​ than a vanilla RNN.
+You can make use of offline sequences by looking ahead. You can feed the offline sequences to an RNN in regular order as well as the reverse order to get better results in whatever task you're doing. Such an RNN is called a bidirectional RNN​. In a bidirectional RNN, the input at each timestep is a concatenation of the entity present in regular order and the entity present in reverse order. For example, for a sentence of length $100$, the input at the first timestep will be a concatenation of the first word $x_1$ and the last word $x_{100}$. A bidirectional RNN has $2$x number of parameters​ than a vanilla RNN.
 
 ### LSTM
