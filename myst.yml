@@ -9,6 +9,7 @@ project:
   github: https://github.com/somnathrakshit/mymlrecipes
   index: intro.md
   toc:
+    - file: intro.md
     - title: Journey of this project
       file: contents/To Do List.md
     - title: Statistics
