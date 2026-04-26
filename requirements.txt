@@ -1,9 +1,6 @@
-jupyter-book
+jupyter-book==2.1.4
 matplotlib
 numpy
-sphinx-sitemap
 scipy
-numpy
-matplotlib
 pandas
 seaborn

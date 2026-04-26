@@ -1,0 +1,87 @@
+version: 1
+project:
+  title: The Data Science Interview Book
+  description: A collection of ML and Data Science recipes for interview preparation.
+  authors:
+    - name: Somnath Rakshit
+      email: somnath52@gmail.com
+  license: MIT
+  github: https://github.com/somnathrakshit/mymlrecipes
+  index: intro.md
+  toc:
+    - title: Journey of this project
+      file: contents/To Do List.md
+    - title: Statistics
+      children:
+        - file: contents/Statistics/Probability Basics.md
+        - file: contents/Statistics/Probability Distribution 1.ipynb
+        - file: contents/Statistics/Probability Distribution 2.md
+        - file: contents/Statistics/Maximum Likelihood Estimate.ipynb
+        - file: contents/Statistics/Central Limit Theorem.md
+        - file: contents/Statistics/Bayesian vs Frequentist Reasoning.md
+        - file: contents/Statistics/Hypothesis Testing.md
+    - title: Model Building
+      children:
+        - file: contents/Data/Data.md
+          children:
+            - file: contents/Data/Scaling.md
+            - file: contents/Data/Missing Value.md
+            - file: contents/Data/Outlier.md
+        - file: contents/Data/Hyperparameter optimization.md
+    - title: Algorithms
+      children:
+        - file: contents/Algorithms/Regression.md
+        - file: contents/Algorithms/Generative VS Discriminative Models.md
+        - file: contents/Algorithms/Classification.md
+        - file: contents/Algorithms/Tree based approaches.md
+        - file: contents/Algorithms/Time Series Analysis.md
+        - file: contents/Algorithms/Anomaly Detection.md
+    - title: Neural Network
+      children:
+        - file: contents/NN/Neural Network.md
+        - file: contents/NN/Recurrent Neural Network.md
+    - title: NLP
+      children:
+        - file: contents/NLP/Lexical Processing.md
+        - file: contents/NLP/Syntactic Processing.md
+    - title: Story Telling
+      children:
+        - file: contents/StoryTelling/Visualization.md
+    - title: Python
+      children:
+        - file: contents/Python/Basics.ipynb
+        - file: contents/Python/Data Manipulation.ipynb
+        - file: contents/Python/Statistics.ipynb
+        - file: contents/Python/NLP.ipynb
+    - title: SQL
+      children:
+        - file: contents/SQL/Select.md
+        - file: contents/SQL/Joins.md
+        - file: contents/SQL/Temporary Datasets.md
+        - file: contents/SQL/Windows Functions.md
+        - file: contents/SQL/Time.md
+        - file: contents/SQL/Functions.md
+        - file: contents/SQL/Problems.md
+    - title: Excel
+      children:
+        - file: contents/Excel/Excel Basics.md
+        - file: contents/Excel/Data Manipulation.md
+        - file: contents/Excel/Time and Date.md
+    - title: Tensorflow
+      children:
+        - file: contents/Tensorflow/Basics.ipynb
+    - title: Analytical Thinking
+      children:
+        - file: contents/Analytical Thinking/Business Scenarios.md
+        - file: contents/Analytical Thinking/Industry Application.md
+
+site:
+  template: book-theme
+  options:
+    logo: logo.gif
+    favicon: logo.gif
+  nav:
+    - title: Home
+      url: /
+  domains:
+    - ml.pages.dev

@@ -1,0 +1,17 @@
+[project]
+name = "mymlrecipes"
+version = "0.1.0"
+description = "The Data Science Interview Book - A collection of ML and Data Science recipes for interview preparation."
+authors = [
+    { name = "Somnath Rakshit", email = "somnath52@gmail.com" }
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "jupyter-book==2.1.4",
+    "matplotlib",
+    "numpy",
+    "scipy",
+    "pandas",
+    "seaborn",
+]
