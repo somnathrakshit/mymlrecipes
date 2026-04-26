@@ -18,7 +18,7 @@ Let's start with an example, suppose from the SAT math scores
 ```{figure} images/image8.png
 ---
 name: image8
-scale: 80%
+width: 80%
 ---
 ```
 
@@ -33,6 +33,6 @@ We’d expect the average to be $(1 + 2 + 3 + 4 + 5 + 6 / 6 = 3.5)$. The samplin
 ```{figure} images/image9.png
 ---
 name: image9
-scale: 60%
+width: 60%
 ---
 ```

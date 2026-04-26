@@ -80,8 +80,5 @@ site:
   options:
     logo: logo.gif
     favicon: logo.gif
-  nav:
-    - title: Home
-      url: /
   domains:
     - ml.pages.dev

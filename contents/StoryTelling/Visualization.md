@@ -14,7 +14,7 @@ This page is a work in progress
 ```{figure} images/image1.jpg
 ---
 name: image1
-scale: 13%
+width: 13%
 align: center
 ---
 [📚 Source](https://experception.net/)

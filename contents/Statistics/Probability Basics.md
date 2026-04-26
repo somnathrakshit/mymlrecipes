@@ -11,14 +11,14 @@ html_meta:
 ```{figure} images/image12.png
 ---
 name: image12
-scale: 100%
+width: 100%
 ---
 ```
 
 
 Probability theory is the mathematical framework that allows us to analyze chance events in a logically sound manner. The probability of an event is a number indicating how likely that event will occur.
 
-Note that when we say the probability of a head is $\frac{1}[2}$, we are not claiming that any sequence of coin tosses will consist of exactly $50%$ heads. If we toss a fair coin ten times, it would not be surprising to observe $6$ heads and $4$ tails, or even $3$ heads and $7$ tails. But as we continue to toss the coin over and over again, we expect the long-run frequency of heads to get ever closer to $50%$. **In general, it is important in statistics to understand the distinction between theoretical and empirical quantities. Here, the true (theoretical) probability of a head was $\frac{1}[2}$, but any realized (empirical) sequence of coin tosses may have more or less than exactly $50$% heads.**
+Note that when we say the probability of a head is $\frac{1}{2}$, we are not claiming that any sequence of coin tosses will consist of exactly $50\%$ heads. If we toss a fair coin ten times, it would not be surprising to observe $6$ heads and $4$ tails, or even $3$ heads and $7$ tails. But as we continue to toss the coin over and over again, we expect the long-run frequency of heads to get ever closer to $50\%$. **In general, it is important in statistics to understand the distinction between theoretical and empirical quantities. Here, the true (theoretical) probability of a head was $\frac{1}{2}$, but any realized (empirical) sequence of coin tosses may have more or less than exactly $50\%$ heads.**
 
 ### Common Terminologies
 
@@ -187,7 +187,7 @@ Each zebra has 2 options of travel: clockwise or anticlockwise. So a total of $2
 
 Out of this only way in which they donot collide is if all of them travel clockwise or anticlockwise. So a total of $2$.
 
-Therefore the probability of no collision $= 2/8 = 25%$
+Therefore the probability of no collision $= 2/8 = 25\%$
 
 ```
 
@@ -239,13 +239,15 @@ There is a subtle nuance to this problem, in the above solution we have assumed 
 Let's take $r=3$, for $n$ die rolls we should have atleast one $r$. The Probability of that is:
 
 $$
+\begin{aligned}
 P(r=3) \\
 & = P(\text{of getting all n values as 1,2,3} * P(\text{atleast one 3})) \\
 & = (\frac{3}{6})^n * (1-P(\text{no 3's occuring})) \\
 & = (\frac{3}{6})^n * (1-(\frac{\text{only getting 1,2}}{\text{out of 1,2,3}})^n) \\
 & = (\frac{3}{6})^n * (1-(\frac{2}{3})^n) \\
 & = \text{generalizing } (\frac{r}{6})^n * (1-(\frac{r-1}{r})^n) \\
-& = \frac{r^n - (r-1)^n}{6^n}\\
+& = \frac{r^n - (r-1)^n}{6^n}
+\end{aligned}
 $$
 
 ```
@@ -370,7 +372,7 @@ Required probability $= 1/4$
 ```{figure} images/image13.png
 ---
 name: image13
-scale: 60%
+width: 60%
 ---
 ```
 

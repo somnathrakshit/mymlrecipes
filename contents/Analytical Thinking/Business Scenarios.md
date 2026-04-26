@@ -93,7 +93,7 @@ SOLUTION PENDING
 
 ```{admonition} Problem: [INSTAGRAM] Promoting Instagram
 :class: tip, dropdown
-[ðŸ“–Source](https://www.interviewquery.com/questions/promoting-instagram) 
+[ðŸ“-Source](https://www.interviewquery.com/questions/promoting-instagram) 
 
 Let's say you work on the growth team at Facebook and are tasked with promoting Instagram from within the Facebook app.
 

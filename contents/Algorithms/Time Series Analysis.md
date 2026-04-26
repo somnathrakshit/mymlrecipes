@@ -7,12 +7,12 @@ html_meta:
 
 ## Time Series Analysis
 
-**Reference:** [ðŸ“–Explanation](https://nbviewer.jupyter.org/github/Yorko/mlcourse_open/blob/master/jupyter_english/topic09_time_series/topic9_part1_time_series_python.ipynb)
+**Reference:** [ðŸ“-Explanation](https://nbviewer.jupyter.org/github/Yorko/mlcourse_open/blob/master/jupyter_english/topic09_time_series/topic9_part1_time_series_python.ipynb)
 
 ```{figure} images/image14.png
 ---
 name: image14
-scale: 70%
+width: 70%
 ---
 ```
 
@@ -121,7 +121,7 @@ With this, we have three parameters: $(P, D, Q)$
 
 #### Prophet
 
-[ðŸ“– Check out this discussion](https://stats.stackexchange.com/questions/472266/inference-in-time-series-prophet-vs-arima)
+[ðŸ“- Check out this discussion](https://stats.stackexchange.com/questions/472266/inference-in-time-series-prophet-vs-arima)
 
 ARIMA and similar models assume some sort of causal relationship between past values and past errors and future values of the time series. Facebook Prophet doesn't look for any such causal relationships between past and future. Instead, it simply tries to find the best curve to fit to the data, using a linear or logistic curve, and Fourier coefficients for the seasonal components. There is also a regression component, but that is for external regressors, not for the time series itself (The Prophet model is a special case of GAM - Generalized Additive Model).
 

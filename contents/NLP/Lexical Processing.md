@@ -12,7 +12,7 @@ In any large text document (say, a hundred thousand words), the word frequencies
 ```{figure} images/image1.png
 ---
 name: image1
-scale: 70%
+width: 70%
 ---
 Zipf distribution
 ```
@@ -27,9 +27,9 @@ Zipf distribution
 	```{figure} images/image2.png
 	---
 	name: image2
-	scale: 40%
+	width: 40%
 	---
-	Soundex Algorithm for Phonetic Hashing ([ðŸ“–Source](https://www.sqlservercentral.com/articles/soundex-experiments-with-sqlclr-part-2))
+	Soundex Algorithm for Phonetic Hashing ([ðŸ“-Source](https://www.sqlservercentral.com/articles/soundex-experiments-with-sqlclr-part-2))
 	```
 
 	- **Edit Distance:** Edit distance is a way of quantifying how dissimilar two strings are to one another by counting the minimum number of operations required to transform one string into the other. There are different methodologies for doing it, e.g. Hamming distance,Levenshtein distance, Jaro-Winkler etc.

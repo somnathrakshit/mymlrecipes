@@ -11,7 +11,7 @@ html_meta:
 ```{figure} images/image1.png
 ---
 name: image1
-scale: 55%
+width: 55%
 ---
 ```
 
@@ -24,7 +24,7 @@ In the cases when you have a small sample size, outliers can significantly mess 
 ```{figure} images/image2.png
 ---
 name: image2
-scale: 80%
+width: 80%
 ---
 Outliers tend to affect mean more than mdeian or mode
 ```
@@ -42,7 +42,7 @@ Here are some of the techniques for detecting outliers:
 ```{figure} images/image3.png
 ---
 name: image3
-scale: 80%
+width: 80%
 ---
 ```
 - **Z-Score or Extreme Value Analysis (parametric):** The z-score or standard score of an observation is a metric that indicates how many standard deviations a data point is from the sample’s mean, assuming a gaussian distribution. This makes z-score a parametric method. Very frequently data points are not to described by a gaussian distribution, this problem can be solved by applying transformations to data ie: scaling it. It is a very effective method if you can describe the values in the feature space with a gaussian distribution. However, it is only convenient to use in a low dimensional feature space, in a small to medium sized dataset.
@@ -50,7 +50,7 @@ scale: 80%
 ```{figure} images/image4.png
 ---
 name: image4
-scale: 40%
+width: 40%
 ---
 Any data point whose Z-score falls out of 3rd standard deviation is usually considered an outlier
 ```
@@ -65,7 +65,7 @@ It is an unsupervised model and needs to be re-calibrated each time a new batch 
 ```{figure} images/image5.png
 ---
 name: image5
-scale: 55%
+width: 55%
 ---
 ```
 
@@ -78,7 +78,7 @@ If not correctly optimized, training time can be very long and computationally e
 ```{figure} images/image6.png
 ---
 name: image6
-scale: 55%
+width: 55%
 ---
 ```
 

@@ -14,7 +14,7 @@ This page is a work in progress
 ```{figure} images/image1.png
 ---
 name: image1
-scale: 50%
+width: 50%
 ---
 ```
 
@@ -52,7 +52,7 @@ From the source below can you find the Customer Number corresponding to the Acco
 
 ```{admonition} Solution:
 :class: dropdown
-VLOOKUP won't work as Customer Num is to the LEFT of the Account Name. We need INDEX MATCH [ðŸ“–Explanation](https://exceljet.net/index-and-match)
+VLOOKUP won't work as Customer Num is to the LEFT of the Account Name. We need INDEX MATCH [ðŸ“-Explanation](https://exceljet.net/index-and-match)
 
 `
 	=INDEX(A2:D12,MATCH(F7,B2:B12),1)

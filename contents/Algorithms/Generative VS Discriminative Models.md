@@ -12,9 +12,9 @@ Machine learning models can be classified into two types of models – Discrimin
 ```{figure} images/image7.png
 ---
 name: image7
-scale: 60%
+width: 60%
 ---
-This essentially summarizes Generative vs Discriminative Models [📖Source](https://dataisutopia.com/blog/discremenet-generative-models/)
+This essentially summarizes Generative vs Discriminative Models [�-Source](https://dataisutopia.com/blog/discremenet-generative-models/)
 ```
 
 ### Discriminative Models

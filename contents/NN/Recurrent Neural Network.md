@@ -23,7 +23,7 @@ Sequential data contains multiple entities​ and the order in which these entit
 ```{figure} images/image2.png
 ---
 name: image2
-scale: 70%
+width: 70%
 ---
 In RNN each activation is dependent on two things: the activation in the previous layer $l-1$ at the current timestep $t$, and the activation in the same layer $l$ at the previous timestep $t-1$
 ```
@@ -37,7 +37,7 @@ In RNN each activation is dependent on two things: the activation in the previou
 ```{figure} images/image3.png
 ---
 name: image3
-scale: 70%
+width: 70%
 ---
 ```
 - **One to Many:** This type of architecture has a single entity as an input and a sequence as the output​. It is used for generation such as music generation, creating drawings, generating text, etc.

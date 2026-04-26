@@ -119,7 +119,7 @@ name: image5
 ```{figure} images/image6.png
 ---
 name: image6
-scale: 60%
+width: 60%
 ---
 ```
 
@@ -129,7 +129,7 @@ Box plots are one of the easiest and most intuitive way to understand distributi
 ```{figure} images/image7.png
 ---
 name: image7
-scale: 60%
+width: 60%
 ---
 ```
 

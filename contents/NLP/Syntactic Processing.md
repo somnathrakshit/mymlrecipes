@@ -35,7 +35,7 @@ The transition and the emission probabilities specify the probabilities of trans
 ```{figure} images/image3.png
 ---
 name: image3
-scale: 70%
+width: 70%
 ---
 ```
 
@@ -102,7 +102,7 @@ Example of a left recursion: VP -> VP NP. Whenever a top-down parser encounters 
 ```{figure} images/image4.png
 ---
 name: image4
-scale: 80%
+width: 80%
 ---
 Top-down parse
 ```
@@ -112,7 +112,7 @@ Top-down parse
 ```{figure} images/image5.png
 ---
 name: image5
-scale: 80%
+width: 80%
 ---
 Bottom-up parse
 ```
@@ -150,7 +150,7 @@ Dependencies in a sentence are defined using the elements Subject-Verb-Object (S
 ```{figure} images/image6.png
 ---
 name: image6
-scale: 80%
+width: 80%
 ---
 ```
 
@@ -199,7 +199,7 @@ The idea of chunking in the context of entity recognition is simple - most entit
 
 **Noun phrase chunks:** 'John', 'the hotel'
 
-**Grammar:** $\text{NP_chunk: {<DT>?<NN>}}$
+**Grammar:** $\text{NP\_chunk: \{<DT>?<NN>\}}$
 
 #### Probabilistic method for NER
 

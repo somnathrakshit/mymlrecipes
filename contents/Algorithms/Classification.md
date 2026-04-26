@@ -15,9 +15,9 @@ Linear regression is unbounded, and this brings logistic regression into picture
 ```{figure} images/image3.png
 ---
 name: image3
-scale: 60%
+width: 60%
 ---
-Logistic regression uses Sigmoid function to transform linear regression into the logit function. Logit is nothing but log of Odds. Then using log of Odds it calculate the required probability.([ðŸ“–Source](https://www.vebuso.com/2020/02/linear-to-logistic-regression-explained-step-by-step/))
+Logistic regression uses Sigmoid function to transform linear regression into the logit function. Logit is nothing but log of Odds. Then using log of Odds it calculate the required probability.([ðŸ“-Source](https://www.vebuso.com/2020/02/linear-to-logistic-regression-explained-step-by-step/))
 ```
 
 #### Cost Function
@@ -27,9 +27,9 @@ One more thing to note here is that logistic regression uses maximum likelihood 
 ```{figure} images/image4.png
 ---
 name: image4
-scale: 40%
+width: 40%
 ---
-Cost function([ðŸ“–Source](https://pvgisours.tistory.com/59))
+Cost function([ðŸ“-Source](https://pvgisours.tistory.com/59))
 ```
 
 
@@ -38,7 +38,7 @@ Cost function([ðŸ“–Source](https://pvgisours.tistory.com/59))
 ```{figure} images/image5.png
 ---
 name: image5
-scale: 80%
+width: 80%
 ---
 Confusion Matrix and key Metrics 
 ```
@@ -46,9 +46,9 @@ Confusion Matrix and key Metrics
 ```{figure} images/image6.png
 ---
 name: image6
-scale: 80%
+width: 80%
 ---
-(a) ROC curve (b) Precision-Recall curve. Both are a helpful diagnostic tool for evaluating a single classifier but challenging for comparing classifiers. Like ROC AUC, we can calculate the area under the curve as a score and use that score to compare classifiers. The focus on the minority class makes the Precision-Recall AUC more useful for imbalanced classification problems. ([ðŸ“–Source](https://machinelearningmastery.com/tour-of-evaluation-metrics-for-imbalanced-classification/))
+(a) ROC curve (b) Precision-Recall curve. Both are a helpful diagnostic tool for evaluating a single classifier but challenging for comparing classifiers. Like ROC AUC, we can calculate the area under the curve as a score and use that score to compare classifiers. The focus on the minority class makes the Precision-Recall AUC more useful for imbalanced classification problems. ([ðŸ“-Source](https://machinelearningmastery.com/tour-of-evaluation-metrics-for-imbalanced-classification/))
 ```
 
 

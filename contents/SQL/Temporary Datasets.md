@@ -10,7 +10,7 @@ html_meta:
 ```{note}
 Since solving any reasonable SQL problem requires a combination of all the topics covered here, hence it becomes difficult to seggregate problems based on one topic alone. So for SQL we are creating a dedicated **Problems** section. Theoritical and Basic questions will still be under their dedicated sections.
 ```
-**Reference:** [📖Explanation](https://www.red-gate.com/simple-talk/databases/sql-server/t-sql-programming-sql-server/sql-server-cte-basics/)
+**Reference:** [�-Explanation](https://www.red-gate.com/simple-talk/databases/sql-server/t-sql-programming-sql-server/sql-server-cte-basics/)
 
 Sometimes in order to ease things out you need to create a temporary version of the data for either viewing it or for running some further calculations to it. Now if it is just that you want to run the same query daily and get the results you might as well save it as a `VIEW` . **You can consider view as a SQL statement saved with a name**.
 

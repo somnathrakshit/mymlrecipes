@@ -10,7 +10,7 @@ html_meta:
 ```{figure} images/image13.png
 ---
 name: image13
-scale: 70%
+width: 70%
 ---
 ```
 
@@ -29,7 +29,7 @@ Decision trees use multiple algorithms to decide to split a node into two or mor
 ```{figure} images/image11.png
 ---
 name: image11
-scale: 80%
+width: 80%
 ---
 Decision Tree
 ```
@@ -127,7 +127,7 @@ An ensemble is a collection of models which ideally should predict better than i
 ---
 
 ### AdaBoost
-[ðŸ“–Read](https://towardsdatascience.com/log-book-adaboost-the-math-behind-the-algorithm-a014c8afbbcc)
+[ðŸ“-Read](https://towardsdatascience.com/log-book-adaboost-the-math-behind-the-algorithm-a014c8afbbcc)
 
 - AdaBoost starts by assigning equal weight to each datapoint, the idea is to adjust the weights of each observation after every iteration such that the the algorithm is forced to take a harder look at these difficult to classify observations
 - Post each iteration we will have a weak learner using which we will calculate 2 things:
@@ -135,10 +135,10 @@ An ensemble is a collection of models which ideally should predict better than i
 	- the weight that the weak learner itself will have on the final output, in each of the $t$ iterations we will have a learner $h_1$, $h_2$, $h_3$ .. $h_t$ each of which will be combined to make the final model, the weight of each of these individual learners in the final output is given by $\alpha_t$. The models with low error rate will have higher values of $\alpha_t$ and hence higher weight in the final output.
 - Before you apply the AdaBoost algorithm, you should specifically remove the Outliers. Since AdaBoost tends to boost up the probabilities of misclassified points and there is a high chance that outliers will be misclassified, it will keep increasing the probability associated with the outliers and make the progress difficult.
 
-```{figure} mages/image10.png
+```{figure} images/image10.png
 ---
 name: image10
-scale: 80%
+width: 80%
 ---
 Adaboost Pseudocode
 ```
@@ -157,7 +157,7 @@ This is in short of the intuition as to how Gradient Boosting works. In case of 
 ---
 
 ### XGBoost
-[ðŸ“–Read](https://towardsdatascience.com/log-book-xgboost-the-math-behind-the-algorithm-54ddc5008850)
+[ðŸ“-Read](https://towardsdatascience.com/log-book-xgboost-the-math-behind-the-algorithm-54ddc5008850)
 
 XGBoost stands for "Extreme Gradient Boosting", where the term "Gradient Boosting" originates from the paper Greedy Function Approximation: A Gradient Boosting Machine, by Friedman. It initially started as a research project by Tianqi Chen as part of the Distributed (Deep) Machine Learning Community (DMLC) group. It became well known in the ML competition circles after its use in the winning solution of the Higgs Machine Learning Challenge.
 
@@ -208,7 +208,7 @@ As for why or when we use it over logistic regression, the answer is it depends:
 ```{admonition} Problem: Explain CART
 :class: tip, dropdown
 
-[ðŸ“–Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[ðŸ“-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 Explain the CART Algorithm for Decision Trees.
 
@@ -227,7 +227,7 @@ As a result, it makes the problem intractable even for small training sets. This
 ```{admonition} Problem: Properties of Gini Impurity
 :class: tip, dropdown
 
-[ðŸ“–Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[ðŸ“-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 Briefly explain the properties of Gini Impurity.
 
@@ -253,7 +253,7 @@ Gini impurity tends to isolate the most frequent class in its own branch of the 
 ```{admonition} Problem: CART vs ID3
 :class: tip, dropdown
 
-[ðŸ“–Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[ðŸ“-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 Explain the difference between the CART and ID3 Algorithms.
 
@@ -270,7 +270,7 @@ On the contrary, other Tree algorithms such as ID3 can produce Decision Trees wi
 ```{admonition} Problem: Types of nodes
 :class: tip, dropdown
 
-[ðŸ“–Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[ðŸ“-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 List down the different types of nodes in Decision Trees.
 
@@ -289,7 +289,7 @@ The Decision Tree consists of the following different types of nodes:
 ```{admonition} Problem: Information Gain
 :class: tip, dropdown
 
-[ðŸ“–Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[ðŸ“-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 What do you understand of Information gain? Any disadvantages that you can think of?
 
@@ -315,7 +315,7 @@ As for the disadvantages, Information gain biases the Decision Tree against cons
 ```{admonition} Problem: Space Time complexity of a Decision tree
 :class: tip, dropdown
 
-[ðŸ“–Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[ðŸ“-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 Explain the time and space complexity of training and testing in the case of a Decision Tree.
 
@@ -348,7 +348,7 @@ Note: Random Forest is comparatively faster than other algorithms.
 ```{admonition} Problem: Training time
 :class: tip, dropdown
 
-[ðŸ“–Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[ðŸ“-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 If it takes one hour to train a Decision Tree on a training set containing 1 million instances, roughly how much time will it take to train another Decision Tree on a training set containing 10 million instances?
 
@@ -371,7 +371,7 @@ Therefore, we can expect the training time to be roughly $11.7$ hours.
 ```{admonition} Problem: Missing data and neumerical values
 :class: tip, dropdown
 
-[ðŸ“–Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[ðŸ“-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 How does a Decision Tree handle missing attribute values? How does it deal with continuous(numerical) features?
 
@@ -390,7 +390,7 @@ Decision Trees handle continuous features by converting these continuous feature
 ```{admonition} Problem: Inductive Bias
 :class: tip, dropdown
 
-[ðŸ“–Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[ðŸ“-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 What is the Inductive Bias of Decision Trees?
 ```
@@ -404,7 +404,7 @@ The ID3 algorithm preferred Shorter Trees over longer Trees. In Decision Trees, 
 ```{admonition} Problem: Compare different selection measures
 :class: tip, dropdown
 
-[ðŸ“–Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[ðŸ“-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 Compare the different attribute selection measures.
 ```
@@ -422,7 +422,7 @@ The three measures, in general, returns good results, but:
 ```{admonition} Problem: Effect of Outliers
 :class: tip, dropdown
 
-[ðŸ“–Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[ðŸ“-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 Are Decision Trees affected by the outliers? Explain
 ```
@@ -436,7 +436,7 @@ Decision Trees are not sensitive to noisy data or outliers since, extreme values
 ```{admonition} Problem: Advantages and Disadvantages of Decision Tree
 :class: tip, dropdown
 
-[ðŸ“–Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
+[ðŸ“-Source](https://www.analyticsvidhya.com/blog/2021/05/25-questions-to-test-your-skills-on-decision-trees/)
 
 Discuss the advantages and disadvantages of Decision tree
 ```

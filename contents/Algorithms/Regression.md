@@ -13,9 +13,9 @@ html_meta:
 ```{figure} images/image8.png
 ---
 name: image2
-scale: 60%
+width: 60%
 ---
-[ðŸ“–Source](https://xkcd.com/605/) 
+[ðŸ“-Source](https://xkcd.com/605/) 
 ```
 
 $Y = b_0 + b_1 * x_1 + b_2 * x_2 + \epsilon$
@@ -26,7 +26,7 @@ The idea is to find the line or plane which best fits the data. Collectively, $b
 ---
 name: image2
 ---
-[ðŸ“–Source](https://www.shutterstock.com/image-illustration/annotated-diagram-explaining-components-graph-showing-1406041139) 
+[ðŸ“-Source](https://www.shutterstock.com/image-illustration/annotated-diagram-explaining-components-graph-showing-1406041139) 
 ```
 
 #### Metrics
@@ -40,14 +40,14 @@ Now once you have the model fit next comes the metrics to measure how good the f
 
 #### Feature selection
 
-[ðŸ“–Explanation](https://towardsdatascience.com/log-book-practical-guide-to-linear-polynomial-regression-in-r-e0ed2e7f8031)
+[ðŸ“-Explanation](https://towardsdatascience.com/log-book-practical-guide-to-linear-polynomial-regression-in-r-e0ed2e7f8031)
 
 - Hypothesis testing and using p-values to understand if the feature is important or not
 - Using metrics like $\text{Adjusted} R^2$, $AIC$, $BIC$, etc. which takes into consideration the number of features used to build the model and penalizes accordingly
 - How do we find the model that minimizes a metric like $AIC$? One approach is to search through all possible models, called all **subset regression**. This is computationally expensive and is not feasible for problems with large data and many variables. An attractive alternative is to use **stepwise regression** about which we learned above, this successively adds and drops predictors to find a model that lowers $AIC$. Simpler yet are **forward selection** and **backward selection**. In forward selection, you start with no predictors and add them one-by-one, at each step adding the predictor that has the largest contribution to , stopping when the contribution is no longer statistically significant. In backward selection, or backward elimination, you start with the full model and take away predictors that are not statistically significant until you are left with a model in which all predictors are statistically significant.
 - **Penalized Regression** or **Regularization**:
 
-	[ðŸ“–Explanation](https://www.analyticsvidhya.com/blog/2016/01/ridge-lasso-regression-python-complete-tutorial/)
+	[ðŸ“-Explanation](https://www.analyticsvidhya.com/blog/2016/01/ridge-lasso-regression-python-complete-tutorial/)
 
 	Penalized regression is similar in spirit to AIC. Instead of explicitly searching through a discrete set of models, the model-fitting equation incorporates a constraint that penalizes the model for too many variables (parameters). Rather than eliminating predictor variables entirely â€” as with stepwise, forward, and backward selection â€” penalized regression applies the penalty by reducing coefficients, in some cases to near zero. Common penalized regression methods are ridge regression and lasso regression.
 	Regularization is nothing but adding a penalty term to the objective function and control the model complexity using that penalty term. It can be used for many machine learning Algorithms. Both Ridge and Lasso regression uses $L2$ and $L1$ regularizations.
@@ -57,9 +57,9 @@ Now once you have the model fit next comes the metrics to measure how good the f
 ```{figure} images/image9.png
 ---
 name: image9
-scale: 70%
+width: 70%
 ---
-LASSO vs Ridge, the red contours are that of RSS whereas the geometric shapes are that of Ridge and Lasso. [(ðŸ“–Source)](https://towardsdatascience.com/ridge-and-lasso-regression-a-complete-guide-with-python-scikit-learn-e20e34bcbf0b) 
+LASSO vs Ridge, the red contours are that of RSS whereas the geometric shapes are that of Ridge and Lasso. [(ðŸ“-Source)](https://towardsdatascience.com/ridge-and-lasso-regression-a-complete-guide-with-python-scikit-learn-e20e34bcbf0b) 
 ```
 
 
@@ -102,7 +102,7 @@ The degree of order which to use is a Hyperparameter, and we need to choose it w
 
 #### Regression Splines
 
-[ðŸ“–Explanation](https://www.analyticsvidhya.com/blog/2018/03/introduction-regression-splines-python-codes/)
+[ðŸ“-Explanation](https://www.analyticsvidhya.com/blog/2018/03/introduction-regression-splines-python-codes/)
 
 In order to overcome the disadvantages of polynomial regression, we can use an improved regression technique which, instead of building one model for the entire dataset, divides the dataset into multiple bins and fits each bin with a separate model. Such a technique is known as Regression spline.
 
@@ -189,7 +189,7 @@ What is the new objective function? How do you compute it?
 
 ```{admonition} Solution:
 :class: dropdown
-[ðŸ“–Source](https://www.nicksingh.com/posts/30-machine-learning-interview-questions-ml-interview-study-guide)
+[ðŸ“-Source](https://www.nicksingh.com/posts/30-machine-learning-interview-questions-ml-interview-study-guide)
 
 The objective function for linear regression where $x$ is set of input vectors and $w$ are the weights:
 $L(w) = E[(w^Tx-y)^2]$
@@ -216,7 +216,7 @@ What is L1 and L2 regularization? What are the differences between the two?
 
 ```{admonition} Solution:
 :class: dropdown
-[ðŸ“–Source](https://www.nicksingh.com/posts/30-machine-learning-interview-questions-ml-interview-study-guide)
+[ðŸ“-Source](https://www.nicksingh.com/posts/30-machine-learning-interview-questions-ml-interview-study-guide)
 
 $L1$ and $L2$ regularization are both methods of regularization that attempt to prevent overfitting in machine learning. For a regular regression model assume the loss function is given by $L$. $L1$ adds the absolute value of the coefficients as a penalty term, whereas $L2$ adds the squared magnitude of the coefficients as a penalty term.
 
@@ -241,7 +241,7 @@ What are some cost functions you might consider, and which would you decide to m
 
 ```{admonition} Solution:
 :class: dropdown
-[ðŸ“–Source](https://www.nicksingh.com/posts/30-machine-learning-interview-questions-ml-interview-study-guide)
+[ðŸ“-Source](https://www.nicksingh.com/posts/30-machine-learning-interview-questions-ml-interview-study-guide)
 
 There are two potential cost functions here, one using the $L1$ norm and the other using the $L2$ norm. Below are two basic cost functions using an L1 and L2 norm respectively: 
 - $J(w) = ||Xw-y||$
@@ -267,7 +267,7 @@ Suppose you are running a linear regression and model the error terms as being n
 
 ```{admonition} Solution:
 :class: dropdown
-[ðŸ“–Source](https://cppcodingzen.com/?p=1609)
+[ðŸ“-Source](https://cppcodingzen.com/?p=1609)
 
 A mathematical derivation like this requires us to:
 

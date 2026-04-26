@@ -15,7 +15,7 @@ Since solving any reasonable SQL problem requires a combination of all the topic
 ```{warning}
 The below commands are for SQL Server, a lot of databases tend to do the Time part of things a little differently, many of them has additional commands or does not support a few commands. Please be cautious as the commands might change depending on the DB you are using.
 ```
-**Reference:** [ðŸ“–Explanation](https://www.sqlshack.com/learn-sql-sql-server-date-and-time-functions/)
+**Reference:** [ðŸ“-Explanation](https://www.sqlshack.com/learn-sql-sql-server-date-and-time-functions/)
 
 In most product companies like Google, Salesforce, Facebook, etc. in short any company that deals with user interaction will store data about user interaction and more often than not will ask questions which leverages the querying or manipulating time part of stored data. While time part is not very difficult to solve people face problems in that they donot remember the right command to do what they are trying, so here we will share the list of common commands along with their intended usage.
 

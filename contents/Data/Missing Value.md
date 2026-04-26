@@ -7,7 +7,7 @@ html_meta:
 
 ## Missing Value
 
-[ðŸ“–Source](https://www.analyticsvidhya.com/blog/2016/01/guide-data-exploration/)
+[ðŸ“-Source](https://www.analyticsvidhya.com/blog/2016/01/guide-data-exploration/)
 
 Data can have missing values and it is very common. The reason of such missing data can be any of the following:
 

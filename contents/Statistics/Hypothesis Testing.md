@@ -26,7 +26,7 @@ Hypothesis testing is used to confirm your conclusions about the population para
 
 #### Steps
 
-[ðŸ“–Source](https://en.wikipedia.org/wiki/Statistical_hypothesis_testing)
+[ðŸ“-Source](https://en.wikipedia.org/wiki/Statistical_hypothesis_testing)
 
 - There is an initial research hypothesis of which the truth is unknown.
 - The first step is to state the relevant null and alternative hypotheses. This is important, as mis-stating the hypotheses will muddy the rest of the process.
@@ -104,9 +104,9 @@ As $p$-value is $< \alpha$ so we reject null-hypothesis.
 ```{figure} images/image11.png
 ---
 name: image11
-scale: 60%
+width: 60%
 ---
-Types of Errors in Hypothesis testing [(ðŸ“–Source)](https://www.sixsigmadaily.com/type-i-and-type-ii-errors-in-hypothesis-testing/)
+Types of Errors in Hypothesis testing [(ðŸ“-Source)](https://www.sixsigmadaily.com/type-i-and-type-ii-errors-in-hypothesis-testing/)
 ```
 
 ---
@@ -154,7 +154,7 @@ Otherwise, you can try and run an F-test to start in order to identify if a leas
 
 ```{admonition} Problem: Selection Bias
 :class: tip, dropdown
-[ðŸ“–Source](https://towardsdatascience.com/40-statistics-interview-problems-and-answers-for-data-scientists-6971a02b7eee)
+[ðŸ“-Source](https://towardsdatascience.com/40-statistics-interview-problems-and-answers-for-data-scientists-6971a02b7eee)
 
 Explain selection bias (with regard to a dataset, not variable selection). Why is it important? How can data management procedures such as missing data handling make it worse?
 ```

@@ -8,7 +8,7 @@ html_meta:
 
 ## Neural Network
 
-```{admonition} ðŸ“– Resource
+```{admonition} ðŸ“- Resource
 :class: tip
 
 [This is an excellent resource available for free on Neural Networks](http://neuralnetworksanddeeplearning.com/chap1.html)
@@ -30,9 +30,9 @@ Some of the common activation functions are as follows:
 ```{figure} images/image1.png
 ---
 name: image1
-scale: 40%
+width: 40%
 ---
-[ðŸ“–Source](https://www.v7labs.com/blog/neural-networks-activation-functions) 
+[ðŸ“-Source](https://www.v7labs.com/blog/neural-networks-activation-functions) 
 ```
 
 **An artificial neural network is a network of such neurons.** Neurons in a neural network are arranged in layers. The *first* and the *last* layer are called the *input* and *output* layers. Input layers have as many neurons as the number of attributes in the data set and the output layer has as many neurons as the number of classes of the target variable (for a classification problem). For a regression problem, the number of neurons in the output layer would be 1 (a numeric variable).
@@ -65,7 +65,7 @@ During training, the neural network learning algorithm fits various models to th
 ```{figure} images/image2.gif
 ---
 name: image2
-scale: 60%
+width: 60%
 ---
 Neural Networks can be used to *reasonably* approriximate *most* functions
 ```
@@ -78,9 +78,9 @@ Feed forward neural network architecture consists of following main parts â€“ In
 ```{figure} images/image3.gif
 ---
 name: image3
-scale: 70%
+width: 70%
 ---
-[ðŸ“–Source](https://machinelearningknowledge.ai/animated-explanation-of-feed-forward-neural-network-architecture/)
+[ðŸ“-Source](https://machinelearningknowledge.ai/animated-explanation-of-feed-forward-neural-network-architecture/)
 ```
 
 ### Backpropagation
@@ -94,9 +94,9 @@ For a large neural network, the number of weight elements and biases becomes so 
 ```{figure} images/image4.gif
 ---
 name: image4
-scale: 70%
+width: 70%
 ---
-[ðŸ“–Source](https://machinelearningknowledge.ai/animated-explanation-of-feed-forward-neural-network-architecture/)
+[ðŸ“-Source](https://machinelearningknowledge.ai/animated-explanation-of-feed-forward-neural-network-architecture/)
 ```
 
 For updating weights and biases using plain backpropagation, you have to scan through the entire data set to make a single update to the weights. This is computationally very expensive for large datasets. Thus, you use multiple batches (or **mini-batches**) of data points, compute the average gradient for a batch, and update the weights based on that gradient.
